@@ -1006,6 +1006,7 @@ fn gui_start_generation(
                 bedrock: world_format == WorldFormat::BedrockMcWorld,
                 downloader: "requests".to_string(),
                 scale: world_scale,
+                projection: crate::projection::ProjectionKind::Local,
                 ground_level,
                 terrain: terrain_enabled,
                 interior: interior_enabled,
@@ -1064,8 +1065,13 @@ fn gui_start_generation(
             // Run data fetch and world generation (standard mode: objects + terrain, or objects only)
             match retrieve_data::fetch_data_from_overpass(args.bbox, args.debug, "requests", None) {
                 Ok(raw_data) => {
-                    let (mut parsed_elements, mut xzbbox) =
-                        osm_parser::parse_osm_data(raw_data, args.bbox, args.scale, args.debug);
+                    let (mut parsed_elements, mut xzbbox) = osm_parser::parse_osm_data(
+                        raw_data,
+                        args.bbox,
+                        args.scale,
+                        args.debug,
+                        crate::projection::ProjectionKind::Local,
+                    );
 
                     // Fetch supplementary building data from Overture Maps
                     {
