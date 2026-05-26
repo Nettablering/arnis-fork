@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldbuilders.app/schemas/manifest.v1.0.json",
+  "title": "Worldbuilders Roblox Tile Manifest v1.0",
+  "type": "object",
+  "required": [
+    "manifest_version",
+    "style_version",
+    "tile",
+    "stud_scale",
+    "center_wgs84",
+    "region_key",
+    "buildings",
+    "roads",
+    "water",
+    "landmarks",
+    "assets",
+    "terrain"
+  ],
+  "properties": {
+    "manifest_version": { "const": "1.0" },
+    "style_version": { "type": "integer", "minimum": 1 },
+    "tile": {
+      "type": "object",
+      "required": ["z", "x", "y"],
+      "properties": {
+        "z": { "type": "integer", "minimum": 0, "maximum": 22 },
+        "x": { "type": "integer", "minimum": 0 },
+        "y": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "stud_scale": { "type": "number", "minimum": 0.1, "maximum": 10 },
+    "center_wgs84": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": { "type": "number" }
+    },
+    "region_key": { "type": "string", "minLength": 1 },
+    "buildings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Building" }
+    },
+    "roads": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Road" }
+    },
+    "water": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Water" }
+    },
+    "landmarks": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Landmark" }
+    },
+    "assets": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Asset" }
+    },
+    "terrain": {
+      "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/Terrain" }]
+    }
+  },
+  "$defs": {
+    "StudPoint": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": { "type": "number" }
+    },
+    "Building": {
+      "type": "object",
+      "required": [
+        "osm_id",
+        "footprint_studs",
+        "height_studs",
+        "wall_colour_hex",
+        "roof_colour_hex",
+        "category",
+        "claimable"
+      ],
+      "properties": {
+        "osm_id": { "type": "string", "minLength": 1 },
+        "footprint_studs": {
+          "type": "array",
+          "minItems": 3,
+          "items": { "$ref": "#/$defs/StudPoint" }
+        },
+        "height_studs": { "type": "number", "minimum": 0.0 },
+        "wall_colour_hex": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+        "roof_colour_hex": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+        "category": { "type": "string" },
+        "claimable": { "type": "boolean" }
+      }
+    },
+    "Road": {
+      "type": "object",
+      "required": [
+        "osm_id",
+        "polyline_studs",
+        "width_studs",
+        "material",
+        "class"
+      ],
+      "properties": {
+        "osm_id": { "type": "string", "minLength": 1 },
+        "polyline_studs": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/StudPoint" }
+        },
+        "width_studs": { "type": "number", "minimum": 0.0, "maximum": 120.0 },
+        "material": { "type": "string" },
+        "class": { "type": "string" }
+      }
+    },
+    "Water": {
+      "type": "object",
+      "required": ["osm_id", "polygon_studs", "depth_studs", "kind"],
+      "properties": {
+        "osm_id": { "type": "string", "minLength": 1 },
+        "polygon_studs": {
+          "type": "array",
+          "minItems": 3,
+          "items": { "$ref": "#/$defs/StudPoint" }
+        },
+        "depth_studs": { "type": "number", "minimum": 0.0 },
+        "kind": { "type": "string" }
+      }
+    },
+    "Landmark": {
+      "type": "object",
+      "required": ["osm_id", "position_studs", "kind", "label"],
+      "properties": {
+        "osm_id": { "type": "string" },
+        "position_studs": { "$ref": "#/$defs/StudPoint" },
+        "kind": { "type": "string" },
+        "label": { "type": "string" }
+      }
+    },
+    "Asset": {
+      "type": "object",
+      "required": ["key", "uri"],
+      "properties": {
+        "key": { "type": "string" },
+        "uri": { "type": "string" }
+      }
+    },
+    "Terrain": {
+      "type": "object",
+      "required": ["width", "height", "tile_extent_studs", "heights_studs"],
+      "properties": {
+        "width": { "type": "integer", "minimum": 2, "maximum": 1024 },
+        "height": { "type": "integer", "minimum": 2, "maximum": 1024 },
+        "tile_extent_studs": { "type": "number", "minimum": 0.0 },
+        "heights_studs": {
+          "type": "array",
+          "items": { "type": "number" }
+        }
+      }
+    }
+  }
+}
