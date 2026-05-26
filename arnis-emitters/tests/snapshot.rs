@@ -49,6 +49,7 @@ fn fixture_three_building_tile() -> IngestedTile {
             height_m: None,
             levels: None,
             building_kind: Some("house".into()),
+            ..Default::default()
         },
         IngestedBuilding {
             osm_id: "way/200".into(),
@@ -61,6 +62,7 @@ fn fixture_three_building_tile() -> IngestedTile {
             height_m: None,
             levels: Some(4),
             building_kind: Some("apartments".into()),
+            ..Default::default()
         },
         IngestedBuilding {
             osm_id: "way/300".into(),
@@ -73,6 +75,7 @@ fn fixture_three_building_tile() -> IngestedTile {
             height_m: Some(11.5),
             levels: None,
             building_kind: Some("commercial".into()),
+            ..Default::default()
         },
     ];
 

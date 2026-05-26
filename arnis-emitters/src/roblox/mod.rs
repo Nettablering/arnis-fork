@@ -14,6 +14,7 @@
 pub mod heuristics;
 pub mod manifest;
 pub mod palette;
+pub mod rarity;
 pub mod schema;
 
 use std::fs;
@@ -169,6 +170,19 @@ impl RobloxEmitter {
         let wall = palette::pick(pal.wall, &b.osm_id, 0xA1);
         let roof = palette::pick(pal.roof, &b.osm_id, 0xB2);
 
+        // Q211 blend — pageview rarity is the dominant signal; height
+        // contributes secondarily. Other factors (heritage, age, etc.)
+        // land as their tickets ship. `blend` returns None when every
+        // factor is zero so we don't bloat snapshots for ordinary
+        // buildings.
+        let rarity_inputs = rarity::RarityInputs {
+            pageview_rarity: b.pageview_rarity,
+            height_m: Some(height_m),
+            ..Default::default()
+        };
+        let rarity_score = rarity::blend(&rarity_inputs);
+        let rarity_tier = rarity_score.map(|s| rarity::tier_label(s).to_string());
+
         Some(BuildingEntry {
             osm_id: b.osm_id.clone(),
             footprint_studs: self.project_ring(origin, &b.footprint),
@@ -180,6 +194,8 @@ impl RobloxEmitter {
                 category,
                 "residential" | "apartments" | "apartments_large" | "generic"
             ),
+            rarity_score,
+            rarity_tier,
         })
     }
 
@@ -339,6 +355,7 @@ mod tests {
             height_m: None,
             levels: None,
             building_kind: Some("house".into()),
+            ..Default::default()
         });
         let e = RobloxEmitter::default();
         let m = e.build_manifest(&t);
@@ -403,6 +420,7 @@ mod tests {
                 height_m: None,
                 levels: None,
                 building_kind: Some("house".into()),
+                ..Default::default()
             });
         }
         let m1 = e.build_manifest(&t);
@@ -537,6 +555,7 @@ mod prop_tests {
                     height_m: None,
                     levels: None,
                     building_kind: Some("house".into()),
+                    ..Default::default()
                 });
             }
             let e = RobloxEmitter::default();

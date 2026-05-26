@@ -135,7 +135,38 @@
         "osm_id": { "type": "string" },
         "position_studs": { "$ref": "#/$defs/StudPoint" },
         "kind": { "type": "string" },
-        "label": { "type": "string" }
+        "label": { "type": "string" },
+        "enrichment": { "$ref": "#/$defs/Enrichment" }
+      }
+    },
+    "Enrichment": {
+      "type": "object",
+      "description": "Wikidata-sourced fact-pack (Q210). All fields optional; missing means no claim. Numeric ranges sanity-checked at fetch time.",
+      "properties": {
+        "wikidata_qid": { "type": "string", "pattern": "^Q[0-9]+$" },
+        "founding_year": { "type": "integer", "minimum": -3000, "maximum": 2100 },
+        "founder": { "type": "string" },
+        "architect": { "type": "string" },
+        "height_m": { "type": "number", "minimum": 0.0, "maximum": 1000.0 },
+        "heritage_status": { "type": "string" },
+        "official_website": { "type": "string" },
+        "located_in": { "type": "string" },
+        "coordinate_wgs84": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "type": "number" }
+        },
+        "commemorates": { "type": "string" },
+        "fictional_appearances": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "named_after": { "type": "string" },
+        "owner": { "type": "string" },
+        "total_stories": { "type": "integer", "minimum": 0, "maximum": 500 },
+        "inherited_from_chain": { "type": "boolean" },
+        "fetched_at": { "type": "string", "format": "date-time" }
       }
     },
     "Asset": {

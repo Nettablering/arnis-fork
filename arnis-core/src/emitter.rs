@@ -40,7 +40,7 @@ pub struct TileBbox {
 pub type LatLonRing = Vec<[f64; 2]>;
 
 /// An OSM way representing a building. Geometry is `lat_lon` ordered.
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct IngestedBuilding {
     pub osm_id: String,
     pub footprint: LatLonRing,
@@ -50,6 +50,15 @@ pub struct IngestedBuilding {
     pub levels: Option<u16>,
     /// Raw `building=*` value, lower-cased, e.g. "house", "apartments".
     pub building_kind: Option<String>,
+    /// Wikidata QID resolved from `wikidata=*` tag (Q210). Used by Q211
+    /// to look up pageview rarity for this landmark.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub wikidata_qid: Option<String>,
+    /// Pre-computed pageview rarity in `[0, 1]` (Q211). Sourced from the
+    /// pageview cache; emitters blend it into the final rarity score.
+    /// `None` means "no Wikipedia article known" → pageview term is 0.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub pageview_rarity: Option<f32>,
 }
 
 /// An OSM way representing a road. Geometry is a polyline of lat/lon.

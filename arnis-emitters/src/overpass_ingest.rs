@@ -127,6 +127,7 @@ pub fn ingest_overpass(raw: &[u8], coord: TileCoord) -> Result<IngestedTile, Ove
                 height_m,
                 levels,
                 building_kind: kind,
+                ..Default::default()
             });
         } else if let Some(hw) = el.tags.get("highway") {
             if ring.len() < 2 {

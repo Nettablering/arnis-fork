@@ -39,6 +39,17 @@ pub struct BuildingEntry {
     pub roof_colour_hex: String,
     pub category: String,
     pub claimable: bool,
+    /// Q211 + Q013 + Q030: composite landmark rarity in `[0, 1]`. Driven
+    /// by Wikipedia pageviews (via `IngestedBuilding::pageview_rarity`)
+    /// plus per-factor blend. Omitted from JSON when None so plain
+    /// buildings (no Wikidata link) keep the existing manifest shape.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub rarity_score: Option<f32>,
+    /// Q013 rarity tier label derived from `rarity_score` — kept in the
+    /// manifest so the Roblox client doesn't have to duplicate the
+    /// thresholds. Omitted when `rarity_score` is None.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub rarity_tier: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -64,6 +75,50 @@ pub struct LandmarkEntry {
     pub position_studs: [f32; 2],
     pub kind: String,
     pub label: String,
+    /// Wikidata fact-pack (Q210). `None` when no `wikidata=Q*` tag was
+    /// present or fetch failed; serialised away in that case so existing
+    /// v1.0 baselines without enrichment remain byte-identical.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub enrichment: Option<Enrichment>,
+}
+
+/// Wikidata-sourced fact-pack attached to a landmark (Q210). Additive
+/// to the manifest contract: all fields optional, omitted when absent,
+/// so this is a v1.0 minor add per Q102.
+#[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq)]
+pub struct Enrichment {
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub wikidata_qid: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub founding_year: Option<i32>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub founder: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub architect: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub height_m: Option<f32>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub heritage_status: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub official_website: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub located_in: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub coordinate_wgs84: Option<[f64; 2]>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub commemorates: Option<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub fictional_appearances: Vec<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub named_after: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub owner: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub total_stories: Option<u32>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub inherited_from_chain: Option<bool>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub fetched_at: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
