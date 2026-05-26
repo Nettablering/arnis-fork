@@ -1,0 +1,32 @@
+[Unit]
+Description=Worldbuilders hot-tile preheat (Q083)
+Documentation=https://github.com/Nettablering/arnis-fork/blob/main/docs/grill/q083-hot-tile-preheating.md
+After=network-online.target redis-server.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# Run as the worldbuilders service user (matches wb-bake-worker.service).
+User=worldbuilders
+Group=worldbuilders
+
+# Resolved by the deploy unit; falls back to local redis if unset.
+Environment=WB_REDIS_URL=redis://127.0.0.1:6379/
+Environment=RUST_LOG=info
+
+# The deploy step symlinks the release binary into /usr/local/bin.
+ExecStart=/usr/local/bin/wb-preheat --tier both --rate-limit 50
+
+# Soft hardening — same envelope as wb-bake-worker.service.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/srv/worldbuilders/state
+
+# A preheat that takes longer than 10 min is wedged on something other
+# than rate-limiting; let systemd kill it so the next timer tick can try.
+TimeoutStartSec=600
+
+[Install]
+WantedBy=multi-user.target

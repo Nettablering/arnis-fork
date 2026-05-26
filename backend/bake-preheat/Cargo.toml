@@ -1,0 +1,40 @@
+[package]
+name = "bake-preheat"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "Worldbuilders Q083 hot-tile preheat: read wb:cache.hot.tiles + landmarks.toml -> bake.requests.hot"
+
+# Stand-alone crate (not a workspace member) so it deploys decoupled
+# from arnis-* refactor churn — same pattern as backend/bake-queue.
+# See /home/deploy/projects/worldbuilders/docs/grill/q083-hot-tile-preheating.md.
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "wb-preheat"
+path = "src/bin/wb-preheat.rs"
+
+[dependencies]
+bake-queue = { path = "../bake-queue" }
+redis = { version = "0.27", features = ["tokio-comp", "connection-manager"] }
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+anyhow = "1"
+thiserror = "1"
+clap = { version = "4", features = ["derive", "env"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+async-trait = "0.1"
+
+[dev-dependencies]
+tempfile = "3"
+tokio = { version = "1", features = ["full", "test-util"] }
+serde_json = "1"
+async-trait = "0.1"
+
+[profile.release]
+lto = "thin"
+strip = true

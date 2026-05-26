@@ -122,6 +122,31 @@ the client must display it visibly in-game.
   `bake-server` (writes via pin/unpin) and the Q083 preheat cron (reads via
   `ZRANGEBYSCORE -inf +inf`). The cache module never enqueues bakes itself; that boundary
   belongs to Q083.
+
+## Hot-tile preheating (Q083) — contract with Q082
+
+- **`backend/bake-preheat/`** — Stand-alone Rust crate housing the preheat cron. Reads
+  candidate tiles from two sources, dedupes by tile-id, and enqueues each as a
+  `Priority::HotPreheat` `BakeJob` to `wb:bake.requests.hot` via the Q081 producer.
+- **Source A — Redis pinned set** — `wb:cache.hot.tiles` (Q082). Walked with
+  `ZRANGEBYSCORE -inf +inf`. The cache module *writes* to this set on pin/unpin and
+  never enqueues bakes itself; the preheat crate is the *only* writer to
+  `wb:bake.requests.hot`. This boundary keeps `bake-server`'s HTTP path free of any
+  bake-side concerns.
+- **Source B — Static landmarks manifest** — `backend/bake-preheat/src/top-1000-landmarks.toml`,
+  compiled into the binary via `include_str!`. Ships ≥292 curated entries (every
+  NO/US/EU/JP capital + top tourist landmarks: Eiffel, Empire State, Tokyo Tower, Sydney
+  Opera, etc.) and ~708 geometric placeholders flagged `seed_source = "placeholder"`.
+  Refreshed quarterly per the Q083 grill runbook (Wikidata SPARQL + UN city ranking).
+- **Tile-coord projection** — Manifest rows carry `(name, lat, lon, seed_source)`; tile
+  `(z, x, y)` is computed at load time via the canonical slippy-map projection at z=15.
+  Optional `z/x/y` override on each row for cases where ops needs to pin a specific
+  non-z=15 tile.
+- **`wb-preheat` CLI** — `wb-preheat --dry-run | --tier=pinned-only|landmarks|both
+  --rate-limit 50`. Idempotency-key short-circuit from Q081 means a re-enqueue of an
+  unchanged tile is free (worker ACKs without rebake).
+- **systemd integration** — `wb-preheat.service` + `wb-preheat.timer` ship in the crate;
+  timer fires hourly with `Persistent=true` so a missed tick after reboot still runs.
 - **`X-WB-Cache-Tier`** — Response header on `GET /v1/tile/*` that names the serving tier
   (`pinned` / `hot` / `cold`). Surfaces tier behaviour to clients + tests.
 - **Pin endpoint** — `POST /v1/admin/cache/pin/{z}/{x}/{y}` promotes a tile to PINNED;

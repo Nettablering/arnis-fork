@@ -1,0 +1,16 @@
+[Unit]
+Description=Hourly trigger for the Worldbuilders hot-tile preheat (Q083)
+Documentation=https://github.com/Nettablering/arnis-fork/blob/main/docs/grill/q083-hot-tile-preheating.md
+
+[Timer]
+# Hourly preheat. The Q083 spec calls out a nightly 03:00 UTC walk; we
+# run hourly because hot tiles also drift on OSM micro-diffs and ops
+# pin events. The Q081 idempotency-key path means a re-enqueue of an
+# unchanged tile is free (no rebake happens — the worker ACKs and skips).
+OnCalendar=hourly
+Persistent=true
+RandomizedDelaySec=300
+Unit=wb-preheat.service
+
+[Install]
+WantedBy=timers.target

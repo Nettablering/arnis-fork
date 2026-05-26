@@ -1,0 +1,6006 @@
+# Worldbuilders top-1000 hot tiles (Q083).
+# Curated capitals + iconic landmarks + geometric placeholders.
+# Regenerated quarterly per the Q083 refresh runbook.
+# Tile coords computed at load time from (lat, lon) via the
+# slippy-map projection at z=15.
+
+[[landmark]]
+name = "Eiffel Tower"
+lat = 48.8584
+lon = 2.2945
+seed_source = "curated"
+
+[[landmark]]
+name = "Tokyo Shibuya"
+lat = 35.6595
+lon = 139.7005
+seed_source = "curated"
+
+[[landmark]]
+name = "New York Times Square"
+lat = 40.758
+lon = -73.9855
+seed_source = "curated"
+
+[[landmark]]
+name = "London Westminster"
+lat = 51.4994
+lon = -0.1248
+seed_source = "curated"
+
+[[landmark]]
+name = "Sydney Opera House"
+lat = -33.8568
+lon = 151.2153
+seed_source = "curated"
+
+[[landmark]]
+name = "Dubai Burj Khalifa"
+lat = 25.1972
+lon = 55.2744
+seed_source = "curated"
+
+[[landmark]]
+name = "San Francisco Golden Gate"
+lat = 37.8199
+lon = -122.4783
+seed_source = "curated"
+
+[[landmark]]
+name = "Rio Cristo Redentor"
+lat = -22.9519
+lon = -43.2105
+seed_source = "curated"
+
+[[landmark]]
+name = "Cairo Pyramids"
+lat = 29.9792
+lon = 31.1342
+seed_source = "curated"
+
+[[landmark]]
+name = "Moscow Red Square"
+lat = 55.7539
+lon = 37.6208
+seed_source = "curated"
+
+[[landmark]]
+name = "Oslo Akershus"
+lat = 59.9078
+lon = 10.7372
+seed_source = "curated"
+
+[[landmark]]
+name = "Oslo Operaen"
+lat = 59.9075
+lon = 10.753
+seed_source = "curated"
+
+[[landmark]]
+name = "Oslo Slottet"
+lat = 59.917
+lon = 10.7275
+seed_source = "curated"
+
+[[landmark]]
+name = "Oslo Vigeland Park"
+lat = 59.9269
+lon = 10.7008
+seed_source = "curated"
+
+[[landmark]]
+name = "Bergen Bryggen"
+lat = 60.397
+lon = 5.3221
+seed_source = "curated"
+
+[[landmark]]
+name = "Trondheim Nidaros"
+lat = 63.4269
+lon = 10.397
+seed_source = "curated"
+
+[[landmark]]
+name = "Tromsoe Arctic Cathedral"
+lat = 69.6566
+lon = 18.9871
+seed_source = "curated"
+
+[[landmark]]
+name = "Stavanger Old Town"
+lat = 58.97
+lon = 5.7331
+seed_source = "curated"
+
+[[landmark]]
+name = "Aalesund Art Nouveau"
+lat = 62.4722
+lon = 6.1495
+seed_source = "curated"
+
+[[landmark]]
+name = "Lofoten Reine"
+lat = 67.932
+lon = 13.0876
+seed_source = "curated"
+
+[[landmark]]
+name = "Washington DC Capitol"
+lat = 38.8899
+lon = -77.0091
+seed_source = "curated"
+
+[[landmark]]
+name = "Washington DC White House"
+lat = 38.8977
+lon = -77.0365
+seed_source = "curated"
+
+[[landmark]]
+name = "Washington DC Lincoln Memorial"
+lat = 38.8893
+lon = -77.0502
+seed_source = "curated"
+
+[[landmark]]
+name = "NYC Statue of Liberty"
+lat = 40.6892
+lon = -74.0445
+seed_source = "curated"
+
+[[landmark]]
+name = "NYC Central Park"
+lat = 40.7829
+lon = -73.9654
+seed_source = "curated"
+
+[[landmark]]
+name = "NYC Brooklyn Bridge"
+lat = 40.7061
+lon = -73.9969
+seed_source = "curated"
+
+[[landmark]]
+name = "Los Angeles Hollywood"
+lat = 34.1014
+lon = -118.3402
+seed_source = "curated"
+
+[[landmark]]
+name = "Los Angeles Griffith Observatory"
+lat = 34.1184
+lon = -118.3004
+seed_source = "curated"
+
+[[landmark]]
+name = "Chicago Cloud Gate"
+lat = 41.8827
+lon = -87.6233
+seed_source = "curated"
+
+[[landmark]]
+name = "Chicago Willis Tower"
+lat = 41.8789
+lon = -87.6359
+seed_source = "curated"
+
+[[landmark]]
+name = "Boston Faneuil Hall"
+lat = 42.3601
+lon = -71.0568
+seed_source = "curated"
+
+[[landmark]]
+name = "Philadelphia Liberty Bell"
+lat = 39.9496
+lon = -75.1503
+seed_source = "curated"
+
+[[landmark]]
+name = "New Orleans French Quarter"
+lat = 29.9584
+lon = -90.0644
+seed_source = "curated"
+
+[[landmark]]
+name = "Las Vegas Strip"
+lat = 36.1147
+lon = -115.1728
+seed_source = "curated"
+
+[[landmark]]
+name = "Grand Canyon South Rim"
+lat = 36.0544
+lon = -112.1401
+seed_source = "curated"
+
+[[landmark]]
+name = "Yellowstone Old Faithful"
+lat = 44.4605
+lon = -110.8281
+seed_source = "curated"
+
+[[landmark]]
+name = "Seattle Space Needle"
+lat = 47.6205
+lon = -122.3493
+seed_source = "curated"
+
+[[landmark]]
+name = "Miami Beach"
+lat = 25.7907
+lon = -80.13
+seed_source = "curated"
+
+[[landmark]]
+name = "Honolulu Diamond Head"
+lat = 21.262
+lon = -157.8059
+seed_source = "curated"
+
+[[landmark]]
+name = "Austin TX Capitol"
+lat = 30.2747
+lon = -97.7404
+seed_source = "curated"
+
+[[landmark]]
+name = "Denver CO Capitol"
+lat = 39.7392
+lon = -104.9847
+seed_source = "curated"
+
+[[landmark]]
+name = "Atlanta Centennial Park"
+lat = 33.7616
+lon = -84.3933
+seed_source = "curated"
+
+[[landmark]]
+name = "Nashville Broadway"
+lat = 36.162
+lon = -86.778
+seed_source = "curated"
+
+[[landmark]]
+name = "Salt Lake City Temple Sq"
+lat = 40.7707
+lon = -111.8911
+seed_source = "curated"
+
+[[landmark]]
+name = "Phoenix AZ Capitol"
+lat = 33.4484
+lon = -112.0972
+seed_source = "curated"
+
+[[landmark]]
+name = "Sacramento CA Capitol"
+lat = 38.5767
+lon = -121.4934
+seed_source = "curated"
+
+[[landmark]]
+name = "Albany NY Capitol"
+lat = 42.6526
+lon = -73.7562
+seed_source = "curated"
+
+[[landmark]]
+name = "Olympia WA Capitol"
+lat = 47.0359
+lon = -122.9054
+seed_source = "curated"
+
+[[landmark]]
+name = "Madison WI Capitol"
+lat = 43.0741
+lon = -89.3839
+seed_source = "curated"
+
+[[landmark]]
+name = "Springfield IL Capitol"
+lat = 39.7984
+lon = -89.6544
+seed_source = "curated"
+
+[[landmark]]
+name = "Lansing MI Capitol"
+lat = 42.7335
+lon = -84.5555
+seed_source = "curated"
+
+[[landmark]]
+name = "Columbus OH Capitol"
+lat = 39.9612
+lon = -82.9988
+seed_source = "curated"
+
+[[landmark]]
+name = "Indianapolis IN Capitol"
+lat = 39.7684
+lon = -86.1581
+seed_source = "curated"
+
+[[landmark]]
+name = "Frankfort KY Capitol"
+lat = 38.1867
+lon = -84.8753
+seed_source = "curated"
+
+[[landmark]]
+name = "Nashville TN Capitol"
+lat = 36.1659
+lon = -86.7844
+seed_source = "curated"
+
+[[landmark]]
+name = "Montgomery AL Capitol"
+lat = 32.3777
+lon = -86.3008
+seed_source = "curated"
+
+[[landmark]]
+name = "Tallahassee FL Capitol"
+lat = 30.4383
+lon = -84.2807
+seed_source = "curated"
+
+[[landmark]]
+name = "Stockholm Gamla Stan"
+lat = 59.3251
+lon = 18.071
+seed_source = "curated"
+
+[[landmark]]
+name = "Copenhagen Nyhavn"
+lat = 55.6797
+lon = 12.5891
+seed_source = "curated"
+
+[[landmark]]
+name = "Helsinki Senate Square"
+lat = 60.1699
+lon = 24.9527
+seed_source = "curated"
+
+[[landmark]]
+name = "Reykjavik Hallgrimskirkja"
+lat = 64.1418
+lon = -21.9266
+seed_source = "curated"
+
+[[landmark]]
+name = "Berlin Brandenburg Gate"
+lat = 52.5163
+lon = 13.3777
+seed_source = "curated"
+
+[[landmark]]
+name = "Berlin Reichstag"
+lat = 52.5186
+lon = 13.3762
+seed_source = "curated"
+
+[[landmark]]
+name = "Munich Marienplatz"
+lat = 48.1374
+lon = 11.5755
+seed_source = "curated"
+
+[[landmark]]
+name = "Hamburg Speicherstadt"
+lat = 53.544
+lon = 9.9886
+seed_source = "curated"
+
+[[landmark]]
+name = "Cologne Cathedral"
+lat = 50.9413
+lon = 6.9583
+seed_source = "curated"
+
+[[landmark]]
+name = "Frankfurt Roemer"
+lat = 50.1106
+lon = 8.6822
+seed_source = "curated"
+
+[[landmark]]
+name = "Vienna Stephansdom"
+lat = 48.2086
+lon = 16.3725
+seed_source = "curated"
+
+[[landmark]]
+name = "Salzburg Old Town"
+lat = 47.8
+lon = 13.044
+seed_source = "curated"
+
+[[landmark]]
+name = "Zurich Bahnhofstrasse"
+lat = 47.3769
+lon = 8.5417
+seed_source = "curated"
+
+[[landmark]]
+name = "Geneva Lake"
+lat = 46.2044
+lon = 6.1432
+seed_source = "curated"
+
+[[landmark]]
+name = "Bern Bundeshaus"
+lat = 46.9466
+lon = 7.4444
+seed_source = "curated"
+
+[[landmark]]
+name = "Brussels Grand Place"
+lat = 50.8467
+lon = 4.3525
+seed_source = "curated"
+
+[[landmark]]
+name = "Bruges Markt"
+lat = 51.2086
+lon = 3.2247
+seed_source = "curated"
+
+[[landmark]]
+name = "Amsterdam Dam Square"
+lat = 52.3731
+lon = 4.8932
+seed_source = "curated"
+
+[[landmark]]
+name = "Rotterdam Erasmusbrug"
+lat = 51.9091
+lon = 4.487
+seed_source = "curated"
+
+[[landmark]]
+name = "The Hague Binnenhof"
+lat = 52.0799
+lon = 4.3134
+seed_source = "curated"
+
+[[landmark]]
+name = "Luxembourg City"
+lat = 49.6116
+lon = 6.1319
+seed_source = "curated"
+
+[[landmark]]
+name = "Madrid Plaza Mayor"
+lat = 40.4155
+lon = -3.7074
+seed_source = "curated"
+
+[[landmark]]
+name = "Madrid Prado"
+lat = 40.4138
+lon = -3.6921
+seed_source = "curated"
+
+[[landmark]]
+name = "Barcelona Sagrada Familia"
+lat = 41.4036
+lon = 2.1744
+seed_source = "curated"
+
+[[landmark]]
+name = "Barcelona Park Guell"
+lat = 41.4145
+lon = 2.1527
+seed_source = "curated"
+
+[[landmark]]
+name = "Seville Cathedral"
+lat = 37.3858
+lon = -5.9931
+seed_source = "curated"
+
+[[landmark]]
+name = "Granada Alhambra"
+lat = 37.1773
+lon = -3.5886
+seed_source = "curated"
+
+[[landmark]]
+name = "Lisbon Belem Tower"
+lat = 38.6916
+lon = -9.216
+seed_source = "curated"
+
+[[landmark]]
+name = "Porto Ribeira"
+lat = 41.141
+lon = -8.6131
+seed_source = "curated"
+
+[[landmark]]
+name = "Paris Louvre"
+lat = 48.8606
+lon = 2.3376
+seed_source = "curated"
+
+[[landmark]]
+name = "Paris Notre Dame"
+lat = 48.853
+lon = 2.3499
+seed_source = "curated"
+
+[[landmark]]
+name = "Paris Sacre Coeur"
+lat = 48.8867
+lon = 2.3431
+seed_source = "curated"
+
+[[landmark]]
+name = "Paris Arc de Triomphe"
+lat = 48.8738
+lon = 2.295
+seed_source = "curated"
+
+[[landmark]]
+name = "Versailles Palace"
+lat = 48.8049
+lon = 2.1204
+seed_source = "curated"
+
+[[landmark]]
+name = "Marseille Vieux Port"
+lat = 43.2951
+lon = 5.374
+seed_source = "curated"
+
+[[landmark]]
+name = "Nice Promenade"
+lat = 43.6951
+lon = 7.2655
+seed_source = "curated"
+
+[[landmark]]
+name = "Lyon Vieux Lyon"
+lat = 45.7619
+lon = 4.8275
+seed_source = "curated"
+
+[[landmark]]
+name = "Rome Colosseum"
+lat = 41.8902
+lon = 12.4922
+seed_source = "curated"
+
+[[landmark]]
+name = "Rome Vatican St Peter"
+lat = 41.9022
+lon = 12.4533
+seed_source = "curated"
+
+[[landmark]]
+name = "Rome Trevi Fountain"
+lat = 41.9009
+lon = 12.4833
+seed_source = "curated"
+
+[[landmark]]
+name = "Rome Pantheon"
+lat = 41.8986
+lon = 12.4769
+seed_source = "curated"
+
+[[landmark]]
+name = "Florence Duomo"
+lat = 43.7731
+lon = 11.2558
+seed_source = "curated"
+
+[[landmark]]
+name = "Florence Uffizi"
+lat = 43.7686
+lon = 11.2553
+seed_source = "curated"
+
+[[landmark]]
+name = "Pisa Tower"
+lat = 43.723
+lon = 10.3966
+seed_source = "curated"
+
+[[landmark]]
+name = "Venice San Marco"
+lat = 45.4341
+lon = 12.3388
+seed_source = "curated"
+
+[[landmark]]
+name = "Milan Duomo"
+lat = 45.4642
+lon = 9.19
+seed_source = "curated"
+
+[[landmark]]
+name = "Naples Spaccanapoli"
+lat = 40.8484
+lon = 14.2557
+seed_source = "curated"
+
+[[landmark]]
+name = "Athens Acropolis"
+lat = 37.9715
+lon = 23.7257
+seed_source = "curated"
+
+[[landmark]]
+name = "Santorini Oia"
+lat = 36.4615
+lon = 25.3756
+seed_source = "curated"
+
+[[landmark]]
+name = "Istanbul Hagia Sophia"
+lat = 41.0086
+lon = 28.9802
+seed_source = "curated"
+
+[[landmark]]
+name = "Istanbul Blue Mosque"
+lat = 41.0054
+lon = 28.9768
+seed_source = "curated"
+
+[[landmark]]
+name = "Istanbul Galata Tower"
+lat = 41.0257
+lon = 28.9744
+seed_source = "curated"
+
+[[landmark]]
+name = "Budapest Parliament"
+lat = 47.5072
+lon = 19.0456
+seed_source = "curated"
+
+[[landmark]]
+name = "Prague Charles Bridge"
+lat = 50.0865
+lon = 14.4114
+seed_source = "curated"
+
+[[landmark]]
+name = "Prague Old Town Square"
+lat = 50.0875
+lon = 14.4214
+seed_source = "curated"
+
+[[landmark]]
+name = "Warsaw Old Town"
+lat = 52.2497
+lon = 21.0122
+seed_source = "curated"
+
+[[landmark]]
+name = "Krakow Wawel"
+lat = 50.054
+lon = 19.9354
+seed_source = "curated"
+
+[[landmark]]
+name = "Bratislava Castle"
+lat = 48.1421
+lon = 17.1003
+seed_source = "curated"
+
+[[landmark]]
+name = "Ljubljana Castle"
+lat = 46.0489
+lon = 14.5085
+seed_source = "curated"
+
+[[landmark]]
+name = "Zagreb Ban Jelacic"
+lat = 45.8131
+lon = 15.9772
+seed_source = "curated"
+
+[[landmark]]
+name = "Belgrade Kalemegdan"
+lat = 44.8225
+lon = 20.4516
+seed_source = "curated"
+
+[[landmark]]
+name = "Sofia Alexander Nevsky"
+lat = 42.6957
+lon = 23.3327
+seed_source = "curated"
+
+[[landmark]]
+name = "Bucharest Parliament"
+lat = 44.4275
+lon = 26.0875
+seed_source = "curated"
+
+[[landmark]]
+name = "Kiev Maidan"
+lat = 50.4501
+lon = 30.5234
+seed_source = "curated"
+
+[[landmark]]
+name = "Vilnius Cathedral"
+lat = 54.6859
+lon = 25.2877
+seed_source = "curated"
+
+[[landmark]]
+name = "Riga Old Town"
+lat = 56.9496
+lon = 24.1052
+seed_source = "curated"
+
+[[landmark]]
+name = "Tallinn Old Town"
+lat = 59.437
+lon = 24.7536
+seed_source = "curated"
+
+[[landmark]]
+name = "Dublin Trinity College"
+lat = 53.3441
+lon = -6.2576
+seed_source = "curated"
+
+[[landmark]]
+name = "Belfast Titanic"
+lat = 54.6079
+lon = -5.9106
+seed_source = "curated"
+
+[[landmark]]
+name = "Edinburgh Castle"
+lat = 55.9486
+lon = -3.1999
+seed_source = "curated"
+
+[[landmark]]
+name = "Glasgow Cathedral"
+lat = 55.8629
+lon = -4.2348
+seed_source = "curated"
+
+[[landmark]]
+name = "Cardiff Castle"
+lat = 51.4824
+lon = -3.1812
+seed_source = "curated"
+
+[[landmark]]
+name = "London Tower Bridge"
+lat = 51.5055
+lon = -0.0754
+seed_source = "curated"
+
+[[landmark]]
+name = "London Big Ben"
+lat = 51.5007
+lon = -0.1246
+seed_source = "curated"
+
+[[landmark]]
+name = "London Buckingham Palace"
+lat = 51.5014
+lon = -0.1419
+seed_source = "curated"
+
+[[landmark]]
+name = "London British Museum"
+lat = 51.5194
+lon = -0.127
+seed_source = "curated"
+
+[[landmark]]
+name = "Manchester Piccadilly"
+lat = 53.4794
+lon = -2.2415
+seed_source = "curated"
+
+[[landmark]]
+name = "Liverpool Albert Dock"
+lat = 53.4001
+lon = -2.9924
+seed_source = "curated"
+
+[[landmark]]
+name = "Birmingham Bullring"
+lat = 52.4775
+lon = -1.8941
+seed_source = "curated"
+
+[[landmark]]
+name = "Bath Roman Baths"
+lat = 51.3811
+lon = -2.359
+seed_source = "curated"
+
+[[landmark]]
+name = "Oxford Radcliffe"
+lat = 51.7534
+lon = -1.2546
+seed_source = "curated"
+
+[[landmark]]
+name = "Cambridge Kings College"
+lat = 52.2043
+lon = 0.1149
+seed_source = "curated"
+
+[[landmark]]
+name = "Tokyo Skytree"
+lat = 35.7101
+lon = 139.8107
+seed_source = "curated"
+
+[[landmark]]
+name = "Tokyo Tower"
+lat = 35.6586
+lon = 139.7454
+seed_source = "curated"
+
+[[landmark]]
+name = "Tokyo Asakusa Sensoji"
+lat = 35.7148
+lon = 139.7967
+seed_source = "curated"
+
+[[landmark]]
+name = "Tokyo Imperial Palace"
+lat = 35.6852
+lon = 139.7528
+seed_source = "curated"
+
+[[landmark]]
+name = "Kyoto Kinkakuji"
+lat = 35.0394
+lon = 135.7292
+seed_source = "curated"
+
+[[landmark]]
+name = "Kyoto Fushimi Inari"
+lat = 34.9671
+lon = 135.7727
+seed_source = "curated"
+
+[[landmark]]
+name = "Osaka Castle"
+lat = 34.6873
+lon = 135.5259
+seed_source = "curated"
+
+[[landmark]]
+name = "Osaka Dotonbori"
+lat = 34.6687
+lon = 135.5031
+seed_source = "curated"
+
+[[landmark]]
+name = "Nara Todaiji"
+lat = 34.689
+lon = 135.8398
+seed_source = "curated"
+
+[[landmark]]
+name = "Hiroshima Peace Memorial"
+lat = 34.3955
+lon = 132.4536
+seed_source = "curated"
+
+[[landmark]]
+name = "Sapporo Odori"
+lat = 43.0598
+lon = 141.354
+seed_source = "curated"
+
+[[landmark]]
+name = "Fukuoka Hakata"
+lat = 33.5904
+lon = 130.4017
+seed_source = "curated"
+
+[[landmark]]
+name = "Mt Fuji Kawaguchi"
+lat = 35.5142
+lon = 138.7686
+seed_source = "curated"
+
+[[landmark]]
+name = "Beijing Forbidden City"
+lat = 39.9163
+lon = 116.3972
+seed_source = "curated"
+
+[[landmark]]
+name = "Beijing Tiananmen"
+lat = 39.9054
+lon = 116.3976
+seed_source = "curated"
+
+[[landmark]]
+name = "Beijing Great Wall Badaling"
+lat = 40.359
+lon = 116.0152
+seed_source = "curated"
+
+[[landmark]]
+name = "Shanghai Bund"
+lat = 31.2397
+lon = 121.49
+seed_source = "curated"
+
+[[landmark]]
+name = "Shanghai Oriental Pearl"
+lat = 31.2398
+lon = 121.4998
+seed_source = "curated"
+
+[[landmark]]
+name = "Xian Terracotta Army"
+lat = 34.3848
+lon = 109.2734
+seed_source = "curated"
+
+[[landmark]]
+name = "Hong Kong Victoria Peak"
+lat = 22.2759
+lon = 114.1455
+seed_source = "curated"
+
+[[landmark]]
+name = "Hong Kong Star Ferry"
+lat = 22.2924
+lon = 114.1685
+seed_source = "curated"
+
+[[landmark]]
+name = "Macau Senado"
+lat = 22.1934
+lon = 113.5403
+seed_source = "curated"
+
+[[landmark]]
+name = "Taipei 101"
+lat = 25.0339
+lon = 121.5645
+seed_source = "curated"
+
+[[landmark]]
+name = "Seoul Gyeongbokgung"
+lat = 37.5796
+lon = 126.977
+seed_source = "curated"
+
+[[landmark]]
+name = "Seoul N Tower"
+lat = 37.5512
+lon = 126.9882
+seed_source = "curated"
+
+[[landmark]]
+name = "Busan Haeundae"
+lat = 35.1587
+lon = 129.1604
+seed_source = "curated"
+
+[[landmark]]
+name = "Singapore Marina Bay Sands"
+lat = 1.2834
+lon = 103.8607
+seed_source = "curated"
+
+[[landmark]]
+name = "Singapore Gardens by Bay"
+lat = 1.2816
+lon = 103.8636
+seed_source = "curated"
+
+[[landmark]]
+name = "Kuala Lumpur Petronas"
+lat = 3.1579
+lon = 101.7116
+seed_source = "curated"
+
+[[landmark]]
+name = "Bangkok Grand Palace"
+lat = 13.75
+lon = 100.4915
+seed_source = "curated"
+
+[[landmark]]
+name = "Bangkok Wat Arun"
+lat = 13.7437
+lon = 100.4889
+seed_source = "curated"
+
+[[landmark]]
+name = "Chiang Mai Old City"
+lat = 18.7906
+lon = 98.9847
+seed_source = "curated"
+
+[[landmark]]
+name = "Phuket Patong"
+lat = 7.8965
+lon = 98.2963
+seed_source = "curated"
+
+[[landmark]]
+name = "Siem Reap Angkor Wat"
+lat = 13.4125
+lon = 103.867
+seed_source = "curated"
+
+[[landmark]]
+name = "Hanoi Hoan Kiem"
+lat = 21.0285
+lon = 105.8542
+seed_source = "curated"
+
+[[landmark]]
+name = "Ho Chi Minh City"
+lat = 10.7769
+lon = 106.7009
+seed_source = "curated"
+
+[[landmark]]
+name = "Halong Bay"
+lat = 20.9101
+lon = 107.1839
+seed_source = "curated"
+
+[[landmark]]
+name = "Manila Intramuros"
+lat = 14.5896
+lon = 120.9748
+seed_source = "curated"
+
+[[landmark]]
+name = "Cebu Magellan Cross"
+lat = 10.2934
+lon = 123.9019
+seed_source = "curated"
+
+[[landmark]]
+name = "Jakarta Monas"
+lat = -6.1754
+lon = 106.8272
+seed_source = "curated"
+
+[[landmark]]
+name = "Bali Tanah Lot"
+lat = -8.6212
+lon = 115.0866
+seed_source = "curated"
+
+[[landmark]]
+name = "Yogyakarta Borobudur"
+lat = -7.6079
+lon = 110.2038
+seed_source = "curated"
+
+[[landmark]]
+name = "Mumbai Gateway India"
+lat = 18.922
+lon = 72.8347
+seed_source = "curated"
+
+[[landmark]]
+name = "Delhi India Gate"
+lat = 28.6129
+lon = 77.2295
+seed_source = "curated"
+
+[[landmark]]
+name = "Agra Taj Mahal"
+lat = 27.1751
+lon = 78.0421
+seed_source = "curated"
+
+[[landmark]]
+name = "Jaipur Hawa Mahal"
+lat = 26.9239
+lon = 75.8267
+seed_source = "curated"
+
+[[landmark]]
+name = "Varanasi Ghats"
+lat = 25.3176
+lon = 83.0095
+seed_source = "curated"
+
+[[landmark]]
+name = "Goa Calangute"
+lat = 15.543
+lon = 73.7553
+seed_source = "curated"
+
+[[landmark]]
+name = "Bangalore Vidhan Soudha"
+lat = 12.9794
+lon = 77.5912
+seed_source = "curated"
+
+[[landmark]]
+name = "Chennai Marina"
+lat = 13.0524
+lon = 80.2825
+seed_source = "curated"
+
+[[landmark]]
+name = "Kolkata Victoria Memorial"
+lat = 22.5448
+lon = 88.3426
+seed_source = "curated"
+
+[[landmark]]
+name = "Colombo Galle Face"
+lat = 6.9271
+lon = 79.8425
+seed_source = "curated"
+
+[[landmark]]
+name = "Kathmandu Durbar Sq"
+lat = 27.7045
+lon = 85.3076
+seed_source = "curated"
+
+[[landmark]]
+name = "Dhaka Lalbagh"
+lat = 23.7191
+lon = 90.3886
+seed_source = "curated"
+
+[[landmark]]
+name = "Islamabad Faisal Mosque"
+lat = 33.7295
+lon = 73.0372
+seed_source = "curated"
+
+[[landmark]]
+name = "Lahore Badshahi"
+lat = 31.588
+lon = 74.3097
+seed_source = "curated"
+
+[[landmark]]
+name = "Tehran Azadi"
+lat = 35.6997
+lon = 51.3382
+seed_source = "curated"
+
+[[landmark]]
+name = "Tel Aviv Beach"
+lat = 32.0853
+lon = 34.7818
+seed_source = "curated"
+
+[[landmark]]
+name = "Jerusalem Western Wall"
+lat = 31.7767
+lon = 35.2345
+seed_source = "curated"
+
+[[landmark]]
+name = "Petra Treasury"
+lat = 30.3285
+lon = 35.4444
+seed_source = "curated"
+
+[[landmark]]
+name = "Amman Citadel"
+lat = 31.9544
+lon = 35.9344
+seed_source = "curated"
+
+[[landmark]]
+name = "Beirut Corniche"
+lat = 33.8938
+lon = 35.5018
+seed_source = "curated"
+
+[[landmark]]
+name = "Damascus Umayyad"
+lat = 33.5117
+lon = 36.3066
+seed_source = "curated"
+
+[[landmark]]
+name = "Doha Souq Waqif"
+lat = 25.2873
+lon = 51.5333
+seed_source = "curated"
+
+[[landmark]]
+name = "Abu Dhabi Sheikh Zayed"
+lat = 24.4129
+lon = 54.475
+seed_source = "curated"
+
+[[landmark]]
+name = "Riyadh Kingdom Tower"
+lat = 24.7117
+lon = 46.6743
+seed_source = "curated"
+
+[[landmark]]
+name = "Mecca Kaaba"
+lat = 21.4225
+lon = 39.8262
+seed_source = "curated"
+
+[[landmark]]
+name = "Sydney Harbour Bridge"
+lat = -33.8523
+lon = 151.2108
+seed_source = "curated"
+
+[[landmark]]
+name = "Sydney Bondi Beach"
+lat = -33.8908
+lon = 151.2743
+seed_source = "curated"
+
+[[landmark]]
+name = "Melbourne Federation Sq"
+lat = -37.818
+lon = 144.969
+seed_source = "curated"
+
+[[landmark]]
+name = "Brisbane South Bank"
+lat = -27.4748
+lon = 153.0202
+seed_source = "curated"
+
+[[landmark]]
+name = "Perth Kings Park"
+lat = -31.9614
+lon = 115.8412
+seed_source = "curated"
+
+[[landmark]]
+name = "Adelaide North Tce"
+lat = -34.9217
+lon = 138.6011
+seed_source = "curated"
+
+[[landmark]]
+name = "Canberra Parliament"
+lat = -35.3081
+lon = 149.1244
+seed_source = "curated"
+
+[[landmark]]
+name = "Hobart Salamanca"
+lat = -42.8849
+lon = 147.33
+seed_source = "curated"
+
+[[landmark]]
+name = "Uluru"
+lat = -25.3444
+lon = 131.0369
+seed_source = "curated"
+
+[[landmark]]
+name = "Great Barrier Reef Cairns"
+lat = -16.9189
+lon = 145.7787
+seed_source = "curated"
+
+[[landmark]]
+name = "Auckland Sky Tower"
+lat = -36.8485
+lon = 174.7625
+seed_source = "curated"
+
+[[landmark]]
+name = "Wellington Te Papa"
+lat = -41.2906
+lon = 174.7821
+seed_source = "curated"
+
+[[landmark]]
+name = "Christchurch Cathedral"
+lat = -43.531
+lon = 172.6371
+seed_source = "curated"
+
+[[landmark]]
+name = "Queenstown Lake"
+lat = -45.0312
+lon = 168.6626
+seed_source = "curated"
+
+[[landmark]]
+name = "Rotorua Te Puia"
+lat = -38.1599
+lon = 176.2521
+seed_source = "curated"
+
+[[landmark]]
+name = "Cape Town Table Mtn"
+lat = -33.9628
+lon = 18.4098
+seed_source = "curated"
+
+[[landmark]]
+name = "Cape Town V&A"
+lat = -33.9028
+lon = 18.4197
+seed_source = "curated"
+
+[[landmark]]
+name = "Johannesburg Apartheid Museum"
+lat = -26.2364
+lon = 28.008
+seed_source = "curated"
+
+[[landmark]]
+name = "Pretoria Union Bldgs"
+lat = -25.7405
+lon = 28.2122
+seed_source = "curated"
+
+[[landmark]]
+name = "Cairo Egyptian Museum"
+lat = 30.0479
+lon = 31.2336
+seed_source = "curated"
+
+[[landmark]]
+name = "Luxor Karnak"
+lat = 25.7188
+lon = 32.6573
+seed_source = "curated"
+
+[[landmark]]
+name = "Marrakech Jemaa el Fna"
+lat = 31.6258
+lon = -7.9891
+seed_source = "curated"
+
+[[landmark]]
+name = "Casablanca Hassan II"
+lat = 33.6086
+lon = -7.6326
+seed_source = "curated"
+
+[[landmark]]
+name = "Fes Medina"
+lat = 34.0667
+lon = -5.0
+seed_source = "curated"
+
+[[landmark]]
+name = "Tunis Carthage"
+lat = 36.8588
+lon = 10.326
+seed_source = "curated"
+
+[[landmark]]
+name = "Algiers Casbah"
+lat = 36.7831
+lon = 3.0594
+seed_source = "curated"
+
+[[landmark]]
+name = "Nairobi National Park"
+lat = -1.3733
+lon = 36.8569
+seed_source = "curated"
+
+[[landmark]]
+name = "Mombasa Old Town"
+lat = -4.0612
+lon = 39.679
+seed_source = "curated"
+
+[[landmark]]
+name = "Zanzibar Stone Town"
+lat = -6.1647
+lon = 39.1928
+seed_source = "curated"
+
+[[landmark]]
+name = "Kilimanjaro Uhuru"
+lat = -3.0674
+lon = 37.3556
+seed_source = "curated"
+
+[[landmark]]
+name = "Lagos Victoria Island"
+lat = 6.4281
+lon = 3.4216
+seed_source = "curated"
+
+[[landmark]]
+name = "Accra Independence Sq"
+lat = 5.55
+lon = -0.201
+seed_source = "curated"
+
+[[landmark]]
+name = "Addis Ababa Meskel"
+lat = 9.0125
+lon = 38.7634
+seed_source = "curated"
+
+[[landmark]]
+name = "Victoria Falls Bridge"
+lat = -17.9243
+lon = 25.8572
+seed_source = "curated"
+
+[[landmark]]
+name = "Etosha Pan"
+lat = -18.85
+lon = 16.33
+seed_source = "curated"
+
+[[landmark]]
+name = "Buenos Aires La Boca"
+lat = -34.6345
+lon = -58.3631
+seed_source = "curated"
+
+[[landmark]]
+name = "Buenos Aires Casa Rosada"
+lat = -34.608
+lon = -58.3712
+seed_source = "curated"
+
+[[landmark]]
+name = "Iguazu Falls"
+lat = -25.6953
+lon = -54.4367
+seed_source = "curated"
+
+[[landmark]]
+name = "Sao Paulo Paulista"
+lat = -23.5614
+lon = -46.6555
+seed_source = "curated"
+
+[[landmark]]
+name = "Salvador Pelourinho"
+lat = -12.9714
+lon = -38.5108
+seed_source = "curated"
+
+[[landmark]]
+name = "Brasilia Cathedral"
+lat = -15.7984
+lon = -47.8757
+seed_source = "curated"
+
+[[landmark]]
+name = "Lima Plaza Mayor"
+lat = -12.0464
+lon = -77.0289
+seed_source = "curated"
+
+[[landmark]]
+name = "Cusco Plaza Armas"
+lat = -13.5168
+lon = -71.9786
+seed_source = "curated"
+
+[[landmark]]
+name = "Machu Picchu"
+lat = -13.1631
+lon = -72.545
+seed_source = "curated"
+
+[[landmark]]
+name = "La Paz Witches Market"
+lat = -16.4955
+lon = -68.1336
+seed_source = "curated"
+
+[[landmark]]
+name = "Uyuni Salt Flats"
+lat = -20.1338
+lon = -67.4891
+seed_source = "curated"
+
+[[landmark]]
+name = "Santiago Plaza Armas"
+lat = -33.4378
+lon = -70.6506
+seed_source = "curated"
+
+[[landmark]]
+name = "Valparaiso Cerro Alegre"
+lat = -33.0397
+lon = -71.6273
+seed_source = "curated"
+
+[[landmark]]
+name = "Quito Old Town"
+lat = -0.2202
+lon = -78.5121
+seed_source = "curated"
+
+[[landmark]]
+name = "Galapagos Puerto Ayora"
+lat = -0.7416
+lon = -90.3127
+seed_source = "curated"
+
+[[landmark]]
+name = "Bogota Monserrate"
+lat = 4.6049
+lon = -74.0566
+seed_source = "curated"
+
+[[landmark]]
+name = "Cartagena Old City"
+lat = 10.4236
+lon = -75.551
+seed_source = "curated"
+
+[[landmark]]
+name = "Caracas El Avila"
+lat = 10.523
+lon = -66.8746
+seed_source = "curated"
+
+[[landmark]]
+name = "Montevideo Rambla"
+lat = -34.9011
+lon = -56.1645
+seed_source = "curated"
+
+[[landmark]]
+name = "Asuncion Plaza Heroes"
+lat = -25.282
+lon = -57.6353
+seed_source = "curated"
+
+[[landmark]]
+name = "Toronto CN Tower"
+lat = 43.6426
+lon = -79.3871
+seed_source = "curated"
+
+[[landmark]]
+name = "Toronto Distillery District"
+lat = 43.6502
+lon = -79.3593
+seed_source = "curated"
+
+[[landmark]]
+name = "Ottawa Parliament"
+lat = 45.4247
+lon = -75.7
+seed_source = "curated"
+
+[[landmark]]
+name = "Montreal Old Port"
+lat = 45.5072
+lon = -73.5544
+seed_source = "curated"
+
+[[landmark]]
+name = "Quebec City Old"
+lat = 46.8133
+lon = -71.208
+seed_source = "curated"
+
+[[landmark]]
+name = "Vancouver Stanley Park"
+lat = 49.3017
+lon = -123.1417
+seed_source = "curated"
+
+[[landmark]]
+name = "Calgary Stampede"
+lat = 51.0367
+lon = -114.0529
+seed_source = "curated"
+
+[[landmark]]
+name = "Banff Lake Louise"
+lat = 51.4254
+lon = -116.1773
+seed_source = "curated"
+
+[[landmark]]
+name = "Mexico City Zocalo"
+lat = 19.4326
+lon = -99.1332
+seed_source = "curated"
+
+[[landmark]]
+name = "Mexico City Frida Kahlo"
+lat = 19.3551
+lon = -99.1623
+seed_source = "curated"
+
+[[landmark]]
+name = "Cancun Hotel Zone"
+lat = 21.128
+lon = -86.7714
+seed_source = "curated"
+
+[[landmark]]
+name = "Chichen Itza"
+lat = 20.6843
+lon = -88.5678
+seed_source = "curated"
+
+[[landmark]]
+name = "Oaxaca Zocalo"
+lat = 17.0594
+lon = -96.7216
+seed_source = "curated"
+
+[[landmark]]
+name = "Guadalajara Cathedral"
+lat = 20.676
+lon = -103.3473
+seed_source = "curated"
+
+[[landmark]]
+name = "Havana Malecon"
+lat = 23.139
+lon = -82.385
+seed_source = "curated"
+
+[[landmark]]
+name = "San Juan PR Old"
+lat = 18.4655
+lon = -66.1057
+seed_source = "curated"
+
+[[landmark]]
+name = "Santo Domingo Zona"
+lat = 18.4731
+lon = -69.8866
+seed_source = "curated"
+
+[[landmark]]
+name = "Panama Canal"
+lat = 9.082
+lon = -79.68
+seed_source = "curated"
+
+[[landmark]]
+name = "San Jose CR"
+lat = 9.9333
+lon = -84.0833
+seed_source = "curated"
+
+[[landmark]]
+name = "St Petersburg Hermitage"
+lat = 59.9398
+lon = 30.3146
+seed_source = "curated"
+
+[[landmark]]
+name = "St Petersburg Peterhof"
+lat = 59.8838
+lon = 29.9085
+seed_source = "curated"
+
+[[landmark]]
+name = "Kazan Kremlin"
+lat = 55.7989
+lon = 49.1064
+seed_source = "curated"
+
+[[landmark]]
+name = "Vladivostok Bridge"
+lat = 43.1198
+lon = 131.8869
+seed_source = "curated"
+
+[[landmark]]
+name = "Tashkent Plov Centre"
+lat = 41.311
+lon = 69.2406
+seed_source = "curated"
+
+[[landmark]]
+name = "Samarkand Registan"
+lat = 39.6547
+lon = 66.9758
+seed_source = "curated"
+
+[[landmark]]
+name = "Bukhara Po-i-Kalyan"
+lat = 39.7755
+lon = 64.4145
+seed_source = "curated"
+
+[[landmark]]
+name = "Almaty Medeu"
+lat = 43.1605
+lon = 77.057
+seed_source = "curated"
+
+[[landmark]]
+name = "Astana Bayterek"
+lat = 51.1283
+lon = 71.4304
+seed_source = "curated"
+
+[[landmark]]
+name = "Baku Flame Towers"
+lat = 40.3592
+lon = 49.8284
+seed_source = "curated"
+
+[[landmark]]
+name = "Tbilisi Old Town"
+lat = 41.6938
+lon = 44.8015
+seed_source = "curated"
+
+[[landmark]]
+name = "Yerevan Cascade"
+lat = 40.1893
+lon = 44.5152
+seed_source = "curated"
+
+[[landmark]]
+name = "Placeholder Grid 0001"
+lat = -50
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0002"
+lat = -50
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0003"
+lat = -50
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0004"
+lat = -50
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0005"
+lat = -50
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0006"
+lat = -50
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0007"
+lat = -50
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0008"
+lat = -50
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0009"
+lat = -50
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0010"
+lat = -50
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0011"
+lat = -50
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0012"
+lat = -50
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0013"
+lat = -50
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0014"
+lat = -50
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0015"
+lat = -50
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0016"
+lat = -50
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0017"
+lat = -50
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0018"
+lat = -50
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0019"
+lat = -50
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0020"
+lat = -50
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0021"
+lat = -50
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0022"
+lat = -50
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0023"
+lat = -50
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0024"
+lat = -50
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0025"
+lat = -50
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0026"
+lat = -50
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0027"
+lat = -50
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0028"
+lat = -50
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0029"
+lat = -50
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0030"
+lat = -50
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0031"
+lat = -46
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0032"
+lat = -46
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0033"
+lat = -46
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0034"
+lat = -46
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0035"
+lat = -46
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0036"
+lat = -46
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0037"
+lat = -46
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0038"
+lat = -46
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0039"
+lat = -46
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0040"
+lat = -46
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0041"
+lat = -46
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0042"
+lat = -46
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0043"
+lat = -46
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0044"
+lat = -46
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0045"
+lat = -46
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0046"
+lat = -46
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0047"
+lat = -46
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0048"
+lat = -46
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0049"
+lat = -46
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0050"
+lat = -46
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0051"
+lat = -46
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0052"
+lat = -46
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0053"
+lat = -46
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0054"
+lat = -46
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0055"
+lat = -46
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0056"
+lat = -46
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0057"
+lat = -46
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0058"
+lat = -46
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0059"
+lat = -46
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0060"
+lat = -46
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0061"
+lat = -42
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0062"
+lat = -42
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0063"
+lat = -42
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0064"
+lat = -42
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0065"
+lat = -42
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0066"
+lat = -42
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0067"
+lat = -42
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0068"
+lat = -42
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0069"
+lat = -42
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0070"
+lat = -42
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0071"
+lat = -42
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0072"
+lat = -42
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0073"
+lat = -42
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0074"
+lat = -42
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0075"
+lat = -42
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0076"
+lat = -42
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0077"
+lat = -42
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0078"
+lat = -42
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0079"
+lat = -42
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0080"
+lat = -42
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0081"
+lat = -42
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0082"
+lat = -42
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0083"
+lat = -42
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0084"
+lat = -42
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0085"
+lat = -42
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0086"
+lat = -42
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0087"
+lat = -42
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0088"
+lat = -42
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0089"
+lat = -42
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0090"
+lat = -42
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0091"
+lat = -38
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0092"
+lat = -38
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0093"
+lat = -38
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0094"
+lat = -38
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0095"
+lat = -38
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0096"
+lat = -38
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0097"
+lat = -38
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0098"
+lat = -38
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0099"
+lat = -38
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0100"
+lat = -38
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0101"
+lat = -38
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0102"
+lat = -38
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0103"
+lat = -38
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0104"
+lat = -38
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0105"
+lat = -38
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0106"
+lat = -38
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0107"
+lat = -38
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0108"
+lat = -38
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0109"
+lat = -38
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0110"
+lat = -38
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0111"
+lat = -38
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0112"
+lat = -38
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0113"
+lat = -38
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0114"
+lat = -38
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0115"
+lat = -38
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0116"
+lat = -38
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0117"
+lat = -38
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0118"
+lat = -38
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0119"
+lat = -38
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0120"
+lat = -38
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0121"
+lat = -34
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0122"
+lat = -34
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0123"
+lat = -34
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0124"
+lat = -34
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0125"
+lat = -34
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0126"
+lat = -34
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0127"
+lat = -34
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0128"
+lat = -34
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0129"
+lat = -34
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0130"
+lat = -34
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0131"
+lat = -34
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0132"
+lat = -34
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0133"
+lat = -34
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0134"
+lat = -34
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0135"
+lat = -34
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0136"
+lat = -34
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0137"
+lat = -34
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0138"
+lat = -34
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0139"
+lat = -34
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0140"
+lat = -34
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0141"
+lat = -34
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0142"
+lat = -34
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0143"
+lat = -34
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0144"
+lat = -34
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0145"
+lat = -34
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0146"
+lat = -34
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0147"
+lat = -34
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0148"
+lat = -34
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0149"
+lat = -34
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0150"
+lat = -34
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0151"
+lat = -30
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0152"
+lat = -30
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0153"
+lat = -30
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0154"
+lat = -30
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0155"
+lat = -30
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0156"
+lat = -30
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0157"
+lat = -30
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0158"
+lat = -30
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0159"
+lat = -30
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0160"
+lat = -30
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0161"
+lat = -30
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0162"
+lat = -30
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0163"
+lat = -30
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0164"
+lat = -30
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0165"
+lat = -30
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0166"
+lat = -30
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0167"
+lat = -30
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0168"
+lat = -30
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0169"
+lat = -30
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0170"
+lat = -30
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0171"
+lat = -30
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0172"
+lat = -30
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0173"
+lat = -30
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0174"
+lat = -30
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0175"
+lat = -30
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0176"
+lat = -30
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0177"
+lat = -30
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0178"
+lat = -30
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0179"
+lat = -30
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0180"
+lat = -30
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0181"
+lat = -26
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0182"
+lat = -26
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0183"
+lat = -26
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0184"
+lat = -26
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0185"
+lat = -26
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0186"
+lat = -26
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0187"
+lat = -26
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0188"
+lat = -26
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0189"
+lat = -26
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0190"
+lat = -26
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0191"
+lat = -26
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0192"
+lat = -26
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0193"
+lat = -26
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0194"
+lat = -26
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0195"
+lat = -26
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0196"
+lat = -26
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0197"
+lat = -26
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0198"
+lat = -26
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0199"
+lat = -26
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0200"
+lat = -26
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0201"
+lat = -26
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0202"
+lat = -26
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0203"
+lat = -26
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0204"
+lat = -26
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0205"
+lat = -26
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0206"
+lat = -26
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0207"
+lat = -26
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0208"
+lat = -26
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0209"
+lat = -26
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0210"
+lat = -26
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0211"
+lat = -22
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0212"
+lat = -22
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0213"
+lat = -22
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0214"
+lat = -22
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0215"
+lat = -22
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0216"
+lat = -22
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0217"
+lat = -22
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0218"
+lat = -22
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0219"
+lat = -22
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0220"
+lat = -22
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0221"
+lat = -22
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0222"
+lat = -22
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0223"
+lat = -22
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0224"
+lat = -22
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0225"
+lat = -22
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0226"
+lat = -22
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0227"
+lat = -22
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0228"
+lat = -22
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0229"
+lat = -22
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0230"
+lat = -22
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0231"
+lat = -22
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0232"
+lat = -22
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0233"
+lat = -22
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0234"
+lat = -22
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0235"
+lat = -22
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0236"
+lat = -22
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0237"
+lat = -22
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0238"
+lat = -22
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0239"
+lat = -22
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0240"
+lat = -22
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0241"
+lat = -18
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0242"
+lat = -18
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0243"
+lat = -18
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0244"
+lat = -18
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0245"
+lat = -18
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0246"
+lat = -18
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0247"
+lat = -18
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0248"
+lat = -18
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0249"
+lat = -18
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0250"
+lat = -18
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0251"
+lat = -18
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0252"
+lat = -18
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0253"
+lat = -18
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0254"
+lat = -18
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0255"
+lat = -18
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0256"
+lat = -18
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0257"
+lat = -18
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0258"
+lat = -18
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0259"
+lat = -18
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0260"
+lat = -18
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0261"
+lat = -18
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0262"
+lat = -18
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0263"
+lat = -18
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0264"
+lat = -18
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0265"
+lat = -18
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0266"
+lat = -18
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0267"
+lat = -18
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0268"
+lat = -18
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0269"
+lat = -18
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0270"
+lat = -18
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0271"
+lat = -14
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0272"
+lat = -14
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0273"
+lat = -14
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0274"
+lat = -14
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0275"
+lat = -14
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0276"
+lat = -14
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0277"
+lat = -14
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0278"
+lat = -14
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0279"
+lat = -14
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0280"
+lat = -14
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0281"
+lat = -14
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0282"
+lat = -14
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0283"
+lat = -14
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0284"
+lat = -14
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0285"
+lat = -14
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0286"
+lat = -14
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0287"
+lat = -14
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0288"
+lat = -14
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0289"
+lat = -14
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0290"
+lat = -14
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0291"
+lat = -14
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0292"
+lat = -14
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0293"
+lat = -14
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0294"
+lat = -14
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0295"
+lat = -14
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0296"
+lat = -14
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0297"
+lat = -14
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0298"
+lat = -14
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0299"
+lat = -14
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0300"
+lat = -14
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0301"
+lat = -10
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0302"
+lat = -10
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0303"
+lat = -10
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0304"
+lat = -10
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0305"
+lat = -10
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0306"
+lat = -10
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0307"
+lat = -10
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0308"
+lat = -10
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0309"
+lat = -10
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0310"
+lat = -10
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0311"
+lat = -10
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0312"
+lat = -10
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0313"
+lat = -10
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0314"
+lat = -10
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0315"
+lat = -10
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0316"
+lat = -10
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0317"
+lat = -10
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0318"
+lat = -10
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0319"
+lat = -10
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0320"
+lat = -10
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0321"
+lat = -10
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0322"
+lat = -10
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0323"
+lat = -10
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0324"
+lat = -10
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0325"
+lat = -10
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0326"
+lat = -10
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0327"
+lat = -10
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0328"
+lat = -10
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0329"
+lat = -10
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0330"
+lat = -10
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0331"
+lat = -6
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0332"
+lat = -6
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0333"
+lat = -6
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0334"
+lat = -6
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0335"
+lat = -6
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0336"
+lat = -6
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0337"
+lat = -6
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0338"
+lat = -6
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0339"
+lat = -6
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0340"
+lat = -6
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0341"
+lat = -6
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0342"
+lat = -6
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0343"
+lat = -6
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0344"
+lat = -6
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0345"
+lat = -6
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0346"
+lat = -6
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0347"
+lat = -6
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0348"
+lat = -6
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0349"
+lat = -6
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0350"
+lat = -6
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0351"
+lat = -6
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0352"
+lat = -6
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0353"
+lat = -6
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0354"
+lat = -6
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0355"
+lat = -6
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0356"
+lat = -6
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0357"
+lat = -6
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0358"
+lat = -6
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0359"
+lat = -6
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0360"
+lat = -6
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0361"
+lat = -2
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0362"
+lat = -2
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0363"
+lat = -2
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0364"
+lat = -2
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0365"
+lat = -2
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0366"
+lat = -2
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0367"
+lat = -2
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0368"
+lat = -2
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0369"
+lat = -2
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0370"
+lat = -2
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0371"
+lat = -2
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0372"
+lat = -2
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0373"
+lat = -2
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0374"
+lat = -2
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0375"
+lat = -2
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0376"
+lat = -2
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0377"
+lat = -2
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0378"
+lat = -2
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0379"
+lat = -2
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0380"
+lat = -2
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0381"
+lat = -2
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0382"
+lat = -2
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0383"
+lat = -2
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0384"
+lat = -2
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0385"
+lat = -2
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0386"
+lat = -2
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0387"
+lat = -2
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0388"
+lat = -2
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0389"
+lat = -2
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0390"
+lat = -2
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0391"
+lat = 2
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0392"
+lat = 2
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0393"
+lat = 2
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0394"
+lat = 2
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0395"
+lat = 2
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0396"
+lat = 2
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0397"
+lat = 2
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0398"
+lat = 2
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0399"
+lat = 2
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0400"
+lat = 2
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0401"
+lat = 2
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0402"
+lat = 2
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0403"
+lat = 2
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0404"
+lat = 2
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0405"
+lat = 2
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0406"
+lat = 2
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0407"
+lat = 2
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0408"
+lat = 2
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0409"
+lat = 2
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0410"
+lat = 2
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0411"
+lat = 2
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0412"
+lat = 2
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0413"
+lat = 2
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0414"
+lat = 2
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0415"
+lat = 2
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0416"
+lat = 2
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0417"
+lat = 2
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0418"
+lat = 2
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0419"
+lat = 2
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0420"
+lat = 2
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0421"
+lat = 6
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0422"
+lat = 6
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0423"
+lat = 6
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0424"
+lat = 6
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0425"
+lat = 6
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0426"
+lat = 6
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0427"
+lat = 6
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0428"
+lat = 6
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0429"
+lat = 6
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0430"
+lat = 6
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0431"
+lat = 6
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0432"
+lat = 6
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0433"
+lat = 6
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0434"
+lat = 6
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0435"
+lat = 6
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0436"
+lat = 6
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0437"
+lat = 6
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0438"
+lat = 6
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0439"
+lat = 6
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0440"
+lat = 6
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0441"
+lat = 6
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0442"
+lat = 6
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0443"
+lat = 6
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0444"
+lat = 6
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0445"
+lat = 6
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0446"
+lat = 6
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0447"
+lat = 6
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0448"
+lat = 6
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0449"
+lat = 6
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0450"
+lat = 6
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0451"
+lat = 10
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0452"
+lat = 10
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0453"
+lat = 10
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0454"
+lat = 10
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0455"
+lat = 10
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0456"
+lat = 10
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0457"
+lat = 10
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0458"
+lat = 10
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0459"
+lat = 10
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0460"
+lat = 10
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0461"
+lat = 10
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0462"
+lat = 10
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0463"
+lat = 10
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0464"
+lat = 10
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0465"
+lat = 10
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0466"
+lat = 10
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0467"
+lat = 10
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0468"
+lat = 10
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0469"
+lat = 10
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0470"
+lat = 10
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0471"
+lat = 10
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0472"
+lat = 10
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0473"
+lat = 10
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0474"
+lat = 10
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0475"
+lat = 10
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0476"
+lat = 10
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0477"
+lat = 10
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0478"
+lat = 10
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0479"
+lat = 10
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0480"
+lat = 10
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0481"
+lat = 14
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0482"
+lat = 14
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0483"
+lat = 14
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0484"
+lat = 14
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0485"
+lat = 14
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0486"
+lat = 14
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0487"
+lat = 14
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0488"
+lat = 14
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0489"
+lat = 14
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0490"
+lat = 14
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0491"
+lat = 14
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0492"
+lat = 14
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0493"
+lat = 14
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0494"
+lat = 14
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0495"
+lat = 14
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0496"
+lat = 14
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0497"
+lat = 14
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0498"
+lat = 14
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0499"
+lat = 14
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0500"
+lat = 14
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0501"
+lat = 14
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0502"
+lat = 14
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0503"
+lat = 14
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0504"
+lat = 14
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0505"
+lat = 14
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0506"
+lat = 14
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0507"
+lat = 14
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0508"
+lat = 14
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0509"
+lat = 14
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0510"
+lat = 14
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0511"
+lat = 18
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0512"
+lat = 18
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0513"
+lat = 18
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0514"
+lat = 18
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0515"
+lat = 18
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0516"
+lat = 18
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0517"
+lat = 18
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0518"
+lat = 18
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0519"
+lat = 18
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0520"
+lat = 18
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0521"
+lat = 18
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0522"
+lat = 18
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0523"
+lat = 18
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0524"
+lat = 18
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0525"
+lat = 18
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0526"
+lat = 18
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0527"
+lat = 18
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0528"
+lat = 18
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0529"
+lat = 18
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0530"
+lat = 18
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0531"
+lat = 18
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0532"
+lat = 18
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0533"
+lat = 18
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0534"
+lat = 18
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0535"
+lat = 18
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0536"
+lat = 18
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0537"
+lat = 18
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0538"
+lat = 18
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0539"
+lat = 18
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0540"
+lat = 18
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0541"
+lat = 22
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0542"
+lat = 22
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0543"
+lat = 22
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0544"
+lat = 22
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0545"
+lat = 22
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0546"
+lat = 22
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0547"
+lat = 22
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0548"
+lat = 22
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0549"
+lat = 22
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0550"
+lat = 22
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0551"
+lat = 22
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0552"
+lat = 22
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0553"
+lat = 22
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0554"
+lat = 22
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0555"
+lat = 22
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0556"
+lat = 22
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0557"
+lat = 22
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0558"
+lat = 22
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0559"
+lat = 22
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0560"
+lat = 22
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0561"
+lat = 22
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0562"
+lat = 22
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0563"
+lat = 22
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0564"
+lat = 22
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0565"
+lat = 22
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0566"
+lat = 22
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0567"
+lat = 22
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0568"
+lat = 22
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0569"
+lat = 22
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0570"
+lat = 22
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0571"
+lat = 26
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0572"
+lat = 26
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0573"
+lat = 26
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0574"
+lat = 26
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0575"
+lat = 26
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0576"
+lat = 26
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0577"
+lat = 26
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0578"
+lat = 26
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0579"
+lat = 26
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0580"
+lat = 26
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0581"
+lat = 26
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0582"
+lat = 26
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0583"
+lat = 26
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0584"
+lat = 26
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0585"
+lat = 26
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0586"
+lat = 26
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0587"
+lat = 26
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0588"
+lat = 26
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0589"
+lat = 26
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0590"
+lat = 26
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0591"
+lat = 26
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0592"
+lat = 26
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0593"
+lat = 26
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0594"
+lat = 26
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0595"
+lat = 26
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0596"
+lat = 26
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0597"
+lat = 26
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0598"
+lat = 26
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0599"
+lat = 26
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0600"
+lat = 26
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0601"
+lat = 30
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0602"
+lat = 30
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0603"
+lat = 30
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0604"
+lat = 30
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0605"
+lat = 30
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0606"
+lat = 30
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0607"
+lat = 30
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0608"
+lat = 30
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0609"
+lat = 30
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0610"
+lat = 30
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0611"
+lat = 30
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0612"
+lat = 30
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0613"
+lat = 30
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0614"
+lat = 30
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0615"
+lat = 30
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0616"
+lat = 30
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0617"
+lat = 30
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0618"
+lat = 30
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0619"
+lat = 30
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0620"
+lat = 30
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0621"
+lat = 30
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0622"
+lat = 30
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0623"
+lat = 30
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0624"
+lat = 30
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0625"
+lat = 30
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0626"
+lat = 30
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0627"
+lat = 30
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0628"
+lat = 30
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0629"
+lat = 30
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0630"
+lat = 30
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0631"
+lat = 34
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0632"
+lat = 34
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0633"
+lat = 34
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0634"
+lat = 34
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0635"
+lat = 34
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0636"
+lat = 34
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0637"
+lat = 34
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0638"
+lat = 34
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0639"
+lat = 34
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0640"
+lat = 34
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0641"
+lat = 34
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0642"
+lat = 34
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0643"
+lat = 34
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0644"
+lat = 34
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0645"
+lat = 34
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0646"
+lat = 34
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0647"
+lat = 34
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0648"
+lat = 34
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0649"
+lat = 34
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0650"
+lat = 34
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0651"
+lat = 34
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0652"
+lat = 34
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0653"
+lat = 34
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0654"
+lat = 34
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0655"
+lat = 34
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0656"
+lat = 34
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0657"
+lat = 34
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0658"
+lat = 34
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0659"
+lat = 34
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0660"
+lat = 34
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0661"
+lat = 38
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0662"
+lat = 38
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0663"
+lat = 38
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0664"
+lat = 38
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0665"
+lat = 38
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0666"
+lat = 38
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0667"
+lat = 38
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0668"
+lat = 38
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0669"
+lat = 38
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0670"
+lat = 38
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0671"
+lat = 38
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0672"
+lat = 38
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0673"
+lat = 38
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0674"
+lat = 38
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0675"
+lat = 38
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0676"
+lat = 38
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0677"
+lat = 38
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0678"
+lat = 38
+lon = 33
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0679"
+lat = 38
+lon = 42
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0680"
+lat = 38
+lon = 51
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0681"
+lat = 38
+lon = 60
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0682"
+lat = 38
+lon = 69
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0683"
+lat = 38
+lon = 78
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0684"
+lat = 38
+lon = 87
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0685"
+lat = 38
+lon = 96
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0686"
+lat = 38
+lon = 105
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0687"
+lat = 38
+lon = 114
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0688"
+lat = 38
+lon = 123
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0689"
+lat = 38
+lon = 132
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0690"
+lat = 38
+lon = 141
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0691"
+lat = 42
+lon = -120
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0692"
+lat = 42
+lon = -111
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0693"
+lat = 42
+lon = -102
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0694"
+lat = 42
+lon = -93
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0695"
+lat = 42
+lon = -84
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0696"
+lat = 42
+lon = -75
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0697"
+lat = 42
+lon = -66
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0698"
+lat = 42
+lon = -57
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0699"
+lat = 42
+lon = -48
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0700"
+lat = 42
+lon = -39
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0701"
+lat = 42
+lon = -30
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0702"
+lat = 42
+lon = -21
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0703"
+lat = 42
+lon = -12
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0704"
+lat = 42
+lon = -3
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0705"
+lat = 42
+lon = 6
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0706"
+lat = 42
+lon = 15
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0707"
+lat = 42
+lon = 24
+seed_source = "placeholder"
+
+[[landmark]]
+name = "Placeholder Grid 0708"
+lat = 42
+lon = 33
+seed_source = "placeholder"
+
