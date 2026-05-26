@@ -1,0 +1,207 @@
+# Worldbuilders Prometheus rules — Q097 SLOs.
+#
+# Two groups:
+#   1. wb_slo_sli — recording rules for SLI ratios (cheap to query in Grafana)
+#   2. wb_slo_alerts — multi-window multi-burn-rate alerts per Google SRE workbook
+#
+# Targets:
+#   SLO-1 cached fetch p95 < 150 ms
+#   SLO-2 cold bake p95 < 8 s
+#   SLO-3 API availability 99.9% (error budget = 0.001)
+#   SLO-4 manifest p99 < 2 MB
+#
+# Install at /srv/shared/prometheus/conf.d/wb-rules.yml on hetzner-prod
+# (snippet only — Rolf installs; agents must never write to /srv/*).
+
+groups:
+  - name: wb_slo_sli
+    interval: 30s
+    rules:
+      # SLO-1: cached fetch latency. Tier filter excludes cold bakes.
+      - record: wb:tile_fetch_p95_seconds:5m
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum by (le, region) (
+              rate(wb_tile_fetch_duration_seconds_bucket{tier=~"pinned|hot"}[5m])
+            )
+          )
+
+      - record: wb:tile_fetch_p99_seconds:5m
+        expr: |
+          histogram_quantile(
+            0.99,
+            sum by (le, region) (
+              rate(wb_tile_fetch_duration_seconds_bucket{tier=~"pinned|hot"}[5m])
+            )
+          )
+
+      # SLO-2: cold-bake p95.
+      - record: wb:bake_p95_seconds:5m
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum by (le, region) (rate(wb_bake_duration_seconds_bucket[5m]))
+          )
+
+      # SLO-3: availability ratio (good / total).
+      - record: wb:availability_ratio:5m
+        expr: |
+          sum by (region) (rate(wb_api_requests_total{result!="5xx"}[5m]))
+          /
+          sum by (region) (rate(wb_api_requests_total[5m]))
+
+      - record: wb:availability_ratio:1h
+        expr: |
+          sum by (region) (rate(wb_api_requests_total{result!="5xx"}[1h]))
+          /
+          sum by (region) (rate(wb_api_requests_total[1h]))
+
+      - record: wb:availability_ratio:6h
+        expr: |
+          sum by (region) (rate(wb_api_requests_total{result!="5xx"}[6h]))
+          /
+          sum by (region) (rate(wb_api_requests_total[6h]))
+
+      # SLO-4: manifest p99.
+      - record: wb:manifest_p99_bytes:5m
+        expr: |
+          histogram_quantile(
+            0.99,
+            sum by (le, region) (rate(wb_manifest_size_bytes_bucket[5m]))
+          )
+
+      # SLO-5: cache hit ratio.
+      - record: wb:cache_hit_ratio:5m
+        expr: |
+          sum by (region) (rate(wb_cache_hits_total[5m]))
+          /
+          (
+            sum by (region) (rate(wb_cache_hits_total[5m]))
+            + sum by (region) (rate(wb_cache_misses_total[5m]))
+          )
+
+      # Error-budget remaining: 1 − (current_error_rate / SLO_error_rate).
+      # 0 means budget exhausted; negative means we've blown it.
+      - record: wb:error_budget_remaining:30d
+        expr: |
+          1 -
+          (
+            (1 - (
+              sum by (region) (rate(wb_api_requests_total{result!="5xx"}[30d]))
+              /
+              sum by (region) (rate(wb_api_requests_total[30d]))
+            ))
+            / 0.001
+          )
+
+  - name: wb_slo_alerts
+    interval: 30s
+    rules:
+      # Fast-burn: 14.4× over 1 h, AND-gated with 5 m window per Google SRE
+      # workbook (chapter 5). Pages immediately.
+      - alert: WbAvailabilityFastBurn
+        expr: |
+          (
+            (1 - wb:availability_ratio:1h) > (14.4 * 0.001)
+          )
+          and
+          (
+            (1 -
+              sum by (region) (rate(wb_api_requests_total{result!="5xx"}[5m]))
+              /
+              sum by (region) (rate(wb_api_requests_total[5m]))
+            ) > (14.4 * 0.001)
+          )
+        for: 2m
+        labels:
+          severity: page
+          slo: availability
+          burn_rate: "14.4"
+        annotations:
+          summary: "Fast burn on SLO-3 availability (≥14.4×, budget gone in 1h)"
+          description: |
+            5xx rate over 1h is 14.4× the SLO error rate. Budget exhaustion
+            in ~1h. See docs/slos.md → Escalation policy. Runbook:
+            docs/grill/q098-incident-response-runbook.md.
+
+      # Slow-burn: 6× over 6 h, AND-gated with 30 m.
+      - alert: WbAvailabilitySlowBurn
+        expr: |
+          (
+            (1 - wb:availability_ratio:6h) > (6 * 0.001)
+          )
+          and
+          (
+            (1 -
+              sum by (region) (rate(wb_api_requests_total{result!="5xx"}[30m]))
+              /
+              sum by (region) (rate(wb_api_requests_total[30m]))
+            ) > (6 * 0.001)
+          )
+        for: 15m
+        labels:
+          severity: page-bizhours
+          slo: availability
+          burn_rate: "6"
+        annotations:
+          summary: "Slow burn on SLO-3 availability (≥6×, budget gone in 2.4h)"
+
+      # Warn: 3× over 24h.
+      - alert: WbAvailabilityWarnBurn
+        expr: |
+          (1 -
+            sum by (region) (rate(wb_api_requests_total{result!="5xx"}[24h]))
+            /
+            sum by (region) (rate(wb_api_requests_total[24h]))
+          ) > (3 * 0.001)
+        for: 1h
+        labels:
+          severity: warn
+          slo: availability
+          burn_rate: "3"
+        annotations:
+          summary: "Warn burn on SLO-3 (≥3× over 24h)"
+
+      # Latency SLO breach (SLO-1).
+      - alert: WbFetchLatencyP95Breach
+        expr: wb:tile_fetch_p95_seconds:5m > 0.150
+        for: 10m
+        labels:
+          severity: warn
+          slo: fetch-latency
+        annotations:
+          summary: "Cached fetch p95 above 150 ms SLO target"
+
+      # Bake SLO breach (SLO-2).
+      - alert: WbBakeLatencyP95Breach
+        expr: wb:bake_p95_seconds:5m > 8
+        for: 10m
+        labels:
+          severity: warn
+          slo: bake-latency
+        annotations:
+          summary: "Cold bake p95 above 8s SLO target"
+
+      # Manifest size hard-cap proximity.
+      - alert: WbManifestSizeNearCap
+        expr: wb:manifest_p99_bytes:5m > 2097152   # > 2 MB
+        for: 15m
+        labels:
+          severity: warn
+          slo: manifest-size
+        annotations:
+          summary: "Manifest p99 above 2 MB SLO target (hard cap 2.5 MB)"
+
+      # Budget exhausted.
+      - alert: WbErrorBudgetExhausted
+        expr: wb:error_budget_remaining:30d <= 0
+        for: 5m
+        labels:
+          severity: page
+          slo: budget
+        annotations:
+          summary: "30-day error budget exhausted — feature freeze triggers"
+          description: |
+            Per docs/slos.md error-budget policy: feature freeze, reliability
+            investment, blameless post-mortem.

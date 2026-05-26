@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.astro/
+.cache/
+.env
+.env.*
+!.env.example
+.DS_Store
+test-results/
+playwright-report/
+playwright/.cache/
+.lighthouseci/

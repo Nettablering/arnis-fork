@@ -1,0 +1,85 @@
+---
+import "../styles/global.css";
+export interface Props {
+  title: string;
+  description?: string;
+}
+const {
+  title,
+  description = "Worldbuilders — claim a real-world plot, build your idle empire on OpenStreetMap.",
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0B1530" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="canonical" href={canonical} />
+    <link
+      rel="preconnect"
+      href="https://rsms.me/"
+      crossorigin
+    />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-[var(--color-neon-green)] focus:text-[var(--color-deep-blue)] focus:px-3 focus:py-2 focus:rounded"
+      >Skip to content</a
+    >
+    <header class="border-b border-[var(--color-slate-surface)]">
+      <nav
+        aria-label="Primary"
+        class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <a href="/" class="flex items-center gap-2 font-semibold no-underline">
+          <img
+            src="/logo.svg"
+            alt=""
+            width="28"
+            height="28"
+            aria-hidden="true"
+          />
+          <span class="text-[var(--color-ink)]">Worldbuilders</span>
+        </a>
+        <ul class="flex gap-5 text-sm">
+          <li><a href="/developers">Developers</a></li>
+          <li><a href="/blog">Devblog</a></li>
+          <li><a href="/press">Press</a></li>
+          <li><a href="/status">Status</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <footer
+      class="border-t border-[var(--color-slate-surface)] mt-16 py-8 text-sm text-[var(--color-ink)]/70"
+    >
+      <div class="max-w-6xl mx-auto px-4 flex flex-wrap gap-4 justify-between">
+        <p>
+          &copy; {new Date().getFullYear()} Klokk Nettablering AS. OSM data &copy;
+          OpenStreetMap contributors, ODbL.
+        </p>
+        <p>
+          <a href="/press">Press</a> · <a href="/developers">API</a> ·
+          <a href="/status">Status</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

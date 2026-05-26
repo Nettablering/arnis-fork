@@ -1,0 +1,43 @@
+# Worldbuilders web companion — Caddy vhost snippet (Q325 deliverable #8).
+#
+# Operator installs this into the shared Caddyfile (e.g. /etc/caddy/Caddyfile
+# or /srv/shared/caddy/sites/worldbuilders.caddy). The Worldbuilders agent
+# does NOT touch /srv/* or /etc/* — see BLOCKED/needs-human.md.
+#
+# Path resolves to the symlink updated by web/scripts/deploy.sh.
+
+worldbuilders.quicktoolry.com {
+    encode zstd gzip
+
+    root * /home/deploy/projects/worldbuilders/web-deploy/current
+    file_server
+
+    # Long-cache hashed assets emitted by Astro into /assets/.
+    @assets path /assets/*
+    header @assets Cache-Control "public, max-age=31536000, immutable"
+
+    # HTML: short cache, must-revalidate so a redeploy goes live in seconds.
+    @html {
+        path *.html /
+    }
+    header @html Cache-Control "public, max-age=60, must-revalidate"
+
+    # Security baseline.
+    header {
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "interest-cohort=()"
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        -Server
+    }
+
+    log {
+        output file /var/log/caddy/worldbuilders.log
+        format json
+    }
+}
+
+# Optional alias — keep until Q503 cut-over to worldbuilders.app.
+www.worldbuilders.quicktoolry.com {
+    redir https://worldbuilders.quicktoolry.com{uri} permanent
+}
