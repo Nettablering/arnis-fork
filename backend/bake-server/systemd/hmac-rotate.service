@@ -1,0 +1,38 @@
+[Unit]
+Description=Worldbuilders Q088 — per-universe HMAC signing key rotation
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=deploy
+WorkingDirectory=/home/deploy/projects/worldbuilders
+EnvironmentFile=/home/deploy/projects/worldbuilders/backend/db/.env
+# Rotate every universe whose `current` key was created >= 90 days ago.
+# The shell loop reads universe IDs straight out of Postgres and calls
+# rotate-hmac.sh for each one. NEVER echoes raw key bytes.
+ExecStart=/bin/sh -c ' \
+    set -euo pipefail; \
+    psql "$DATABASE_URL" --no-align --tuples-only --quiet -c " \
+        SELECT universe_id FROM wb.hmac_keys \
+         WHERE status = ''current'' \
+           AND created_at < now() - interval ''90 days'' \
+         ORDER BY universe_id" \
+    | while read -r uid; do \
+        [ -z "$uid" ] && continue; \
+        echo "Q088: rotating universe $uid"; \
+        /home/deploy/projects/worldbuilders/backend/scripts/rotate-hmac.sh "$uid" --actor cron@hmac-rotate.timer --note "scheduled 90-day rotation"; \
+      done; \
+    # Retirement sweep: any `previous` past its overlap window is retired. \
+    psql "$DATABASE_URL" --quiet --set ON_ERROR_STOP=1 -c " \
+        UPDATE wb.hmac_keys SET status = ''retired'', retired_at = now() \
+         WHERE status = ''previous'' AND expires_at < now(); \
+        INSERT INTO wb.hmac_audit (universe_id, key_id, action, actor, note) \
+        SELECT universe_id, key_id, ''retired'', ''cron@hmac-rotate.timer'', ''overlap window elapsed'' \
+          FROM wb.hmac_keys WHERE status = ''retired'' AND retired_at > now() - interval ''1 minute'';"'
+Nice=10
+IOSchedulingClass=best-effort
+TimeoutStartSec=1800
+
+[Install]
+WantedBy=multi-user.target

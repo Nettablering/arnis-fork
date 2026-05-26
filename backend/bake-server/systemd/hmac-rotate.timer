@@ -1,0 +1,15 @@
+[Unit]
+Description=Worldbuilders Q088 — HMAC key rotation (90-day cadence)
+
+[Timer]
+# Run daily at 04:13 UTC. The service itself filters to universes whose
+# `current` key was created more than 90 days ago, so the effective
+# rotation cadence is 90 days but the timer ticks every 24h to catch
+# newly-eligible keys promptly (Q088 §"Rotation automation").
+OnCalendar=*-*-* 04:13:00 UTC
+Persistent=true
+RandomizedDelaySec=600
+Unit=hmac-rotate.service
+
+[Install]
+WantedBy=timers.target
