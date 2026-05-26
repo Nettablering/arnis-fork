@@ -40,4 +40,4 @@ Q325 | done | 2026-05-26T07:36:34Z | 3382bae
 Q097 | done | 2026-05-26T07:36:50Z | 3382bae-slos-prom-metrics-rules-dashboard-tests-66-green
 Q082 | done | 2026-05-26T09:55:00Z | 75016dc-layered-cache-pinned-hot-lru-cold-30d-ttl-15-unit-6-integration-clippy-fmt-clean
 Q088 | done | 2026-05-26T07:55:00Z | 75016dc433b8dea04ae8ed45e10f7528b1611268
-Q086 | done | 2026-05-26T07:43:03Z | pending-verifier-pre-commit
+Q086 | done | 2026-05-26T07:43:03Z | b53fe72
