@@ -36,3 +36,5 @@ Q473 | done | 2026-05-26T07:15:34Z | pending-verifier
 Q085 | done | 2026-05-26T09:20:00Z | 4a6f2c7
 Q081 | done | 2026-05-26T07:20:55Z | c256c5602097c15dfdbdd6bd42fa3861facb7b9d
 Q210 | done | 2026-05-26T07:21:33Z | ad531626-wikidata-enrich-22-tests-green-schema-additive-aksla-cached
+Q325 | done | 2026-05-26T07:36:34Z | 3382bae
+Q097 | done | 2026-05-26T07:36:50Z | 3382bae-slos-prom-metrics-rules-dashboard-tests-66-green
