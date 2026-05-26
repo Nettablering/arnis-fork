@@ -375,6 +375,34 @@ fn main() {
         let _ = AttachConsole(ATTACH_PARENT_PROCESS);
     }
 
+    // Q081: when invoked with `--consume-stream`, run as a bake-queue
+    // worker instead of doing a one-shot bake. Intercepts before clap
+    // so we don't have to fake `--bbox` to satisfy `Args`. The actual
+    // worker loop lives in the bake-queue crate's `wb-bake-worker`
+    // binary; we re-exec that binary so the worker stays a single
+    // source of truth. (Routing arnis' bake pipeline through it
+    // lands in Q082.)
+    if std::env::args().any(|a| a == "--consume-stream") {
+        eprintln!(
+            "arnis --consume-stream: delegating to wb-bake-worker (set WB_REDIS_URL / WB_CACHE_DIR)"
+        );
+        let exe = std::env::current_exe().ok();
+        let worker_path = exe
+            .as_ref()
+            .and_then(|p| p.parent())
+            .map(|d| d.join("wb-bake-worker"))
+            .filter(|p| p.exists())
+            .unwrap_or_else(|| std::path::PathBuf::from("wb-bake-worker"));
+        let status = std::process::Command::new(worker_path).status();
+        match status {
+            Ok(s) => std::process::exit(s.code().unwrap_or(0)),
+            Err(e) => {
+                eprintln!("failed to exec wb-bake-worker: {e}");
+                std::process::exit(1);
+            }
+        }
+    }
+
     // Only run CLI mode if the user supplied args.
     #[cfg(feature = "gui")]
     {
