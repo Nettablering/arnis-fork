@@ -1,0 +1,313 @@
+---
+import Atlas from "../layouts/Atlas.astro";
+import CompassRose from "../components/CompassRose.astro";
+
+// Stage rows render below. Mirrors the three-stage funnel from
+// docs/grill/q243-prelaunch-alpha-tester-program.md.
+const stages = [
+  {
+    n: 1,
+    label: "Closed friends alpha",
+    size: "50 testers",
+    window: "T-12 → T-8",
+    nda: "hard NDA",
+    cadence: "bi-weekly 30-min call · private Discord · daily async",
+    reward: "Founder badge · permanent credits listing",
+  },
+  {
+    n: 2,
+    label: "Closed beta",
+    size: "500 testers",
+    window: "T-8 → T-4",
+    nda: "soft NDA · embargoed clips",
+    cadence: "weekly Loom · in-game /feedback · PostHog surveys",
+    reward: "Top-10 bug bounty · 100 Robux + Founder-adjacent badge",
+  },
+  {
+    n: 3,
+    label: "Soft launch",
+    size: "5 000 testers",
+    window: "T-4 → T-0",
+    nda: "none — clips encouraged",
+    cadence: "dashboard-driven · weekly creator call",
+    reward: "Early-access bragging rights · regional first dibs",
+  },
+];
+
+const deviceOptions = [
+  { v: "iphone-se-2",    l: "iPhone SE (2nd / 3rd gen)" },
+  { v: "iphone-other",   l: "iPhone (other)" },
+  { v: "android-budget", l: "Android — budget" },
+  { v: "android-flagship", l: "Android — flagship" },
+  { v: "ipad",           l: "iPad" },
+  { v: "desktop",        l: "Desktop / laptop" },
+  { v: "console",        l: "Console (Xbox)" },
+  { v: "other",          l: "Other" },
+];
+
+const ageBands = [
+  { v: "13-17", l: "13–17" },
+  { v: "18-24", l: "18–24" },
+  { v: "25-34", l: "25–34" },
+  { v: "35+",   l: "35 and up" },
+  { v: "prefer-not-to-say", l: "Prefer not to say" },
+];
+
+const hourBands = [
+  { v: "lt-2",  l: "Less than 2 hours" },
+  { v: "2-5",   l: "2–5 hours" },
+  { v: "5-10",  l: "5–10 hours" },
+  { v: "10-20", l: "10–20 hours" },
+  { v: "gt-20", l: "More than 20 hours" },
+];
+---
+
+<Atlas
+  title="Apply for the Worldbuilders alpha"
+  description="Help bake the world before the rest of the planet gets a tile. Apply for one of 50 alpha seats — global programme, every device welcome."
+>
+  <section class="wrap alpha-hero lat-band" data-lat="LAT BAND 62°N · alpha">
+    <div class="atlas-grid">
+      <div>
+        <p class="eyebrow">Pre-launch · stage 1 of 3</p>
+        <h1>Help us bake the&nbsp;world<br />before everyone else gets a&nbsp;tile.</h1>
+        <p class="lede">
+          Worldbuilders turns your hometown into a Roblox idle empire built on
+          OpenStreetMap. We're opening 50 hand-picked alpha seats across the
+          world, then 500, then 5 000. Apply once — we'll route you to the
+          right stage when it opens.
+        </p>
+        <p class="alpha-contact mono">
+          alpha@worldbuilders.app · global programme · NO/EN/DE/PT-BR/FR welcome
+        </p>
+      </div>
+      <div class="alpha-aside">
+        <CompassRose size={180} delay={300} />
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap lat-band" data-lat="LAT BAND 62°N · funnel">
+    <p class="eyebrow">Three stages, one waitlist</p>
+    <ol class="stages">
+      {stages.map((s) => (
+        <li class="stage">
+          <header>
+            <span class="stage-num mono">stage 0{s.n}</span>
+            <h2>{s.label}</h2>
+          </header>
+          <dl>
+            <div><dt>Size</dt><dd>{s.size}</dd></div>
+            <div><dt>Window</dt><dd>{s.window}</dd></div>
+            <div><dt>NDA</dt><dd>{s.nda}</dd></div>
+            <div><dt>Cadence</dt><dd>{s.cadence}</dd></div>
+            <div><dt>What you get</dt><dd>{s.reward}</dd></div>
+          </dl>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="wrap lat-band" data-lat="LAT BAND 62°N · apply" id="apply">
+    <p class="eyebrow">Application · ~ two minutes</p>
+    <h2>Drop a pin on the alpha.</h2>
+    <p class="apply-lede">
+      We read every application. Submissions are routed by region, device and
+      timezone so we surface bugs across the matrix, not just in Norway. Under
+      18? A parent or guardian needs to co-sign — Roblox COPPA rules, not ours.
+    </p>
+
+    <form
+      class="apply-form"
+      action="/api/alpha-apply"
+      method="post"
+      aria-label="Worldbuilders alpha application"
+    >
+      <div class="row">
+        <label for="f-name">Name or handle</label>
+        <input id="f-name" name="name" type="text" required maxlength="80" autocomplete="nickname" />
+      </div>
+
+      <div class="row">
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" required autocomplete="email" />
+      </div>
+
+      <div class="row">
+        <label for="f-country">Country (ISO code)</label>
+        <input id="f-country" name="country" type="text" required pattern="[A-Za-z]{2}" maxlength="2" placeholder="NO, US, BR, JP…" />
+        <p class="hint mono">Two-letter ISO 3166-1, e.g. NO, US, GB, BR, PH, NZ.</p>
+      </div>
+
+      <div class="row">
+        <label for="f-age">Age band</label>
+        <select id="f-age" name="age_band" required>
+          {ageBands.map((a) => <option value={a.v}>{a.l}</option>)}
+        </select>
+      </div>
+
+      <div class="row">
+        <label for="f-device">Primary device for testing</label>
+        <select id="f-device" name="primary_device" required>
+          {deviceOptions.map((d) => <option value={d.v}>{d.l}</option>)}
+        </select>
+      </div>
+
+      <div class="row">
+        <label for="f-roblox">Roblox username</label>
+        <input id="f-roblox" name="roblox_username" type="text" required pattern="[A-Za-z0-9_]{3,20}" maxlength="20" />
+      </div>
+
+      <div class="row">
+        <label for="f-hours">Weekly hours available</label>
+        <select id="f-hours" name="weekly_hours_available" required>
+          {hourBands.map((h) => <option value={h.v}>{h.l}</option>)}
+        </select>
+      </div>
+
+      <div class="row checkbox-row">
+        <label>
+          <input type="checkbox" name="consent_pre_launch_emails" required />
+          I agree to occasional pre-launch emails about Worldbuilders.
+        </label>
+      </div>
+
+      <div class="row checkbox-row">
+        <label>
+          <input type="checkbox" name="consent_nda_required_on_invite" />
+          I understand a stage-1 invite requires signing an NDA.
+        </label>
+      </div>
+
+      <button type="submit" class="btn-aurora">
+        Apply for an alpha seat
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+          <path d="M2 7 H11 M7 3 L11 7 L7 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+
+      <p class="apply-fineprint mono">
+        Form endpoint is stubbed until the operator wires the bake-server
+        handler. Submissions currently 202-ack and queue for manual review.
+      </p>
+    </form>
+  </section>
+
+  <section class="wrap lat-band" data-lat="LAT BAND 62°N · fine print">
+    <p class="eyebrow">House rules</p>
+    <ul class="house-rules">
+      <li>Global programme. We balance waves across regions on purpose.</li>
+      <li>Every alpha build is watermarked with your Roblox UserId. Removing it is a breach.</li>
+      <li>One leak = pulled from the cohort + public PSA. We won't sue you. We won't forget either.</li>
+      <li>Tester seats are not paid in cash. Founder badge + credits listing + direct line to the studio.</li>
+      <li>Under 18: parent/guardian co-signs the NDA. No exceptions.</li>
+    </ul>
+  </section>
+</Atlas>
+
+<style>
+  .alpha-aside { display: flex; justify-content: center; align-items: center; }
+  .alpha-contact {
+    margin-top: 1.6rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+  }
+
+  .stages {
+    list-style: none;
+    padding: 0;
+    margin: 1.4rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.6rem;
+  }
+  @media (max-width: 880px) {
+    .stages { grid-template-columns: 1fr; }
+  }
+  .stage {
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 1.4rem 1.2rem;
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+  }
+  .stage header { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.8rem; }
+  .stage-num {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-aurora-green);
+  }
+  .stage h2 { font-size: 1.4rem; margin: 0; }
+  .stage dl { margin: 0; display: grid; gap: 0.5rem; }
+  .stage dl > div { display: grid; grid-template-columns: 8rem 1fr; gap: 0.6rem; align-items: baseline; }
+  .stage dt {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+  }
+  .stage dd { margin: 0; font-size: 0.92rem; }
+
+  .apply-lede { max-width: 56ch; }
+  .apply-form {
+    max-width: 36rem;
+    margin-top: 1.4rem;
+    display: grid;
+    gap: 1.1rem;
+  }
+  .row { display: grid; gap: 0.35rem; }
+  .row label { font-size: 0.85rem; letter-spacing: 0.02em; }
+  .row input[type="text"],
+  .row input[type="email"],
+  .row select {
+    width: 100%;
+    padding: 0.6rem 0.7rem;
+    background: transparent;
+    color: inherit;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    font: inherit;
+  }
+  .row input:focus-visible,
+  .row select:focus-visible {
+    outline: 2px solid var(--color-aurora-green);
+    outline-offset: 1px;
+  }
+  .hint { font-size: 0.7rem; color: var(--fg-faint); }
+  .checkbox-row label {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    font-size: 0.85rem;
+  }
+  .apply-fineprint {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+  }
+
+  .house-rules {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: grid;
+    gap: 0.6rem;
+    max-width: 60ch;
+  }
+  .house-rules li {
+    padding-left: 1.4rem;
+    position: relative;
+  }
+  .house-rules li::before {
+    content: "▲";
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    color: var(--color-aurora-green);
+    font-size: 0.8rem;
+  }
+</style>

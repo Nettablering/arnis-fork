@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://worldbuilders.app/schemas/alpha-applicant.v1.json",
+  "title": "Worldbuilders alpha-tester application",
+  "description": "Form schema for the pre-launch alpha-tester application. Backs the /alpha page applicant form. Persisted into wb.applicants. Per Q243.",
+  "type": "object",
+  "required": [
+    "name",
+    "email",
+    "country",
+    "age_band",
+    "primary_device",
+    "roblox_username",
+    "weekly_hours_available",
+    "consent_pre_launch_emails"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Display name",
+      "description": "Name or handle we should address you by. Real name not required.",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "email": {
+      "type": "string",
+      "title": "Email",
+      "description": "Where we send the invite code. We never resell or share this.",
+      "format": "email",
+      "maxLength": 254
+    },
+    "country": {
+      "type": "string",
+      "title": "Country (ISO 3166-1 alpha-2)",
+      "description": "Used to balance regional diversity across waves. Global programme — every country welcome.",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "age_band": {
+      "type": "string",
+      "title": "Age band",
+      "enum": [
+        "13-17",
+        "18-24",
+        "25-34",
+        "35+",
+        "prefer-not-to-say"
+      ]
+    },
+    "parental_consent": {
+      "type": "boolean",
+      "title": "Parental/guardian consent (required if 13-17)",
+      "description": "Roblox COPPA requirement; a parent or guardian must agree to the alpha terms for under-18 applicants.",
+      "default": false
+    },
+    "primary_device": {
+      "type": "string",
+      "title": "Primary device for testing",
+      "description": "We allocate seats across the device matrix so we surface device-specific bugs.",
+      "enum": [
+        "iphone-se-2",
+        "iphone-other",
+        "android-budget",
+        "android-flagship",
+        "ipad",
+        "desktop",
+        "console",
+        "other"
+      ]
+    },
+    "roblox_username": {
+      "type": "string",
+      "title": "Roblox username",
+      "description": "Used to allowlist your UserId for verbose telemetry (per Q188) and to grant the Founder badge.",
+      "pattern": "^[A-Za-z0-9_]{3,20}$"
+    },
+    "weekly_hours_available": {
+      "type": "string",
+      "title": "Weekly hours available to test",
+      "enum": [
+        "lt-2",
+        "2-5",
+        "5-10",
+        "10-20",
+        "gt-20"
+      ]
+    },
+    "willing_to_record_video": {
+      "type": "boolean",
+      "title": "Willing to record short screen-capture clips (optional)",
+      "default": false
+    },
+    "favourite_roblox_games": {
+      "type": "array",
+      "title": "Top-3 Roblox games (optional)",
+      "items": { "type": "string", "maxLength": 80 },
+      "maxItems": 3
+    },
+    "anything_else": {
+      "type": "string",
+      "title": "Anything else we should know (optional)",
+      "maxLength": 1000
+    },
+    "consent_pre_launch_emails": {
+      "type": "boolean",
+      "title": "I agree to receive pre-launch emails about Worldbuilders",
+      "const": true
+    },
+    "consent_nda_required_on_invite": {
+      "type": "boolean",
+      "title": "I understand a Stage-1 invite requires signing an NDA",
+      "description": "Stage-2 and Stage-3 invites carry a soft or no NDA respectively.",
+      "default": false
+    },
+    "referral_source": {
+      "type": "string",
+      "title": "How did you hear about us? (optional)",
+      "maxLength": 120
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "age_band": { "const": "13-17" } } },
+      "then": { "required": ["parental_consent"], "properties": { "parental_consent": { "const": true } } }
+    }
+  ]
+}

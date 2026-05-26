@@ -1,0 +1,41 @@
+[package]
+name = "wb-invite"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "Worldbuilders pre-launch invite-code minting + redemption (Q243 / Q247)"
+
+# Stand-alone crate — not in the arnis/backend workspace — to mirror the
+# `bake-queue` pattern. Lets the alpha programme ship without dragging the
+# bake-server build graph along. Talks to the same `worldbuilders` Postgres
+# (schema `wb`) via the migrations in ../migrations/.
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "wb-invite"
+path = "src/bin/wb-invite.rs"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+rand = "0.8"
+sqlx = { version = "0.8", default-features = false, features = [
+    "runtime-tokio-rustls",
+    "postgres",
+    "chrono",
+    "uuid",
+    "macros",
+    "migrate",
+] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1", features = ["v4"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "test-util"] }
