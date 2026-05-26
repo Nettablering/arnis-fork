@@ -1,0 +1,37 @@
+[package]
+name = "osm-postgis-source"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "Q086 — OsmSource abstraction with Overpass + PostGIS backends for the bake-tile pipeline"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "bake-postgis-tile"
+path = "src/bin/bake_postgis_tile.rs"
+required-features = ["cli"]
+
+[dependencies]
+arnis-core      = { path = "../arnis/arnis-core" }
+arnis-emitters  = { path = "../arnis/arnis-emitters" }
+serde           = { version = "1", features = ["derive"] }
+serde_json      = "1"
+thiserror       = "1"
+async-trait     = "0.1"
+anyhow          = "1"
+tokio           = { version = "1", features = ["macros", "rt-multi-thread"] }
+sqlx            = { version = "0.8", default-features = false, features = [
+    "runtime-tokio-rustls", "postgres", "json", "macros",
+] }
+reqwest         = { version = "0.12", default-features = false, features = ["rustls-tls", "blocking"], optional = true }
+clap            = { version = "4", features = ["derive", "env"], optional = true }
+
+[features]
+default = []
+cli     = ["dep:clap", "dep:reqwest"]
+
+[dev-dependencies]
+tokio       = { version = "1", features = ["macros", "rt-multi-thread", "test-util"] }
+tempfile    = "3"
