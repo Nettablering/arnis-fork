@@ -19,7 +19,9 @@ pub mod schema;
 use std::fs;
 use std::path::Path;
 
-use arnis_core::emitter::{Emitter, EmitterError, IngestedBuilding, IngestedRoad, IngestedTile, IngestedWater};
+use arnis_core::emitter::{
+    Emitter, EmitterError, IngestedBuilding, IngestedRoad, IngestedTile, IngestedWater,
+};
 use arnis_core::projection::{LtpOrigin, DEFAULT_STUDS_PER_METRE};
 
 use manifest::{
@@ -66,11 +68,7 @@ impl Emitter for RobloxEmitter {
         MANIFEST_VERSION
     }
 
-    fn emit(
-        &self,
-        tile: &IngestedTile,
-        out_dir: &Path,
-    ) -> Result<RobloxManifest, EmitterError> {
+    fn emit(&self, tile: &IngestedTile, out_dir: &Path) -> Result<RobloxManifest, EmitterError> {
         let manifest = self.build_manifest(tile);
 
         if !out_dir.as_os_str().is_empty() {
@@ -290,7 +288,14 @@ mod tests {
     }
 
     fn tile() -> IngestedTile {
-        IngestedTile::empty(TileCoord { z: 15, x: 17000, y: 9500 }, bbox())
+        IngestedTile::empty(
+            TileCoord {
+                z: 15,
+                x: 17000,
+                y: 9500,
+            },
+            bbox(),
+        )
     }
 
     #[test]
@@ -340,7 +345,11 @@ mod tests {
         e.validate(&m).expect("manifest must validate");
         assert_eq!(m.buildings.len(), 1);
         let b = &m.buildings[0];
-        assert!((b.height_studs - 12.0).abs() < 1e-3, "got {}", b.height_studs);
+        assert!(
+            (b.height_studs - 12.0).abs() < 1e-3,
+            "got {}",
+            b.height_studs
+        );
         assert_eq!(b.footprint_studs.len(), 4);
         assert_eq!(b.category, "residential");
         assert!(b.claimable);
@@ -355,9 +364,16 @@ mod tests {
         let origin = LtpOrigin::new(t.bbox.south_lat, t.bbox.west_lon);
         let pts = e.project_ring(
             &origin,
-            &[[t.bbox.south_lat, t.bbox.west_lon], [t.bbox.north_lat, t.bbox.east_lon]],
+            &[
+                [t.bbox.south_lat, t.bbox.west_lon],
+                [t.bbox.north_lat, t.bbox.east_lon],
+            ],
         );
-        assert!(pts[0][0].abs() < 1e-3 && pts[0][1].abs() < 1e-3, "SW must project to (0,0): {:?}", pts[0]);
+        assert!(
+            pts[0][0].abs() < 1e-3 && pts[0][1].abs() < 1e-3,
+            "SW must project to (0,0): {:?}",
+            pts[0]
+        );
         // NE corner should be ~400 studs east and ~400 studs north (200 m × 2 studs/m).
         assert!(pts[1][0] > 350.0 && pts[1][0] < 450.0, "x={}", pts[1][0]);
         assert!(pts[1][1] > 350.0 && pts[1][1] < 450.0, "y={}", pts[1][1]);
@@ -383,11 +399,7 @@ mod tests {
         for i in 0..5 {
             t.buildings.push(IngestedBuilding {
                 osm_id: format!("way/{}", i),
-                footprint: vec![
-                    [59.9101, 10.7501],
-                    [59.9101, 10.7502],
-                    [59.9102, 10.7502],
-                ],
+                footprint: vec![[59.9101, 10.7501], [59.9101, 10.7502], [59.9102, 10.7502]],
                 height_m: None,
                 levels: None,
                 building_kind: Some("house".into()),
@@ -396,8 +408,14 @@ mod tests {
         let m1 = e.build_manifest(&t);
         let m2 = e.build_manifest(&t);
         assert_eq!(
-            m1.buildings.iter().map(|b| b.wall_colour_hex.clone()).collect::<Vec<_>>(),
-            m2.buildings.iter().map(|b| b.wall_colour_hex.clone()).collect::<Vec<_>>()
+            m1.buildings
+                .iter()
+                .map(|b| b.wall_colour_hex.clone())
+                .collect::<Vec<_>>(),
+            m2.buildings
+                .iter()
+                .map(|b| b.wall_colour_hex.clone())
+                .collect::<Vec<_>>()
         );
     }
 
@@ -442,8 +460,8 @@ mod prop_tests {
                 DEFAULT_STUDS_PER_METRE,
             );
             // 200 m tile × 2 studs/m = 400 studs edge, allow 1 stud slack.
-            prop_assert!(x >= -0.5 && x <= 401.0, "x out of bounds: {x}");
-            prop_assert!(y >= -0.5 && y <= 401.0, "y out of bounds: {y}");
+            prop_assert!((-0.5..=401.0).contains(&x), "x out of bounds: {x}");
+            prop_assert!((-0.5..=401.0).contains(&y), "y out of bounds: {y}");
         }
 
         #[test]
@@ -453,6 +471,47 @@ mod prop_tests {
             let (h, _) = heuristics::building_height_m(None, Some(levels), Some("apartments"), 500.0);
             prop_assert!(h >= 3.0);
             prop_assert!(h <= (levels as f32) * 4.0 + 0.001);
+        }
+
+        #[test]
+        fn polygon_area_non_negative_for_random_rings(
+            n in 3usize..12,
+            seed in 0u64..1000,
+        ) {
+            // Deterministic pseudo-random vertices around a small bbox.
+            let mut ring: Vec<[f64; 2]> = (0..n).map(|i| {
+                let t = (i as f64) / (n as f64) * std::f64::consts::TAU
+                    + (seed as f64) * 0.0001;
+                [0.001 * t.cos(), 0.001 * t.sin()]
+            }).collect();
+            // Translate the ring well off origin to defeat any first-vertex bias.
+            for p in ring.iter_mut() { p[0] += 50.0; p[1] += 10.0; }
+            let area = heuristics::polygon_area_m2(&ring);
+            prop_assert!(area >= 0.0, "area must be non-negative, got {}", area);
+            // A non-degenerate ring with n>=3 distinct vertices around a
+            // circle of radius ~0.001° must have strictly positive area.
+            prop_assert!(area > 0.0);
+        }
+
+        #[test]
+        fn palette_pick_is_deterministic_per_osm_id(
+            id in "way/[0-9]{1,8}",
+            salt in any::<u64>(),
+        ) {
+            let pal = palette::palette_for("NO_rural_subarctic");
+            let a = palette::pick(pal.wall, &id, salt);
+            let b = palette::pick(pal.wall, &id, salt);
+            prop_assert_eq!(a, b);
+        }
+
+        #[test]
+        fn building_height_monotonic_in_levels_strict(
+            l1 in 1u16..30, bump in 1u16..20,
+        ) {
+            let l2 = l1.saturating_add(bump).min(50);
+            let (h1, _) = heuristics::building_height_m(None, Some(l1), Some("apartments"), 500.0);
+            let (h2, _) = heuristics::building_height_m(None, Some(l2), Some("apartments"), 500.0);
+            prop_assert!(h2 >= h1, "h({l2})={h2} must be >= h({l1})={h1}");
         }
 
         #[test]

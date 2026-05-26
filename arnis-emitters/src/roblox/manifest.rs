@@ -11,7 +11,7 @@ pub struct RobloxManifest {
     pub manifest_version: String, // "1.0"
     pub style_version: u32,
     pub tile: TileCoord,
-    pub stud_scale: f32, // studs per metre (Q038 = 2.0)
+    pub stud_scale: f32,        // studs per metre (Q038 = 2.0)
     pub center_wgs84: [f64; 2], // [lat, lon]
     pub region_key: String,
 

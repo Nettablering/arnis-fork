@@ -1,0 +1,146 @@
+---
+source: arnis-emitters/tests/snapshot.rs
+assertion_line: 120
+expression: m
+---
+{
+  "manifest_version": "1.0",
+  "style_version": 1,
+  "tile": {
+    "z": 15,
+    "x": 17000,
+    "y": 9500
+  },
+  "stud_scale": 2.0,
+  "center_wgs84": [
+    59.9108985,
+    10.75179
+  ],
+  "region_key": "NO_rural_subarctic",
+  "buildings": [
+    {
+      "osm_id": "way/100",
+      "footprint_studs": [
+        [
+          11.162222,
+          22.263899
+        ],
+        [
+          33.486668,
+          22.263899
+        ],
+        [
+          33.486668,
+          66.791695
+        ],
+        [
+          11.162222,
+          66.791695
+        ]
+      ],
+      "height_studs": 12.0,
+      "wall_colour_hex": "#8B3A3A",
+      "roof_colour_hex": "#5C3A21",
+      "category": "residential",
+      "claimable": true
+    },
+    {
+      "osm_id": "way/200",
+      "footprint_studs": [
+        [
+          55.81111,
+          111.31949
+        ],
+        [
+          111.62222,
+          111.31949
+        ],
+        [
+          111.62222,
+          222.63898
+        ],
+        [
+          55.81111,
+          222.63898
+        ]
+      ],
+      "height_studs": 24.0,
+      "wall_colour_hex": "#3A2D1F",
+      "roof_colour_hex": "#3D2914",
+      "category": "levels",
+      "claimable": false
+    },
+    {
+      "osm_id": "way/300",
+      "footprint_studs": [
+        [
+          133.94667,
+          267.16678
+        ],
+        [
+          167.43333,
+          267.16678
+        ],
+        [
+          167.43333,
+          333.95847
+        ],
+        [
+          133.94667,
+          333.95847
+        ]
+      ],
+      "height_studs": 23.0,
+      "wall_colour_hex": "#3A2D1F",
+      "roof_colour_hex": "#5C3A21",
+      "category": "explicit",
+      "claimable": false
+    }
+  ],
+  "roads": [
+    {
+      "osm_id": "way/900",
+      "polyline_studs": [
+        [
+          11.162222,
+          22.263899
+        ],
+        [
+          167.43333,
+          333.95847
+        ]
+      ],
+      "width_studs": 8.0,
+      "material": "asphalt",
+      "class": "residential"
+    }
+  ],
+  "water": [
+    {
+      "osm_id": "way/800",
+      "polygon_studs": [
+        [
+          200.92,
+          400.75015
+        ],
+        [
+          223.24445,
+          400.75015
+        ],
+        [
+          223.24445,
+          445.27795
+        ],
+        [
+          200.92,
+          445.27795
+        ]
+      ],
+      "depth_studs": 8.0,
+      "kind": "river"
+    }
+  ],
+  "landmarks": [],
+  "assets": [],
+  "terrain": null
+}

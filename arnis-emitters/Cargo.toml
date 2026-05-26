@@ -15,6 +15,19 @@ serde_json = "1.0"
 thiserror = "1"
 jsonschema = { version = "0.18", default-features = false, features = ["draft202012", "resolve-file"] }
 once_cell = "1"
+clap = { version = "4", features = ["derive"], optional = true }
+anyhow = { version = "1", optional = true }
+
+[features]
+default = []
+# Enables the `bake-tile` example binary (CLI used by backend/scripts).
+cli = ["dep:clap", "dep:anyhow"]
+
+[[example]]
+name = "bake-tile"
+path = "examples/bake-tile.rs"
+required-features = ["cli"]
 
 [dev-dependencies]
 proptest = "1"
+insta = { version = "1.40", features = ["json"] }

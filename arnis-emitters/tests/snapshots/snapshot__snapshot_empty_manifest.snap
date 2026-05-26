@@ -1,0 +1,26 @@
+---
+source: arnis-emitters/tests/snapshot.rs
+assertion_line: 112
+expression: m
+---
+{
+  "manifest_version": "1.0",
+  "style_version": 1,
+  "tile": {
+    "z": 15,
+    "x": 17000,
+    "y": 9500
+  },
+  "stud_scale": 2.0,
+  "center_wgs84": [
+    59.9108985,
+    10.75179
+  ],
+  "region_key": "default",
+  "buildings": [],
+  "roads": [],
+  "water": [],
+  "landmarks": [],
+  "assets": [],
+  "terrain": null
+}

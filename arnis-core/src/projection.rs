@@ -73,7 +73,11 @@ mod tests {
         let polar = LtpOrigin::new(60.0, 0.0);
         let (x_60, _) = polar.project_metres(60.0, 1.0);
         // cos(60°) = 0.5 exactly.
-        assert!((x_60 / x_eq - 0.5).abs() < 1e-6, "ratio was {}", x_60 / x_eq);
+        assert!(
+            (x_60 / x_eq - 0.5).abs() < 1e-6,
+            "ratio was {}",
+            x_60 / x_eq
+        );
     }
 
     #[test]
