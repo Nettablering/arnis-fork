@@ -43,4 +43,4 @@ Q088 | done | 2026-05-26T07:55:00Z | 75016dc433b8dea04ae8ed45e10f7528b1611268
 Q086 | done | 2026-05-26T07:43:03Z | b53fe72
 Q325-redesign | done | 2026-05-26T08:03:00Z | 2a29cba
 Q511 | done | 2026-05-26T08:15:43Z | 0d67424
-Q083 | done | 2026-05-26T10:18:00Z | pending-verifier
+Q083 | done | 2026-05-26T10:18:00Z | 00077d9-bake-preheat-292-curated-708-placeholder-11-unit-2-integration-green
