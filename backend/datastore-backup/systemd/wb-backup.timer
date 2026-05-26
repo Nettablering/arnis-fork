@@ -1,0 +1,11 @@
+[Unit]
+Description=Nightly Worldbuilders DataStore overlay backup (Q099)
+
+[Timer]
+OnCalendar=*-*-* 02:30:00 UTC
+Persistent=true
+RandomizedDelaySec=300
+Unit=wb-backup.service
+
+[Install]
+WantedBy=timers.target

@@ -213,3 +213,28 @@ A live curl to https://worldbuilders.quicktoolry.com/ currently returns 520
 
 **Resolves when:** the homepage HTML is served by Caddy/nginx (200 OK) and the
 `/press`, `/developers`, `/blog`, `/status` paths return 200 as well.
+
+---
+
+## Q099 — Hetzner Storage Box + Backblaze B2 credentials
+
+**Reported:** 2026-05-26
+**Severity:** medium (local backup is operational; second-provider redundancy is not)
+
+The nightly DataStore overlay backup (Q099) currently writes only to the
+local fallback at `/home/deploy/projects/worldbuilders/backups/`.
+The `StorageTarget` trait + dispatcher are wired and tested; remote impls
+are stubs awaiting credentials.
+
+**What we need:**
+1. Hetzner Storage Box SSH user + host + key path (placed in
+   `~/.claude/shared/api-keys/hetzner-storagebox-wb.{key,meta.txt}`).
+2. Backblaze B2 application key (key ID + secret, bucket name) in
+   `~/.claude/shared/api-keys/b2-worldbuilders.{key,meta.txt}`.
+
+**Resolves when:** both files exist with `chmod 600`; on next nightly the
+backup `targets_ok` list contains `storagebox` and `b2` in addition to
+`local`.
+
+**Workaround until then:** local fallback is fine for the pre-launch period
+(no enrolled universes yet). Once a universe is enrolled, escalate.
