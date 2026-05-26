@@ -66,6 +66,6 @@ fn e2e_overpass_round_trip_serialises_cleanly() {
     let manifest = RobloxEmitter::default().build_manifest(&tile);
     let json = serde_json::to_string(&manifest).expect("serialise");
     let back: serde_json::Value = serde_json::from_str(&json).expect("parse back");
-    assert_eq!(back["manifest_version"], "1.0");
+    assert_eq!(back["manifest_version"], "1.1");
     assert_eq!(back["tile"]["z"], Z);
 }

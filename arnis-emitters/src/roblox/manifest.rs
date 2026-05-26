@@ -4,11 +4,14 @@
 use arnis_core::emitter::TileCoord;
 use serde::{Deserialize, Serialize};
 
-pub const MANIFEST_VERSION: &str = "1.0";
+/// Latest emitter output version. Bumped to `1.1` for Q102 (formal
+/// SemVer policy). v1.0 is still served via projection — see
+/// [`crate::roblox::schema::project_down`].
+pub const MANIFEST_VERSION: &str = "1.1";
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct RobloxManifest {
-    pub manifest_version: String, // "1.0"
+    pub manifest_version: String, // see MANIFEST_VERSION (currently "1.1")
     pub style_version: u32,
     pub tile: TileCoord,
     pub stud_scale: f32,        // studs per metre (Q038 = 2.0)

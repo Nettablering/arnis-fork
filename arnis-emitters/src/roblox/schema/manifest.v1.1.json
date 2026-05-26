@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://worldbuilders.app/schemas/manifest.v1.0.json",
-  "title": "Worldbuilders Roblox Tile Manifest v1.0",
-  "description": "Launch contract for the Roblox tile manifest. Subsequent minor versions are additive — see docs/manifest-schema-evolution.md and docs/manifest-versioning-changelog.md.",
+  "$id": "https://worldbuilders.app/schemas/manifest.v1.1.json",
+  "title": "Worldbuilders Roblox Tile Manifest v1.1",
+  "description": "Minor additive bump from v1.0 (Q102). Adds optional Enrichment fact-pack on Landmarks (Q210) and optional rarity_score + rarity_tier on Buildings (Q211). Older clients reading a v1.1 manifest must tolerate the extra optional fields per the SemVer policy in docs/manifest-schema-evolution.md.",
   "type": "object",
   "required": [
     "manifest_version",
@@ -19,7 +19,7 @@
     "terrain"
   ],
   "properties": {
-    "manifest_version": { "const": "1.0" },
+    "manifest_version": { "enum": ["1.0", "1.1"] },
     "style_version": { "type": "integer", "minimum": 1 },
     "tile": {
       "type": "object",
@@ -91,7 +91,12 @@
         "wall_colour_hex": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
         "roof_colour_hex": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
         "category": { "type": "string" },
-        "claimable": { "type": "boolean" }
+        "claimable": { "type": "boolean" },
+        "rarity_score": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "rarity_tier": {
+          "type": "string",
+          "enum": ["Common", "Uncommon", "Rare", "Epic", "Legendary", "Mythic"]
+        }
       }
     },
     "Road": {
@@ -136,7 +141,38 @@
         "osm_id": { "type": "string" },
         "position_studs": { "$ref": "#/$defs/StudPoint" },
         "kind": { "type": "string" },
-        "label": { "type": "string" }
+        "label": { "type": "string" },
+        "enrichment": { "$ref": "#/$defs/Enrichment" }
+      }
+    },
+    "Enrichment": {
+      "type": "object",
+      "description": "Wikidata-sourced fact-pack (Q210). All fields optional; missing means no claim. Numeric ranges sanity-checked at fetch time.",
+      "properties": {
+        "wikidata_qid": { "type": "string", "pattern": "^Q[0-9]+$" },
+        "founding_year": { "type": "integer", "minimum": -3000, "maximum": 2100 },
+        "founder": { "type": "string" },
+        "architect": { "type": "string" },
+        "height_m": { "type": "number", "minimum": 0.0, "maximum": 1000.0 },
+        "heritage_status": { "type": "string" },
+        "official_website": { "type": "string" },
+        "located_in": { "type": "string" },
+        "coordinate_wgs84": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "type": "number" }
+        },
+        "commemorates": { "type": "string" },
+        "fictional_appearances": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "named_after": { "type": "string" },
+        "owner": { "type": "string" },
+        "total_stories": { "type": "integer", "minimum": 0, "maximum": 500 },
+        "inherited_from_chain": { "type": "boolean" },
+        "fetched_at": { "type": "string", "format": "date-time" }
       }
     },
     "Asset": {

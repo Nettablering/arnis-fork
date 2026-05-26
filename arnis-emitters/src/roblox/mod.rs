@@ -319,7 +319,7 @@ mod tests {
         let e = RobloxEmitter::default();
         let m = e.build_manifest(&tile());
         e.validate(&m).expect("empty manifest must validate");
-        assert_eq!(m.manifest_version, "1.0");
+        assert_eq!(m.manifest_version, "1.1");
         assert_eq!(m.stud_scale, 2.0);
         assert_eq!(m.region_key, "default");
         assert!(m.terrain.is_some());

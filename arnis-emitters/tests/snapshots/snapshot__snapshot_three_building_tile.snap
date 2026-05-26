@@ -4,7 +4,7 @@ assertion_line: 120
 expression: m
 ---
 {
-  "manifest_version": "1.0",
+  "manifest_version": "1.1",
   "style_version": 1,
   "tile": {
     "z": 15,
