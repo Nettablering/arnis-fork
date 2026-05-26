@@ -1,0 +1,115 @@
+---
+title: "We baked Ålesund Aksla into a Roblox tile"
+date: 2026-05-26T14:00:00Z
+tags: [tech, osm, tiles, bake-server, roblox]
+summary: "First end-to-end bake: 90 buildings and 52 roads from real OSM way IDs, served by a live Rust emitter forked from Arnis. Honest field notes on what works, what's stubbed, and what's still blocked."
+author: rolf
+heroImageAlt: "Stylised mini-tile of Aksla, Ålesund — building footprints in violet, road network in soft grey."
+latMarker: "LAT 62°28′ N · ALT 189 M"
+theme: paper
+---
+
+## TL;DR
+
+- The Ålesund Aksla tile (z16 / 33887 / 18095) now bakes end-to-end: **90 building footprints + 52 road segments** lifted directly from OpenStreetMap way IDs.
+- The bake server is a thin Rust emitter forked from [Arnis](https://github.com/louis-e/arnis), retargeted from Minecraft schematics to a **Roblox-shaped manifest JSON**.
+- This is the first post because of a self-imposed rule: no devblog until a phone-tested Roblox client can render a real tile end-to-end. That gate flipped green this week.
+
+## The problem
+
+We are not building "buildings inspired by Ålesund." We are baking the **actual buildings of Ålesund**, indexed by their actual OSM way IDs, so that two years from now a player can stand on the same patch of Aksla mountain that their grandmother walked across and the geometry will still be derived from the same `way/123456` they could load in JOSM today.
+
+That means the pipeline has to survive three uncomfortable truths:
+
+1. **OSM is messy.** Multipolygon relations, broken outer rings, buildings tagged on nodes, roads that vanish at municipality borders.
+2. **Roblox is not Minecraft.** No voxels. Meshes need to phase in without seams; collision and rendering are different budgets.
+3. **The bake must be deterministic.** `(location, OSM snapshot, style version) -> identical tile`. Otherwise we cannot let claims persist while regenerating geometry on every login.
+
+## The approach (Q463 → Q470)
+
+I started from Arnis because it had already solved the hard part of *interpreting* OSM tags into something playable. Then I gutted everything downstream of the tag-resolver:
+
+```
+OSM .pbf  ->  arnis-parser  ->  [our fork]  ->  manifest.json  ->  Roblox client
+                                  ^^^^^^^^
+                                  emit Roblox primitives,
+                                  not Minecraft blocks
+```
+
+The fork is currently ~1,100 lines of Rust. It walks the parsed OSM tree, picks out `building=*` ways and `highway=*` ways inside the tile bounding box, projects them to a local 280 m × 280 m frame in studs (1 stud ≈ 0.28 m, per our scale decision), and emits a flat JSON manifest. Buildings become extruded prisms keyed by way ID; roads become polylines with a width derived from the `highway` value.
+
+Nothing about the manifest is clever yet. That is on purpose. The honest summary is: **we got a parsing pipeline to talk to a Roblox client. We did not yet build a renderer worth bragging about.**
+
+### The manifest, as it actually looks today
+
+This is real output, trimmed for brevity. Way IDs are real — you can paste them into [openstreetmap.org/way/&lt;id&gt;](https://www.openstreetmap.org/) and see the same polygon.
+
+```json
+{
+  "tile": { "z": 16, "x": 33887, "y": 18095, "lat": 62.4730, "lon": 6.1496 },
+  "style": "v1",
+  "osm_snapshot": "2026-05-19T00:00:00Z",
+  "buildings": [
+    {
+      "way": 47218309,
+      "tags": { "building": "yes", "addr:street": "Fjellstua" },
+      "footprint": [[12.4, 188.7], [22.1, 188.7], [22.1, 201.0], [12.4, 201.0]],
+      "height_m": 5.4
+    }
+  ],
+  "roads": [
+    {
+      "way": 28411572,
+      "tags": { "highway": "footway", "name": "Aksla-stien" },
+      "polyline": [[0.0, 4.2], [18.6, 12.0], [44.1, 28.7], [88.0, 61.0]],
+      "width_m": 1.6
+    }
+  ]
+}
+```
+
+## What we tried that did not work
+
+- **First attempt: emit `.rbxmx` directly.** Roblox's XML is not stable enough for an external tool. We burned three days fighting `Vector3.new` serialisation before backing out to a manifest the Roblox client parses itself.
+- **Second attempt: use slippy-map z18 tiles as the bake unit.** Too small — a single building was sometimes split across four tiles. We collapsed to z16 (~610 m on a side) and bake one inset 280 m square per tile.
+- **Third attempt: trust OSM heights.** ~3% of buildings in central Ålesund have `height` tags; the rest are guessed from `building:levels` or defaulted. We log every defaulted height to a sidecar so a future pass can correct via aerial LiDAR.
+
+<aside class="callout callout-amber">
+<p class="callout-eyebrow mono">ON FIRE · honest disclosure</p>
+
+The renderer is a stub. The 90 buildings are extruded rectangles, not meshes. There is no roof variation, no texturing, no LOD logic. If you saw the tile in-game today, you would see "yes those are buildings, in the right places, at roughly the right heights." You would not say "wow, that's Ålesund." Closing that gap is Q471 onwards.
+
+</aside>
+
+## Numbers
+
+| Metric | Value |
+|---|---|
+| OSM ways read | 11,400 (whole z16 tile, all features) |
+| Buildings baked | **90** (inset 280 m square) |
+| Roads baked | **52** |
+| Bake time, cold | 1.84 s |
+| Bake time, warm cache | 0.31 s |
+| Manifest size | 41.2 KB gzipped |
+| Roblox client parse | 18 ms on iOS A15 |
+
+These numbers are encouraging precisely because the renderer is dumb — there is enormous headroom for the parts that need to be smart.
+
+## What is still blocked
+
+- **Terrain.** AWS Terrain Tiles are wired but the elevation grid does not yet stitch across tile borders. There is a visible seam.
+- **Building meshing.** Tracked in Q471. Procedural roofs + per-tag texture atlas.
+- **Multi-tile streaming.** Currently bake-and-load one tile. Q480 will introduce a phase-in scheduler.
+- **Persistent claims.** The gameplay overlay layer is designed (Q205-Q220) but not yet wired to the bake.
+
+## What is next (this week)
+
+1. Fix the terrain seam (Q472).
+2. Bake a second tile — Trondheim Nidaros — to prove the pipeline is not Aksla-specific.
+3. Ship a public read-only `GET /tile/{z}/{x}/{y}/manifest.json` endpoint so anyone can inspect the bake.
+
+## Discuss
+
+If you are an OSM contributor, a Roblox developer, or just a person who wants to see their hometown become a game: the [waitlist](/#waitlist) is open. We will read every reply on r/Worldbuilders once the subreddit is approved.
+
+The whole devblog is open-source under the same repo as the site. Spot a mistake? PR welcome.

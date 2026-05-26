@@ -1,0 +1,40 @@
+---
+// Aurora Atlas — MDX-friendly callout block. Used in devblog posts for
+// "ON FIRE" honest disclosures and amber warnings. NEVER fill large areas
+// with aurora-amber; this component caps it at a 4 px left rule.
+export interface Props {
+  tone?: "amber" | "green" | "violet";
+}
+const { tone = "amber" } = Astro.props;
+---
+
+<aside class:list={["callout", `callout-${tone}`]}>
+  <slot />
+</aside>
+
+<style>
+  .callout {
+    margin: 1.6rem 0;
+    padding: 1.1rem 1.4rem 1.2rem;
+    border: 1px solid var(--rule);
+    border-left-width: 4px;
+    background: var(--bg-elevated);
+    font-size: 0.96rem;
+  }
+  .callout :global(p) { margin: 0 0 0.6rem; }
+  .callout :global(p:last-child) { margin-bottom: 0; }
+  .callout :global(.callout-eyebrow) {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    color: var(--fg-faint);
+  }
+  .callout-amber { border-left-color: var(--color-aurora-amber); }
+  .callout-amber :global(.callout-eyebrow) { color: var(--color-aurora-amber); }
+  .callout-green { border-left-color: var(--color-aurora-green); }
+  .callout-green :global(.callout-eyebrow) { color: var(--color-aurora-green); }
+  .callout-violet { border-left-color: var(--color-aurora-violet); }
+  .callout-violet :global(.callout-eyebrow) { color: var(--color-aurora-violet); }
+</style>

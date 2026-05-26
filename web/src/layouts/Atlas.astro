@@ -38,6 +38,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 
     <title>{title}</title>
     <meta name="description" content={description} />
+
+    {/* Q511 — feed autodiscovery; present on every page so RSS readers can
+        find the devblog from any URL. */}
+    <link rel="alternate" type="application/rss+xml" title="Worldbuilders devblog · RSS" href="/blog/rss.xml" />
+    <link rel="alternate" type="application/atom+xml" title="Worldbuilders devblog · Atom" href="/blog/atom.xml" />
+    <link rel="alternate" type="application/feed+json" title="Worldbuilders devblog · JSON Feed" href="/blog/feed.json" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />

@@ -1,0 +1,268 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Atlas from "../../layouts/Atlas.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+const { post } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await post.render();
+const { title, date, tags, summary, author, latMarker, theme } = post.data;
+
+// Reading-time estimate based on the rendered HTML (rough word count via the
+// raw body text). Mono readout in the byline.
+const rawText = post.body ?? "";
+const words = rawText.split(/\s+/).filter(Boolean).length;
+const readingMin = Math.max(1, Math.round(words / 220));
+
+const iso = date.toISOString();
+const human = date.toUTCString().replace(/^\w+, /, "").replace(" GMT", " UTC");
+---
+
+<Atlas title={`${title} — Worldbuilders devblog`} description={summary} theme={theme}>
+  <article class="wrap-narrow post-article">
+    <header class="post-header lat-band" data-lat={`LAT BAND · ${date.getUTCFullYear()}`}>
+      <p class="eyebrow">
+        <a href="/blog/" class="back-link">Devblog</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <span class="post-tags">{tags.slice(0, 4).join(" · ")}</span>
+      </p>
+
+      <h1 class="post-title">{title}</h1>
+
+      <p class="post-lede">{summary}</p>
+
+      <dl class="byline mono">
+        <div class="byline-row">
+          <dt>Published</dt>
+          <dd><time datetime={iso}>{human}</time></dd>
+        </div>
+        <div class="byline-row">
+          <dt>Latitude</dt>
+          <dd>{latMarker}</dd>
+        </div>
+        <div class="byline-row">
+          <dt>Author</dt>
+          <dd>@{author}</dd>
+        </div>
+        <div class="byline-row">
+          <dt>Reading</dt>
+          <dd>~{readingMin} min · {words.toLocaleString()} words</dd>
+        </div>
+      </dl>
+    </header>
+
+    <div class="post-prose">
+      <Content />
+    </div>
+
+    <footer class="post-footer lat-band" data-lat="LAT BAND · end of post">
+      <div class="post-foot-grid">
+        <div>
+          <p class="eyebrow">Next up</p>
+          <p>
+            New devblog every Tuesday at 14:00 UTC.
+            <a href="/blog/">Back to the index</a> · or
+            <a href="/blog/rss.xml">subscribe via RSS</a>.
+          </p>
+        </div>
+        <div>
+          <p class="eyebrow">Discuss</p>
+          <p>
+            Spotted a mistake? The devblog is open source.
+            <a href={`https://github.com/klokk/worldbuilders/edit/main/web/src/content/blog/${post.id}`}>Edit on GitHub</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </article>
+</Atlas>
+
+<style is:global>
+  /* Post prose — Aurora Atlas reading surface. Mono code, serif headings,
+     hairline rules, latitude rhythm. */
+  .post-article { padding-top: clamp(2rem, 5vw, 3rem); }
+  .post-header { padding-bottom: 2rem; }
+  .post-header .eyebrow {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .post-header .eyebrow .sep { color: var(--fg-faint); }
+  .post-header .back-link { color: var(--color-aurora-green); text-decoration: none; }
+  .post-header .back-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .post-tags { color: var(--fg-faint); }
+
+  .post-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    font-weight: 420;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    margin: 0.8rem 0 1rem;
+    max-width: 22ch;
+  }
+  .post-lede {
+    color: var(--fg-soft);
+    font-size: 1.12rem;
+    line-height: 1.5;
+    max-width: 60ch;
+    margin: 0 0 1.6rem;
+  }
+
+  .byline {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.9rem 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.4rem 1.6rem;
+    margin: 0;
+    font-size: 0.78rem;
+  }
+  .byline-row { display: flex; gap: 0.6rem; }
+  .byline dt {
+    color: var(--fg-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    min-width: 7ch;
+  }
+  .byline dd { margin: 0; color: var(--fg); }
+
+  .post-prose {
+    margin: 2.2rem 0 3rem;
+    font-size: 1.04rem;
+    line-height: 1.65;
+    max-width: 64ch;
+    color: var(--fg);
+  }
+  .post-prose h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3.2vw, 2rem);
+    margin: 2.4rem 0 0.8rem;
+    letter-spacing: -0.015em;
+    font-weight: 420;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .post-prose h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin: 1.8rem 0 0.5rem;
+    font-weight: 460;
+  }
+  .post-prose p { margin: 0 0 1.1rem; }
+  .post-prose a {
+    color: var(--color-aurora-green);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .post-prose strong { font-weight: 600; color: var(--fg); }
+  .post-prose code {
+    font-family: var(--font-mono);
+    font-size: 0.92em;
+    background: var(--bg-elevated);
+    border: 1px solid var(--rule);
+    padding: 0.06em 0.36em;
+    border-radius: 2px;
+  }
+  .post-prose pre {
+    font-family: var(--font-mono);
+    font-size: 0.86rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--color-aurora-green);
+    padding: 1rem 1.1rem;
+    overflow-x: auto;
+    margin: 1.4rem 0;
+    line-height: 1.55;
+  }
+  .post-prose pre code {
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+  }
+  .post-prose ul, .post-prose ol {
+    padding-left: 1.4rem;
+    margin: 0 0 1.2rem;
+  }
+  .post-prose li { margin-bottom: 0.4rem; }
+  .post-prose blockquote {
+    border-left: 4px solid var(--color-aurora-violet);
+    padding: 0.2rem 0 0.2rem 1rem;
+    margin: 1.4rem 0;
+    color: var(--fg-soft);
+    font-style: italic;
+  }
+  .post-prose table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1.4rem 0;
+    font-size: 0.94rem;
+  }
+  .post-prose th, .post-prose td {
+    border-bottom: 1px solid var(--rule);
+    padding: 0.55rem 0.6rem;
+    text-align: left;
+  }
+  .post-prose th {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+    font-weight: 500;
+  }
+  .post-prose hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 2rem 0;
+  }
+
+  .post-prose .callout {
+    margin: 1.6rem 0;
+    padding: 1rem 1.2rem 1.1rem;
+    border: 1px solid var(--rule);
+    border-left-width: 4px;
+    background: var(--bg-elevated);
+    font-size: 0.96rem;
+  }
+  .post-prose .callout p { margin: 0 0 0.5rem; }
+  .post-prose .callout p:last-child { margin-bottom: 0; }
+  .post-prose .callout .callout-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    color: var(--fg-faint);
+  }
+  .post-prose .callout-amber { border-left-color: var(--color-aurora-amber); }
+  .post-prose .callout-amber .callout-eyebrow { color: var(--color-aurora-amber); }
+  .post-prose .callout-green { border-left-color: var(--color-aurora-green); }
+  .post-prose .callout-violet { border-left-color: var(--color-aurora-violet); }
+
+  .post-footer { margin-top: 2.4rem; padding: 1.8rem 0; }
+  .post-foot-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+  .post-foot-grid p { color: var(--fg-soft); }
+  .post-foot-grid a { color: var(--color-aurora-green); }
+  @media (max-width: 680px) {
+    .post-foot-grid { grid-template-columns: 1fr; }
+    .byline { grid-template-columns: 1fr; }
+  }
+</style>
