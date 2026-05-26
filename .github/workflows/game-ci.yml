@@ -1,0 +1,85 @@
+name: game-ci
+
+# CI for the Rojo project under game/. Q296 v1 scope:
+# lint (selene + stylua --check) → unit tests (lune) → rojo build (assert green).
+# Open Cloud deploy stages live in a separate workflow (Q296 stages 5+).
+# Windows/Mac matrix is deferred (out of scope per Q296 v1).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "game/**"
+      - ".github/workflows/game-ci.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "game/**"
+      - ".github/workflows/game-ci.yml"
+
+defaults:
+  run:
+    shell: bash
+    working-directory: game
+
+jobs:
+  build:
+    name: lint + test + build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache Rokit toolchain
+        uses: actions/cache@v4
+        with:
+          path: ~/.rokit
+          key: rokit-${{ runner.os }}-${{ hashFiles('game/rokit.toml') }}
+          restore-keys: |
+            rokit-${{ runner.os }}-
+
+      - name: Cache Wally packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            game/Packages
+            game/DevPackages
+            game/ServerPackages
+          key: wally-${{ runner.os }}-${{ hashFiles('game/wally.lock', 'game/wally.toml') }}
+          restore-keys: |
+            wally-${{ runner.os }}-
+
+      - name: Install Rokit
+        uses: CompeyDev/setup-rokit@v0.1.2
+
+      - name: Install pinned toolchain (rojo, wally, selene, stylua, lune)
+        run: rokit install --no-trust-check
+
+      - name: Wally install
+        run: wally install
+
+      - name: Selene (lint)
+        run: selene src tests
+
+      - name: StyLua (format check)
+        run: stylua --check src tests
+
+      - name: Lune (unit tests)
+        run: lune run tests/init.lua
+
+      - name: Rojo build (assert green)
+        run: rojo build default.project.json --output /tmp/game.rbxlx
+
+      - name: Upload build artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: game-rbxlx-${{ matrix.os }}
+          path: /tmp/game.rbxlx
+          if-no-files-found: ignore
+          retention-days: 7
