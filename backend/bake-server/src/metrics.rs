@@ -85,6 +85,9 @@ pub struct Metrics {
     pub cache_misses: IntCounterVec,
     pub bake_failures: IntCounterVec,
     pub api_requests: IntCounterVec,
+    /// Q084: incremented when a synchronous bake exceeds the soft
+    /// deadline (8s) and the handler falls back to placeholder + poll.
+    pub sla_breach: IntCounterVec,
 }
 
 impl Metrics {
@@ -171,6 +174,18 @@ impl Metrics {
             .register(Box::new(api_requests.clone()))
             .expect("register api_requests");
 
+        let sla_breach = IntCounterVec::new(
+            opts!(
+                "wb_bake_sla_breach_total",
+                "Synchronous-bake attempts that exceeded the 8s soft deadline (Q084)"
+            ),
+            &["universe"],
+        )
+        .expect("counter");
+        registry
+            .register(Box::new(sla_breach.clone()))
+            .expect("register sla_breach");
+
         Self {
             registry,
             tile_fetch_duration,
@@ -180,7 +195,13 @@ impl Metrics {
             cache_misses,
             bake_failures,
             api_requests,
+            sla_breach,
         }
+    }
+
+    /// Q084: record a synchronous-bake SLA breach (soft deadline exceeded).
+    pub fn observe_sla_breach(&self, universe: &str) {
+        self.sla_breach.with_label_values(&[universe]).inc();
     }
 
     /// Record a completed tile fetch.

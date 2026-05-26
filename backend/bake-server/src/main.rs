@@ -4,8 +4,14 @@
 //! `axum-test` integration tests (Q475). This binary just loads env config,
 //! wires logging, and runs the server.
 
-use bake_server::{build_router, AppState};
+use bake_server::{
+    build_router,
+    sla::{ScriptedExecutor, SYNC_BAKE_SOFT_DEADLINE},
+    AppState,
+};
 use std::net::SocketAddr;
+use std::sync::Arc;
+use std::time::Duration;
 use tracing::info;
 
 #[tokio::main]
@@ -48,6 +54,26 @@ async fn main() -> anyhow::Result<()> {
         let osm_snapshot = std::env::var("WB_OSM_SNAPSHOT").unwrap_or_else(|_| "unknown".into());
         info!(redis = %url, style_version, %osm_snapshot, "bake-queue producer configured");
         state = state.with_producer(producer, style_version, osm_snapshot);
+    }
+    // Q084: optional in-process bake executor for staging / k6 SLA load
+    // tests. Set `WB_SYNC_BAKE_DEMO_MS=<ms>` to enable; production wires
+    // a real queue-backed executor instead.
+    if let Ok(ms) = std::env::var("WB_SYNC_BAKE_DEMO_MS") {
+        let delay_ms: u64 = ms.parse().unwrap_or(50);
+        let payload = serde_json::to_vec(&serde_json::json!({
+            "manifest_version": "1.1",
+            "note": "demo-sync-bake",
+            "delay_ms": delay_ms,
+        }))?;
+        info!(
+            delay_ms,
+            soft_deadline_secs = SYNC_BAKE_SOFT_DEADLINE.as_secs(),
+            "synchronous-bake demo executor enabled (Q084)"
+        );
+        state = state.with_bake_executor(Arc::new(ScriptedExecutor::ok(
+            Duration::from_millis(delay_ms),
+            payload,
+        )));
     }
     let app = build_router(state);
 

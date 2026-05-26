@@ -151,6 +151,74 @@
           "refId": "A"
         }
       ]
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "Q084: Sync-bake SLA breach rate (target < 5%)",
+      "gridPos": { "h": 9, "w": 12, "x": 0, "y": 18 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "description": "Fraction of POST /v1/tile/.../bake requests that exceeded the 8s soft deadline and fell back to placeholder + poll. Driven by wb_bake_sla_breach_total.",
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "min": 0,
+          "max": 0.25,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 0.05 },
+              { "color": "red", "value": 0.1 }
+            ]
+          }
+        }
+      },
+      "targets": [
+        {
+          "expr": "sum(rate(wb_bake_sla_breach_total[5m])) / clamp_min(sum(rate(wb_api_requests_total{endpoint=\"/v1/tile/:z/:x/:y/bake\"}[5m])), 0.001)",
+          "legendFormat": "breach rate",
+          "refId": "A"
+        },
+        {
+          "expr": "vector(0.05)",
+          "legendFormat": "SLA budget (5%)",
+          "refId": "B"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "stat",
+      "title": "Q084: SLA breaches (last 1h)",
+      "gridPos": { "h": 9, "w": 12, "x": 12, "y": 18 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "description": "Cumulative count of synchronous-bake requests that exceeded the 8s soft deadline in the last hour.",
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 50 },
+              { "color": "red", "value": 200 }
+            ]
+          }
+        }
+      },
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false }
+      },
+      "targets": [
+        {
+          "expr": "sum by (universe) (increase(wb_bake_sla_breach_total[1h]))",
+          "legendFormat": "{{universe}}",
+          "refId": "A"
+        }
+      ]
     }
   ]
 }

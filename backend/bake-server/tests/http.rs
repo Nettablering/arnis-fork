@@ -78,7 +78,8 @@ async fn tile_signed_ok_returns_200() {
         .await;
     resp.assert_status_ok();
     let body: serde_json::Value = resp.json();
-    assert_eq!(body["manifest_version"], "1.0");
+    // Q102: bake-server's mock manifest reports `LATEST_VERSION` (1.1).
+    assert_eq!(body["manifest_version"], bake_server::schema_version::LATEST_VERSION);
     assert_eq!(body["tile_id"], "15-1-1");
     assert_eq!(body["z"], 15);
     assert_eq!(body["x"], 1);
