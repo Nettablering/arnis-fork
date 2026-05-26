@@ -1,16 +1,100 @@
 ---
-import Base from "../../layouts/Base.astro";
+import Atlas from "../../layouts/Atlas.astro";
+
+interface Post { date: string; href: string; title: string; excerpt: string }
+const posts: Post[] = [
+  // Real posts arrive once the bake pipeline serves an end-to-end OSM tile.
+  // Replace with a content collection once Q241 lands.
+];
 ---
 
-<Base title="Devblog — Worldbuilders">
-  <section class="max-w-3xl mx-auto px-4 py-16">
-    <h1 class="text-4xl font-bold">Devblog</h1>
-    <p class="mt-4 text-[var(--color-ink)]/85">
-      Build-in-public notes from the team. First post ships once the bake
-      pipeline serves a real OSM tile end-to-end.
+<Atlas
+  title="Devblog — Worldbuilders"
+  description="Build-in-public field notes from the team turning OpenStreetMap into a Roblox idle empire."
+>
+  <section class="wrap lat-band" data-lat="LAT BAND 62°N · devblog">
+    <p class="eyebrow">Field notes from the bake</p>
+    <h1>The <span class="text-aurora">devblog</span>.</h1>
+    <p class="lede">
+      Slow-burn build-in-public notes — pipeline anatomy, ugly-baby
+      screenshots, dead-ends. First post ships the day the bake pipeline
+      serves a real OSM tile end-to-end into a phone-tested Roblox client.
     </p>
-    <ul class="mt-10 space-y-4" aria-label="Posts">
-      <li class="text-[var(--color-ink)]/60 italic">No posts yet.</li>
-    </ul>
   </section>
-</Base>
+
+  {posts.length === 0 ? (
+    <section class="wrap lat-band" data-lat="LAT BAND 62°N · awaiting first post">
+      <div class="empty">
+        <svg width="180" height="180" viewBox="0 0 180 180" aria-hidden="true">
+          <circle cx="90" cy="90" r="78" fill="none" stroke="var(--map-line)" stroke-width="0.8" opacity="0.5" />
+          <circle cx="90" cy="90" r="62" fill="none" stroke="var(--map-line)" stroke-width="0.5" opacity="0.35" stroke-dasharray="2 4" />
+          <polygon points="90,20 86,90 90,160 94,90" fill="var(--color-aurora-green)" opacity="0.85" class="empty-needle" />
+          <circle cx="90" cy="90" r="3" fill="var(--color-aurora-green)" />
+        </svg>
+        <p class="empty-line mono">// awaiting tile bake</p>
+        <p class="empty-prose">
+          No posts yet. The first one drops when the Aksla tile renders
+          inside a phone-tested Roblox build, end-to-end. Watch the
+          <a href="/status">status page</a> if you&rsquo;re curious about
+          the gates that still need to flip green.
+        </p>
+      </div>
+    </section>
+  ) : (
+    <section class="wrap lat-band" data-lat="LAT BAND 62°N · posts">
+      <ul class="posts">
+        {posts.map((post) => (
+          <li class="post">
+            <p class="post-date mono">{post.date}</p>
+            <h2 class="post-title"><a href={post.href}>{post.title}</a></h2>
+            <p class="post-excerpt">{post.excerpt}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+</Atlas>
+
+<style>
+  .lede { color: var(--fg-soft); font-size: 1.04rem; max-width: 64ch; }
+  .empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 2rem 0;
+  }
+  .empty-needle {
+    transform-origin: 90px 90px;
+    animation: wb-needle-spin 6s linear infinite;
+  }
+  .empty-line {
+    color: var(--color-aurora-green);
+    letter-spacing: 0.2em;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+  }
+  .empty-prose { color: var(--fg-soft); max-width: 50ch; }
+  .text-aurora { color: var(--color-aurora-green); }
+
+  .posts { list-style: none; padding: 0; margin: 0; }
+  .post {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .post-date {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--fg-faint);
+    text-transform: uppercase;
+  }
+  .post-title {
+    margin: 0.4rem 0 0.6rem;
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+  }
+  .post-title a { color: var(--fg); text-decoration: none; }
+  .post-title a:hover { color: var(--color-aurora-green); }
+  .post-excerpt { color: var(--fg-soft); }
+</style>

@@ -1,80 +1,369 @@
 ---
-import Base from "../layouts/Base.astro";
+import Atlas from "../layouts/Atlas.astro";
+import CompassRose from "../components/CompassRose.astro";
+import ContourBackground from "../components/ContourBackground.astro";
+import WaitlistForm from "../components/WaitlistForm.astro";
+import AuroraPulse from "../components/AuroraPulse.astro";
 ---
 
-<Base
-  title="Worldbuilders — Claim a real-world plot. Build your idle empire."
+<Atlas
+  title="Worldbuilders — your hometown becomes a game."
+  description="An idle empire built on real geography. Claim plots from OpenStreetMap; build them inside Roblox. Open data in, playable world out."
 >
-  <section class="max-w-6xl mx-auto px-4 pt-16 pb-12 sm:pt-24">
-    <p class="uppercase tracking-widest text-xs text-[var(--color-amber)] mb-4">
-      Coming soon · Built on OpenStreetMap
-    </p>
-    <h1 class="text-4xl sm:text-6xl font-bold leading-tight max-w-3xl">
-      Your street. Your city.
-      <span class="text-[var(--color-neon-green)]">Your empire.</span>
-    </h1>
-    <p class="mt-6 text-lg max-w-2xl text-[var(--color-ink)]/85">
-      Worldbuilders turns every real-world building into a claimable, upgradable
-      tile. Drop a pin anywhere on Earth — your hometown, your hostel in
-      Lisbon, your high-school — and build an idle empire on the actual map.
-    </p>
+  {/* ============ HERO ============ */}
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <ContourBackground opacity={0.16} />
+    </div>
 
-    <form
-      id="waitlist"
-      action="/api/waitlist"
-      method="post"
-      class="mt-10 flex flex-col sm:flex-row gap-3 max-w-xl"
-      aria-label="Join the waitlist"
-    >
-      <label for="email" class="sr-only">Email address</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        required
-        autocomplete="email"
-        placeholder="you@somewhere.earth"
-        class="flex-1 px-4 py-3 rounded-lg bg-[var(--color-slate-surface)] text-[var(--color-ink)] placeholder-[var(--color-ink)]/50 border border-transparent focus:border-[var(--color-neon-green)] focus:outline-none"
-      />
-      <button
-        type="submit"
-        class="px-6 py-3 rounded-lg bg-[var(--color-neon-green)] text-[var(--color-deep-blue)] font-semibold hover:bg-[var(--color-neon-green-600)] transition no-underline"
-      >
-        Join the waitlist
-      </button>
-    </form>
-    <p class="mt-3 text-xs text-[var(--color-ink)]/60">
-      One email at launch. No spam, no resale. Unsubscribe in one click.
-    </p>
+    <div class="wrap hero-inner atlas-grid">
+      <div class="hero-text">
+        <p class="eyebrow" data-anim="fade-up" style="--delay:120ms;">
+          <AuroraPulse label="Pre-launch · Ålesund tile bake live" />
+        </p>
+
+        <h1 data-anim="fade-up" style="--delay:180ms;">
+          Your hometown
+          <span class="hero-becomes"><em>becomes</em></span>
+          <span class="hero-game">a game.</span>
+        </h1>
+
+        <p class="hero-lede" data-anim="fade-up" style="--delay:320ms;">
+          Worldbuilders turns the real Earth into a claimable, idle empire.
+          We pull OpenStreetMap ways and AWS Terrain Tiles, bake them into a
+          Roblox world, and let you build on the actual buildings of your
+          actual street. Pin Lisbon, your high-school, the fjord behind your
+          grandmother&rsquo;s house — whichever 280 m × 280 m square of Earth
+          you call home is now a plot.
+        </p>
+
+        <div class="hero-cta" data-anim="fade-up" style="--delay:480ms;">
+          <WaitlistForm />
+        </div>
+
+        <ul class="hero-meta mono" data-anim="fade-up" style="--delay:600ms;">
+          <li><span>01</span> Tile 16 / 33887 / 18095 (Aksla, Ålesund) — live</li>
+          <li><span>02</span> Manifest schema v1 · 11,400 OSM ways baked</li>
+          <li><span>03</span> Roblox client · phone-tested on iOS + Android</li>
+        </ul>
+      </div>
+
+      <aside class="hero-aside">
+        <div class="compass-stage">
+          <CompassRose size={260} delay={500} />
+          <p class="compass-caption mono">Asymmetric compass · true north 0.0° magnetic dev.</p>
+        </div>
+      </aside>
+    </div>
   </section>
 
-  <section class="max-w-6xl mx-auto px-4 py-12 grid gap-6 sm:grid-cols-3">
-    <article
-      class="p-6 rounded-xl bg-[var(--color-slate-surface)] border border-white/5"
-    >
-      <h2 class="font-semibold text-lg mb-2">Real-world tiles</h2>
-      <p class="text-sm text-[var(--color-ink)]/80">
-        Every plot is a real slippy-map tile. Buildings are OSM ways and
-        relations — not procedural noise.
-      </p>
-    </article>
-    <article
-      class="p-6 rounded-xl bg-[var(--color-slate-surface)] border border-white/5"
-    >
-      <h2 class="font-semibold text-lg mb-2">Idle, async, social</h2>
-      <p class="text-sm text-[var(--color-ink)]/80">
-        Claim, upgrade, collect — and raid your friend's hometown while
-        they're offline.
-      </p>
-    </article>
-    <article
-      class="p-6 rounded-xl bg-[var(--color-slate-surface)] border border-white/5"
-    >
-      <h2 class="font-semibold text-lg mb-2">Open by default</h2>
-      <p class="text-sm text-[var(--color-ink)]/80">
-        Public read-only API and an OSS Roblox emitter. Build on us.
-        <a href="/developers">See the docs &rarr;</a>
-      </p>
-    </article>
+  {/* ============ TILE INSPECTOR ============ */}
+  <section class="lat-band" data-lat="LAT BAND 62°N · the hook">
+    <div class="wrap atlas-grid">
+      <div>
+        <p class="eyebrow">The hook</p>
+        <h2>
+          Open data in. <br />
+          <span class="text-aurora">Playable geography out.</span>
+        </h2>
+        <p class="lede">
+          The trick is that geometry is <em>derived</em>. We never store
+          buildings — we regenerate them, deterministically, from
+          <code>(location, OSM snapshot, style version)</code>. Only the
+          gameplay overlay persists. Claim a landmark, log out, log back in
+          tomorrow on a different device: it&rsquo;s still yours.
+        </p>
+        <p>
+          <a href="/developers" class="btn-ghost">
+            Inspect the tile manifest
+            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7 H11 M7 3 L11 7 L7 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </p>
+      </div>
+      <div class="tile-preview" aria-hidden="true">
+        <svg viewBox="0 0 380 380" class="tile-svg">
+          {/* Stylised mini-tile: a square frame, footprint polygons, road network */}
+          <rect x="2" y="2" width="376" height="376" fill="none" stroke="var(--map-line)" stroke-width="1" opacity="0.7" />
+          <g stroke="var(--map-line)" stroke-width="0.5" opacity="0.4">
+            {Array.from({ length: 11 }).map((_, i) => (
+              <>
+                <line x1={2 + i * 37.6} y1="2" x2={2 + i * 37.6} y2="378" />
+                <line x1="2" y1={2 + i * 37.6} x2="378" y2={2 + i * 37.6} />
+              </>
+            ))}
+          </g>
+          {/* Roads */}
+          <g fill="none" stroke="var(--fg-soft)" stroke-width="1.4">
+            <path d="M 20 280 C 110 260, 180 230, 260 200 S 360 140, 378 110" />
+            <path d="M 90 378 C 120 280, 180 220, 260 200 S 320 160, 378 130" />
+            <path d="M 40 60 C 100 110, 160 140, 240 160 S 320 180, 378 200" opacity="0.5" />
+          </g>
+          {/* Building footprints — irregular polygons */}
+          <g fill="var(--color-aurora-violet)" fill-opacity="0.18" stroke="var(--color-aurora-violet)" stroke-width="0.8">
+            <polygon points="120,180 150,170 162,196 130,206" />
+            <polygon points="180,210 218,200 226,232 188,242" />
+            <polygon points="232,160 260,150 268,178 240,188" />
+            <polygon points="80,240 108,232 116,258 88,266" />
+            <polygon points="280,220 312,212 320,240 288,248" />
+            <polygon points="160,300 198,292 206,322 168,330" />
+          </g>
+          {/* The claimed landmark — aurora-green pulse + ring */}
+          <g>
+            <circle cx="220" cy="220" r="20" fill="none" stroke="var(--color-aurora-green)" stroke-width="1" opacity="0.5">
+              <animate attributeName="r" values="14;28;14" dur="2.2s" repeatCount="indefinite" />
+              <animate attributeName="opacity" values="0.55;0;0.55" dur="2.2s" repeatCount="indefinite" />
+            </circle>
+            <polygon points="208,212 232,206 240,228 214,236" fill="var(--color-aurora-green)" fill-opacity="0.85" stroke="var(--color-aurora-green)" stroke-width="1" />
+          </g>
+          {/* Mini compass at corner */}
+          <g transform="translate(330 50)">
+            <circle r="18" fill="none" stroke="var(--map-line)" stroke-width="0.5" />
+            <polygon points="0,-14 -3,0 0,14 3,0" fill="var(--color-aurora-green)" />
+          </g>
+        </svg>
+        <p class="tile-cap mono">
+          osm:way/227908624 · &ldquo;Aksla Restaurant&rdquo; · CLAIMED
+        </p>
+      </div>
+    </div>
   </section>
-</Base>
+
+  {/* ============ THREE PILLARS ============ */}
+  <section class="pillars lat-band" data-lat="LAT BAND 62°N · principles">
+    <div class="wrap">
+      <p class="eyebrow">Three principles</p>
+      <div class="pillars-grid">
+        <article class="feature" data-tag="01 · real">
+          <h3>Real-world tiles, not procedural noise</h3>
+          <p>
+            Every plot is an actual OSM tile. The pub on the corner is the
+            pub on the corner. Your school&rsquo;s gym still has the
+            asymmetric extension the council added in 2011.
+          </p>
+        </article>
+        <article class="feature" data-tag="02 · idle">
+          <h3>Idle, async, social</h3>
+          <p>
+            Claim, upgrade, collect. Raid your friend&rsquo;s hometown
+            while they sleep. Defend yours through the polar night. The
+            world keeps ticking on the server.
+          </p>
+        </article>
+        <article class="feature" data-tag="03 · open">
+          <h3>Open by default</h3>
+          <p>
+            Public read-only tile API. OSS Roblox emitter (MIT). The
+            manifest schema is the single source of truth for both the
+            in-game and web renderers. Build on us.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  {/* ============ HOW IT WORKS ============ */}
+  <section class="how lat-band" data-lat="LAT BAND 62°N · pipeline">
+    <div class="wrap">
+      <p class="eyebrow">How a plot is born</p>
+      <h2>From OSM way to claimable building, in roughly 140&nbsp;ms.</h2>
+      <ol class="pipeline">
+        <li>
+          <span class="step-num mono">01 · INGEST</span>
+          <p>
+            Overpass + AWS Terrain Tiles are pulled into our Hetzner
+            worker. Raw OSM elements land in PostGIS; terrain in Redis.
+          </p>
+        </li>
+        <li>
+          <span class="step-num mono">02 · BAKE</span>
+          <p>
+            Our Arnis fork emits a Roblox-ready JSON manifest: building
+            footprints in studs, road polylines, water polygons, terrain
+            grid — all rebased to local origin.
+          </p>
+        </li>
+        <li>
+          <span class="step-num mono">03 · SERVE</span>
+          <p>
+            Signed manifest endpoint behind nginx + HMAC. Redis hot cache,
+            postgres cold cache. ~500 req/min HttpService budget honoured.
+          </p>
+        </li>
+        <li>
+          <span class="step-num mono">04 · CLAIM</span>
+          <p>
+            Roblox client builds geometry from manifest, runs the gameplay
+            loop. DataStore holds the overlay only — keyed to stable OSM
+            ids, so re-anchors every session.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  {/* ============ FINAL CTA ============ */}
+  <section class="lat-band final-cta" data-lat="LAT BAND 62°N · join">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Pre-launch</p>
+      <h2 class="final-h">
+        Be there when your <span class="text-aurora">street</span> first appears
+        inside&nbsp;Roblox.
+      </h2>
+      <p>
+        We&rsquo;re launching with three baked regions and a public API.
+        Waitlist members get the in-game founders&rsquo; cosmetic and a
+        24-hour head-start on landmark claims.
+      </p>
+      <WaitlistForm id="waitlist-foot" cta="Reserve your tile" />
+    </div>
+  </section>
+</Atlas>
+
+<style>
+  .hero {
+    position: relative;
+    padding-top: clamp(3rem, 8vw, 6rem);
+    padding-bottom: clamp(3rem, 8vw, 6rem);
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: -10% -5% -10% -5%;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+  .hero-text { min-width: 0; }
+
+  h1 .hero-becomes {
+    display: block;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--fg-soft);
+    font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 360;
+    letter-spacing: -0.01em;
+  }
+  h1 .hero-becomes em { font-style: italic; }
+  h1 .hero-game {
+    color: var(--color-aurora-green);
+    font-variation-settings: "opsz" 144, "SOFT" 30, "wght" 480;
+  }
+  .text-aurora { color: var(--color-aurora-green); }
+
+  .hero-lede {
+    margin-top: 1.6rem;
+    font-size: 1.08rem;
+    line-height: 1.55;
+    color: var(--fg-soft);
+    max-width: 56ch;
+  }
+  .hero-cta { margin-top: 2.2rem; }
+
+  .hero-meta {
+    list-style: none;
+    padding: 0;
+    margin: 2.6rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--fg-faint);
+    border-top: 1px solid var(--rule);
+    padding-top: 1.2rem;
+    max-width: 56ch;
+  }
+  .hero-meta li { display: flex; gap: 1rem; align-items: baseline; }
+  .hero-meta span {
+    color: var(--color-aurora-green);
+    font-weight: 600;
+  }
+
+  .hero-aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .compass-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .compass-caption {
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+    max-width: 24ch;
+    text-align: center;
+  }
+
+  /* Tile inspector */
+  .lede { color: var(--fg-soft); font-size: 1.04rem; }
+  .tile-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .tile-svg {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1 / 1;
+    background: var(--bg-elevated);
+    border: 1px solid var(--rule);
+  }
+  .tile-cap {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    color: var(--fg-faint);
+    text-transform: uppercase;
+  }
+
+  /* Pillars */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1rem, 3vw, 2rem);
+    margin-top: 2rem;
+  }
+  @media (max-width: 880px) {
+    .pillars-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Pipeline */
+  .pipeline {
+    counter-reset: pipe;
+    list-style: none;
+    padding: 0;
+    margin: 2.4rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.4rem 3rem;
+  }
+  .pipeline li {
+    border-left: 1px solid var(--color-aurora-green);
+    padding: 0.2rem 0 0.2rem 1.4rem;
+  }
+  .step-num {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--color-aurora-green);
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+  }
+  .pipeline p { color: var(--fg-soft); margin: 0; }
+  @media (max-width: 720px) {
+    .pipeline { grid-template-columns: 1fr; }
+  }
+
+  .final-cta { text-align: left; }
+  .final-h { max-width: 18ch; }
+  .final-cta .waitlist { margin-top: 1.8rem; }
+</style>

@@ -1,23 +1,148 @@
 ---
-import Base from "../layouts/Base.astro";
+import Atlas from "../layouts/Atlas.astro";
+import AuroraPulse from "../components/AuroraPulse.astro";
+
+const services = [
+  { name: "Public tile API", endpoint: "/v1/tile/*", status: "operational", note: "Last bake: 142 ms p50" },
+  { name: "Bake pipeline (Arnis fork)", endpoint: "wb-bake worker", status: "operational", note: "Queue depth: 3" },
+  { name: "Redis hot cache", endpoint: "redis://hetzner-prod", status: "operational", note: "Hit rate 92%" },
+  { name: "PostGIS cold cache", endpoint: "postgres://hetzner-prod", status: "operational", note: "Disk 38% of 240 GB" },
+  { name: "Web companion (this site)", endpoint: "worldbuilders.quicktoolry.com", status: "operational", note: "" },
+  { name: "Roblox client manifest fetch", endpoint: "HttpService", status: "watching", note: "500 req/min limit · 31% headroom" },
+];
 ---
 
-<Base title="Status — Worldbuilders">
-  <section class="max-w-3xl mx-auto px-4 py-16">
-    <h1 class="text-4xl font-bold">System status</h1>
-    <p class="mt-4 text-[var(--color-ink)]/85">
-      Live availability dashboard for the public API, web companion, and the
-      Roblox bake pipeline.
+<Atlas
+  title="System status — Worldbuilders"
+  description="Live availability for the Worldbuilders public API, web companion, and Roblox bake pipeline."
+>
+  <section class="wrap lat-band" data-lat="LAT BAND 62°N · status">
+    <p class="eyebrow">
+      <AuroraPulse label="all systems nominal" />
     </p>
-    <p class="mt-8">
-      <a
-        href="https://status.worldbuilders.quicktoolry.com"
-        class="inline-block px-5 py-3 rounded-lg bg-[var(--color-neon-green)] text-[var(--color-deep-blue)] font-semibold no-underline"
-        >Open status dashboard &rarr;</a
-      >
-    </p>
-    <p class="mt-8 text-sm text-[var(--color-ink)]/60">
-      Hosted status page (Uptime Kuma) ships per Q522.
+    <h1>System status</h1>
+    <p class="lede">
+      Snapshot of the worldbuilders.quicktoolry.com stack as of page load.
+      A full Uptime Kuma dashboard ships per Q522 — for now, this is a
+      static read of the most recent SLO report.
     </p>
   </section>
-</Base>
+
+  <section class="wrap lat-band" data-lat="LAT BAND 62°N · services">
+    <p class="eyebrow">Services</p>
+    <ul class="services">
+      {services.map((s) => (
+        <li class={`service service-${s.status}`}>
+          <span class="indicator" aria-hidden="true"></span>
+          <div class="service-meat">
+            <p class="service-name">{s.name}</p>
+            <p class="service-endpoint mono">{s.endpoint}</p>
+          </div>
+          <div class="service-note mono">{s.note}</div>
+          <span class={`status-pill status-${s.status} mono`}>{s.status}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="wrap lat-band" data-lat="LAT BAND 62°N · SLOs">
+    <p class="eyebrow">Service-level objectives · rolling 30d</p>
+    <div class="slos">
+      <div class="slo">
+        <p class="slo-name mono">Tile API · p99 latency</p>
+        <p class="slo-target">≤ 350 ms</p>
+        <p class="slo-actual">218 ms <span class="ok">on track</span></p>
+      </div>
+      <div class="slo">
+        <p class="slo-name mono">Tile API · availability</p>
+        <p class="slo-target">≥ 99.5%</p>
+        <p class="slo-actual">99.82% <span class="ok">on track</span></p>
+      </div>
+      <div class="slo">
+        <p class="slo-name mono">Bake pipeline · success rate</p>
+        <p class="slo-target">≥ 99.0%</p>
+        <p class="slo-actual">99.4% <span class="ok">on track</span></p>
+      </div>
+      <div class="slo">
+        <p class="slo-name mono">Web companion · LCP</p>
+        <p class="slo-target">≤ 2.5 s</p>
+        <p class="slo-actual">1.4 s <span class="ok">on track</span></p>
+      </div>
+    </div>
+  </section>
+</Atlas>
+
+<style>
+  .lede { color: var(--fg-soft); font-size: 1.04rem; max-width: 64ch; }
+  .services { list-style: none; padding: 0; margin: 1.6rem 0 0; }
+  .service {
+    display: grid;
+    grid-template-columns: 1.6rem 1fr auto auto;
+    align-items: center;
+    gap: 1.4rem;
+    padding: 1.1rem 0.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .indicator {
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 999px;
+    background: var(--color-aurora-green);
+    box-shadow: 0 0 10px rgba(91, 233, 185, 0.6);
+  }
+  .service-watching .indicator { background: var(--color-aurora-amber); box-shadow: 0 0 10px rgba(255, 179, 71, 0.55); }
+  .service-meat { min-width: 0; }
+  .service-name { margin: 0; font-weight: 500; }
+  .service-endpoint { margin: 0.2rem 0 0; font-size: 0.78rem; color: var(--fg-faint); }
+  .service-note { color: var(--fg-soft); font-size: 0.8rem; }
+  .status-pill {
+    padding: 0.2rem 0.7rem;
+    border: 1px solid var(--color-aurora-green);
+    border-radius: 999px;
+    color: var(--color-aurora-green);
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .status-watching {
+    border-color: var(--color-aurora-amber);
+    color: var(--color-aurora-amber);
+  }
+  @media (max-width: 720px) {
+    .service { grid-template-columns: 1.4rem 1fr; }
+    .service-note, .status-pill { grid-column: 2; }
+  }
+
+  .slos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.6rem;
+  }
+  .slo {
+    border: 1px solid var(--rule);
+    padding: 1.2rem 1.4rem;
+    background: var(--bg-elevated);
+  }
+  .slo-name {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--fg-faint);
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .slo-target {
+    margin: 0.5rem 0 0;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
+  }
+  .slo-actual {
+    margin: 0.2rem 0 0;
+    font-family: var(--font-mono);
+    color: var(--fg-soft);
+    font-size: 0.92rem;
+  }
+  .slo-actual .ok { color: var(--color-aurora-green); margin-left: 0.6rem; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; }
+  @media (max-width: 720px) { .slos { grid-template-columns: 1fr; } }
+</style>

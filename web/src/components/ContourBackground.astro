@@ -1,0 +1,128 @@
+---
+// Stylised cartographic contour lines — abstracted from a real OSM tile
+// (Ålesund / Aksla area, manifest 16-33887-18095) for inspiration only.
+// Renders as a decorative SVG that draws in on page load via stroke-dashoffset.
+export interface Props {
+  /** Opacity of the contour fill (default 0.16 on dark, ~0.22 on light) */
+  opacity?: number;
+  /** Hex/var stroke color; default uses --map-line */
+  stroke?: string;
+  className?: string;
+}
+const { opacity = 0.18, stroke = "var(--map-line)", className = "" } = Astro.props;
+---
+
+<svg
+  class={`contour ${className}`}
+  viewBox="0 0 1200 800"
+  preserveAspectRatio="xMidYMid slice"
+  aria-hidden="true"
+  style={`opacity:${opacity};`}
+>
+  <defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="7" />
+      <feDisplacementMap in="SourceGraphic" scale="6" />
+    </filter>
+  </defs>
+
+  <g fill="none" stroke={stroke} stroke-width="1" filter="url(#rough)">
+    {/* Concentric, irregular contour rings centred on a topographic peak. */}
+    <path
+      style="--dash: 2400; --delay: 200ms;"
+      d="M 720 380
+         C 920 360, 1080 460, 1060 560
+         S 800 700, 620 670
+         S 360 600, 380 480
+         S 540 360, 720 380 Z"
+      stroke-width="1.4"
+    />
+    <path
+      style="--dash: 2200; --delay: 400ms;"
+      d="M 720 380
+         C 880 380, 1000 460, 980 540
+         S 800 650, 640 630
+         S 420 580, 440 480
+         S 580 400, 720 380 Z"
+    />
+    <path
+      style="--dash: 2000; --delay: 600ms;"
+      d="M 720 380
+         C 840 400, 920 460, 900 520
+         S 800 600, 670 590
+         S 480 560, 500 490
+         S 620 420, 720 380 Z"
+    />
+    <path
+      style="--dash: 1800; --delay: 800ms;"
+      d="M 720 380
+         C 800 410, 850 460, 830 510
+         S 780 565, 690 555
+         S 540 540, 560 495
+         S 660 430, 720 380 Z"
+    />
+    <path
+      style="--dash: 1500; --delay: 1000ms;"
+      d="M 720 390
+         C 770 420, 800 460, 780 500
+         S 750 540, 690 535
+         S 600 525, 620 500
+         S 690 450, 720 390 Z"
+    />
+
+    {/* A second peak — asymmetric, off to the upper-left. */}
+    <path
+      style="--dash: 1600; --delay: 700ms;"
+      d="M 240 220
+         C 360 200, 440 260, 420 320
+         S 280 380, 200 360
+         S 120 300, 140 260
+         S 200 220, 240 220 Z"
+    />
+    <path
+      style="--dash: 1400; --delay: 900ms;"
+      d="M 240 230
+         C 340 220, 400 260, 380 310
+         S 280 360, 210 350
+         S 150 310, 170 270
+         S 210 230, 240 230 Z"
+    />
+    <path
+      style="--dash: 1200; --delay: 1100ms;"
+      d="M 240 240
+         C 320 240, 360 270, 340 305
+         S 280 340, 220 335
+         S 180 305, 200 280
+         S 220 240, 240 240 Z"
+    />
+
+    {/* A meandering coastline running across the lower-third — a fjord edge. */}
+    <path
+      style="--dash: 2600; --delay: 500ms;"
+      d="M 0 740 C 120 720, 180 760, 280 745
+         S 420 700, 540 720
+         S 660 760, 780 745
+         S 920 705, 1050 730
+         S 1200 760, 1200 740"
+      stroke-width="1.4"
+    />
+    <path
+      style="--dash: 2600; --delay: 700ms;"
+      d="M 0 770 C 120 750, 200 790, 320 770
+         S 460 730, 600 750
+         S 720 790, 860 770
+         S 1000 735, 1200 770"
+      opacity="0.55"
+    />
+  </g>
+</svg>
+
+<style>
+  .contour {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+</style>

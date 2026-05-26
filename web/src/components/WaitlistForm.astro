@@ -1,0 +1,62 @@
+---
+// WaitlistForm — primary CTA / email capture.
+export interface Props {
+  id?: string;
+  placeholder?: string;
+  cta?: string;
+}
+const {
+  id = "waitlist",
+  placeholder = "you@somewhere.earth",
+  cta = "Claim your hometown",
+} = Astro.props;
+---
+
+<form
+  id={id}
+  action="/api/waitlist"
+  method="post"
+  class="waitlist"
+  aria-label="Join the Worldbuilders waitlist"
+>
+  <label for={`${id}-email`} class="sr-only">Email address</label>
+  <input
+    id={`${id}-email`}
+    name="email"
+    type="email"
+    required
+    autocomplete="email"
+    placeholder={placeholder}
+  />
+  <button type="submit" class="btn-aurora">
+    {cta}
+    <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+      <path d="M2 7 H11 M7 3 L11 7 L7 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+</form>
+<p class="waitlist-fineprint">
+  One email at launch · no spam, no resale · unsubscribe in one click
+</p>
+
+<style>
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .waitlist-fineprint {
+    margin-top: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--fg-faint);
+    text-transform: uppercase;
+  }
+</style>

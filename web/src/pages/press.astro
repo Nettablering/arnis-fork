@@ -1,17 +1,157 @@
 ---
-import Base from "../layouts/Base.astro";
+import Atlas from "../layouts/Atlas.astro";
+import CompassRose from "../components/CompassRose.astro";
 ---
 
-<Base title="Press kit — Worldbuilders">
-  <section class="max-w-3xl mx-auto px-4 py-16">
-    <h1 class="text-4xl font-bold">Press kit</h1>
-    <p class="mt-4 text-[var(--color-ink)]/85">
-      Logos, screenshots, factsheet, founder bios and review keys land here
-      ahead of launch. For pre-launch press enquiries, email
-      <a href="mailto:press@worldbuilders.app">press@worldbuilders.app</a>.
-    </p>
-    <p class="mt-8 text-sm text-[var(--color-ink)]/60">
-      Full kit ships per Q341 / Q512.
+<Atlas
+  title="Press kit — Worldbuilders"
+  description="Logos, screenshots, factsheet, founder bios and review keys for the Worldbuilders pre-launch."
+>
+  <section class="wrap press-hero lat-band" data-lat="LAT BAND 62°N · press">
+    <div class="atlas-grid">
+      <div>
+        <p class="eyebrow">For journalists, creators, and reviewers</p>
+        <h1>Press&nbsp;kit</h1>
+        <p class="lede">
+          Pre-launch materials for Worldbuilders — the geography-as-game
+          project building a real-world idle empire on top of OpenStreetMap
+          and Roblox. Embargoed assets, founder commentary and review keys
+          land below as we approach T-0.
+        </p>
+        <p class="press-contact mono">
+          press@worldbuilders.app · response within one UK working day
+        </p>
+      </div>
+      <div class="press-aside">
+        <CompassRose size={180} delay={300} />
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap lat-band" data-lat="LAT BAND 62°N · factsheet">
+    <p class="eyebrow">Factsheet</p>
+    <dl class="factsheet">
+      <div><dt>Studio</dt><dd>Klokk Nettablering AS · Ålesund, Norway</dd></div>
+      <div><dt>Genre</dt><dd>Idle empire / async social</dd></div>
+      <div><dt>Platform</dt><dd>Roblox · iOS · Android · PC · Xbox</dd></div>
+      <div><dt>Engine</dt><dd>Roblox client + Rust bake (Arnis fork)</dd></div>
+      <div><dt>Data</dt><dd>OpenStreetMap (ODbL) · AWS Terrain Tiles</dd></div>
+      <div><dt>Launch window</dt><dd>Soft launch Q3 2026 · global T-0 TBA</dd></div>
+      <div><dt>Pricing</dt><dd>Free-to-play · cosmetic-only monetisation</dd></div>
+      <div><dt>Languages</dt><dd>EN at launch · NO, DE, FR, PT-BR shortly after</dd></div>
+    </dl>
+  </section>
+
+  <section class="wrap lat-band" data-lat="LAT BAND 62°N · assets">
+    <p class="eyebrow">Assets · embargoed</p>
+    <ul class="assets">
+      <li class="asset">
+        <span class="mono asset-tag">PNG · 2400×1260</span>
+        <p>Hero key-art — Aksla peak overlaid with aurora-green claim ring</p>
+        <p class="asset-status mono">Ships per Q341</p>
+      </li>
+      <li class="asset">
+        <span class="mono asset-tag">SVG</span>
+        <p>Wordmark + secondary lockups (light + dark)</p>
+        <p class="asset-status mono">Ships per Q257</p>
+      </li>
+      <li class="asset">
+        <span class="mono asset-tag">MP4 · 1080p60</span>
+        <p>90-second pipeline trailer (OSM way to claimed Roblox plot)</p>
+        <p class="asset-status mono">Ships per Q250</p>
+      </li>
+      <li class="asset">
+        <span class="mono asset-tag">PDF</span>
+        <p>Founder bios + Klokk Nettablering company sheet</p>
+        <p class="asset-status mono">Ships per Q512</p>
+      </li>
+    </ul>
+    <p class="press-note mono">
+      Review keys (24-hour head-start on the waitlist build) available on
+      request — email <a href="mailto:press@worldbuilders.app">press@worldbuilders.app</a>
+      with your outlet and intended publish window.
     </p>
   </section>
-</Base>
+</Atlas>
+
+<style>
+  .press-aside { display: flex; justify-content: center; align-items: center; }
+  .press-contact {
+    margin-top: 1.6rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    color: var(--color-aurora-green);
+    text-transform: uppercase;
+  }
+  .lede { color: var(--fg-soft); font-size: 1.04rem; }
+
+  .factsheet {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 3rem;
+    margin: 1.6rem 0 0;
+  }
+  .factsheet > div {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .factsheet dt {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+    align-self: start;
+  }
+  .factsheet dd {
+    margin: 0;
+    color: var(--fg);
+  }
+  @media (max-width: 720px) {
+    .factsheet { grid-template-columns: 1fr; }
+    .factsheet > div { grid-template-columns: 1fr; gap: 0.2rem; }
+  }
+
+  .assets {
+    list-style: none;
+    padding: 0;
+    margin: 1.6rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.4rem;
+  }
+  .asset {
+    border: 1px solid var(--rule);
+    padding: 1.4rem;
+    background: var(--bg-elevated);
+  }
+  .asset-tag {
+    display: inline-block;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    color: var(--color-aurora-violet);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .asset-status {
+    color: var(--fg-faint);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+  }
+  .press-note {
+    margin-top: 2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--fg-soft);
+    border-top: 1px solid var(--rule);
+    padding-top: 1.6rem;
+  }
+  @media (max-width: 720px) {
+    .assets { grid-template-columns: 1fr; }
+  }
+</style>

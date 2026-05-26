@@ -1,0 +1,96 @@
+---
+// Asymmetric compass rose. Spins in on load (honours prefers-reduced-motion via CSS).
+export interface Props {
+  size?: number;
+  /** ms delay before the spin-in plays */
+  delay?: number;
+  /** decorative-only? add aria-hidden */
+  decorative?: boolean;
+}
+const { size = 200, delay = 200, decorative = true } = Astro.props;
+const half = size / 2;
+const r1 = half - 6;
+const r2 = half - 22;
+const r3 = half - 42;
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox={`0 0 ${size} ${size}`}
+  data-anim="spin-in"
+  style={`--delay: ${delay}ms;`}
+  role={decorative ? "presentation" : "img"}
+  aria-hidden={decorative ? "true" : undefined}
+  class="compass-rose"
+>
+  <defs>
+    <linearGradient id="cr-needle" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="var(--color-aurora-green)" />
+      <stop offset="100%" stop-color="var(--color-aurora-violet)" />
+    </linearGradient>
+  </defs>
+
+  {/* Outer ring */}
+  <circle cx={half} cy={half} r={r1} fill="none" stroke="var(--map-line)" stroke-width="1" opacity="0.6" />
+  {/* Inner faint ring */}
+  <circle cx={half} cy={half} r={r2} fill="none" stroke="var(--map-line)" stroke-width="0.6" opacity="0.35" stroke-dasharray="2 4" />
+  {/* Cardinal ticks every 22.5° */}
+  {Array.from({ length: 16 }).map((_, i) => {
+    const angle = (i * 22.5 * Math.PI) / 180;
+    const long = i % 4 === 0;
+    const inner = long ? r2 : r1 - 4;
+    const outer = r1;
+    const x1 = half + Math.sin(angle) * inner;
+    const y1 = half - Math.cos(angle) * inner;
+    const x2 = half + Math.sin(angle) * outer;
+    const y2 = half - Math.cos(angle) * outer;
+    return (
+      <line
+        x1={x1}
+        y1={y1}
+        x2={x2}
+        y2={y2}
+        stroke="var(--map-line)"
+        stroke-width={long ? 1.2 : 0.6}
+        opacity={long ? 0.85 : 0.4}
+      />
+    );
+  })}
+
+  {/* Asymmetric needle: long north arm in aurora gradient, short south arm in ink */}
+  <polygon
+    points={`${half},${half - r2 + 6} ${half - 8},${half} ${half},${half + r3 - 4} ${half + 8},${half}`}
+    fill="url(#cr-needle)"
+    opacity="0.92"
+  />
+  <polygon
+    points={`${half},${half - r2 + 6} ${half - 4},${half} ${half},${half - 8} ${half + 4},${half}`}
+    fill="var(--color-aurora-green)"
+  />
+
+  {/* Cardinal letters */}
+  <g
+    font-family="JetBrains Mono, monospace"
+    font-size={Math.max(10, size * 0.06)}
+    fill="var(--fg)"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    letter-spacing="0.15em"
+  >
+    <text x={half} y={half - r1 + 14}>N</text>
+    <text x={half + r1 - 12} y={half}>E</text>
+    <text x={half} y={half + r1 - 12}>S</text>
+    <text x={half - r1 + 12} y={half}>W</text>
+  </g>
+
+  {/* Pivot */}
+  <circle cx={half} cy={half} r="3" fill="var(--color-aurora-green)" />
+  <circle cx={half} cy={half} r="6" fill="none" stroke="var(--color-aurora-green)" stroke-width="0.6" opacity="0.6" />
+</svg>
+
+<style>
+  .compass-rose {
+    display: block;
+  }
+</style>

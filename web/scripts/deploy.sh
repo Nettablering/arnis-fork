@@ -32,7 +32,9 @@ mkdir -p "$RELEASE_DIR"
 echo "[deploy] rsync dist/ -> $RELEASE_DIR"
 rsync -a --delete "$PROJECT_ROOT/dist/" "$RELEASE_DIR/"
 
-ln -sfn "$RELEASE_DIR" "$CURRENT_LINK.new"
+# Use a RELATIVE symlink target so the chain resolves identically from inside
+# the shared-nginx container, which bind-mounts $DEPLOY_ROOT to /srv/worldbuilders-web.
+ln -sfn "releases/$TS" "$CURRENT_LINK.new"
 mv -Tf "$CURRENT_LINK.new" "$CURRENT_LINK"
 echo "[deploy] current -> $(readlink "$CURRENT_LINK")"
 

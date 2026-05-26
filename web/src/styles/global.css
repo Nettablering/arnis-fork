@@ -1,54 +1,545 @@
 @import "tailwindcss";
 
-/*
- * Worldbuilders brand tokens (Q258 TBD — defaults locked here per Q325).
- *   neon-green  #39FF8A  — primary CTA, accent (energy, OSM "alive")
- *   deep-blue   #0B1530  — page background, depth
- *   ink         #E6ECFF  — body text on deep-blue
- *   slate       #1B2547  — surfaces / cards
- *   amber       #FFC857  — secondary highlight
+/* ============================================================================
+ * Worldbuilders — Aurora Atlas design system
+ * Binding: see /docs/design-system.md and DECISIONS.md
  *
- * Inter is the body type; system-ui fallback for FOUT.
- */
+ * Default mode: DARK (ink). Marketing surfaces lean game-y per the
+ * Aurora Atlas binding decision (DECISIONS.md, 2026-05-26).
+ * Light surfaces opt-in via [data-theme="paper"] on <html>.
+ * ============================================================================ */
+
 @theme {
-  --color-neon-green: #39ff8a;
-  --color-neon-green-600: #1de070;
-  --color-deep-blue: #0b1530;
-  --color-deep-blue-700: #060c1f;
-  --color-slate-surface: #1b2547;
-  --color-ink: #e6ecff;
-  --color-amber: #ffc857;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  /* ---- Polar Atlas — colour tokens ---- */
+  --color-paper: #f3eee5;
+  --color-ink: #0d0f14;
+  --color-ink-soft: #3a4053;
+  --color-rule: #c9c0ae;
+  --color-map-line: #7b8190;
+
+  --color-ink-bg: #0d0f14;
+  --color-ink-surface: #161b26;
+  --color-ink-elevated: #1f2638;
+  --color-paper-on-ink: #eae3d2;
+  --color-rule-on-ink: #2a3142;
+
+  --color-aurora-green: #5be9b9;
+  --color-aurora-violet: #9d6fff;
+  --color-aurora-amber: #ffb347;
+
+  /* ---- Typography ---- */
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 
+/* ============================================================================
+ * Theme-aware semantic surface tokens
+ * Default = ink (dark). [data-theme="paper"] flips for light pages.
+ * ============================================================================ */
+:root {
+  --bg: var(--color-ink-bg);
+  --bg-elevated: var(--color-ink-surface);
+  --bg-popped: var(--color-ink-elevated);
+  --fg: var(--color-paper-on-ink);
+  --fg-soft: rgba(234, 227, 210, 0.78);
+  --fg-faint: rgba(234, 227, 210, 0.62);
+  --rule: var(--color-rule-on-ink);
+  --map-line: var(--color-map-line);
+  --grain-opacity: 0.06;
+  color-scheme: dark;
+}
+
+:root[data-theme="paper"] {
+  --bg: var(--color-paper);
+  --bg-elevated: #ece5d4;
+  --bg-popped: #e1d8c2;
+  --fg: var(--color-ink);
+  --fg-soft: rgba(13, 15, 20, 0.78);
+  --fg-faint: rgba(13, 15, 20, 0.62);
+  --rule: var(--color-rule);
+  --map-line: var(--color-map-line);
+  --grain-opacity: 0.035;
+  color-scheme: light;
+}
+
+/* ============================================================================
+ * Self-host-able webfonts via Google Fonts CDN (per design system binding).
+ * Variable axes for Fraunces enable optical-size and softness control.
+ * ============================================================================ */
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/fraunces/v32/6NUh8FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/manrope/v15/xn7gYHE41ni1AdIRggexSg.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.woff2") format("woff2");
+}
+
+/* ============================================================================
+ * Base layout + typography
+ * ============================================================================ */
 html,
 body {
-  background: var(--color-deep-blue);
-  color: var(--color-ink);
+  background: var(--bg);
+  color: var(--fg);
   font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Default to underlined links so inline anchors are distinguishable without
- * relying on colour alone (WCAG 1.4.1). Nav/CTA links opt out via .no-underline. */
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Paper grain noise — fixed full-page overlay above background, below content.
+ * Lives on html::before so body::before stays free for atlas-frame tick rules. */
+html::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.92  0 0 0 0 0.89  0 0 0 0 0.82  0 0 0 1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 480;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+  letter-spacing: -0.012em;
+  color: var(--fg);
+}
+
+h1 {
+  font-size: clamp(2.6rem, 6.4vw, 5.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.022em;
+  font-variation-settings: "opsz" 144, "SOFT" 50, "wght" 420;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.12;
+}
+
+p {
+  line-height: 1.55;
+  max-width: 62ch;
+}
+
+code, pre, .mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "calt", "zero";
+  font-size: 0.9em;
+}
+
+/* Cartographic small-caps eyebrow — used in section labels. */
+.eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  color: var(--fg-soft);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 1.6rem;
+  height: 1px;
+  background: var(--map-line);
+}
+
+/* ---- Links: cartographic underline (1px, ink-coloured), aurora on hover ---- */
 a {
-  color: var(--color-neon-green);
+  color: inherit;
   text-decoration: underline;
-  text-underline-offset: 2px;
   text-decoration-thickness: 1px;
+  text-decoration-color: var(--map-line);
+  text-underline-offset: 4px;
+  transition: color 200ms ease, text-decoration-color 200ms ease;
+}
+a:hover {
+  color: var(--color-aurora-green);
+  text-decoration-color: var(--color-aurora-green);
 }
 a.no-underline,
 nav a,
-header a {
+header a,
+footer a {
   text-decoration: none;
 }
-a:hover {
-  color: var(--color-neon-green-600);
+nav a:hover,
+header a:hover,
+footer a:hover {
+  color: var(--color-aurora-green);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-neon-green);
-  outline-offset: 2px;
+  outline: 2px solid var(--color-aurora-green);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ============================================================================
+ * Primary CTA — aurora-green pulse halo on hover
+ * ============================================================================ */
+.btn-aurora {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.6rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  color: var(--color-ink);
+  background: var(--color-aurora-green);
+  border: 1px solid var(--color-aurora-green);
+  border-radius: 999px;
+  text-decoration: none;
+  position: relative;
+  transition: transform 200ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 280ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  box-shadow:
+    0 0 0 0 rgba(91, 233, 185, 0),
+    0 1px 0 rgba(13, 15, 20, 0.4);
+}
+.btn-aurora:hover,
+.btn-aurora:focus-visible {
+  transform: translateY(-1px);
+  color: var(--color-ink);
+  box-shadow:
+    0 0 0 6px rgba(91, 233, 185, 0.18),
+    0 0 32px 4px rgba(91, 233, 185, 0.35);
+}
+.btn-aurora:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.3rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  color: var(--fg);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: border-color 200ms ease, color 200ms ease;
+}
+.btn-ghost:hover {
+  color: var(--color-aurora-green);
+  border-color: var(--color-aurora-green);
+}
+
+/* ============================================================================
+ * Cartographic page frame
+ * Latitude/longitude tick marks rendered as edge decorations on Atlas layout.
+ * ============================================================================ */
+.atlas-frame {
+  position: relative;
+  min-height: 100vh;
+}
+
+.atlas-frame::before,
+.atlas-frame::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: 2;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--rule) 0 1px,
+    transparent 1px 64px
+  );
+  height: 10px;
+  left: 0;
+  right: 0;
+  opacity: 0.5;
+}
+.atlas-frame::before { top: 0; }
+.atlas-frame::after { bottom: 0; transform: scaleY(-1); }
+
+.atlas-side-ticks {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  pointer-events: none;
+  z-index: 2;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--rule) 0 1px,
+    transparent 1px 64px
+  );
+  opacity: 0.5;
+}
+.atlas-side-ticks.left { left: 0; }
+.atlas-side-ticks.right { right: 0; transform: scaleX(-1); }
+
+/* Coordinate readouts at the four corners — cartographic legitimacy. */
+.atlas-coord {
+  position: fixed;
+  z-index: 3;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  color: var(--fg-faint);
+  padding: 0.4rem 0.8rem;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+.atlas-coord.tl { top: 14px; left: 16px; }
+.atlas-coord.tr { top: 14px; right: 16px; }
+.atlas-coord.bl { bottom: 14px; left: 16px; }
+.atlas-coord.br { bottom: 14px; right: 16px; }
+
+@media (max-width: 640px) {
+  .atlas-coord.tr, .atlas-coord.bl { display: none; }
+  .atlas-side-ticks { display: none; }
+}
+
+/* ============================================================================
+ * Cartographic content grid — asymmetric, not 12-col bootstrap
+ * Used by hero + landmark sections. 7/5 split that breaks on small screens.
+ * ============================================================================ */
+.atlas-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+}
+@media (max-width: 880px) {
+  .atlas-grid { grid-template-columns: 1fr; }
+}
+
+.atlas-rule {
+  height: 1px;
+  background: var(--rule);
+  border: 0;
+  margin: 4rem 0;
+}
+
+/* Latitude band — vertical rhythm helper. */
+.lat-band {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: clamp(3rem, 8vw, 6rem) 0;
+  position: relative;
+}
+.lat-band::before {
+  content: attr(data-lat);
+  position: absolute;
+  top: -0.7em;
+  left: 0;
+  background: var(--bg);
+  padding-right: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--fg-faint);
+  text-transform: uppercase;
+}
+
+/* ============================================================================
+ * Cartographic page-load reveal — contour draw-in, content fade-up
+ * ============================================================================ */
+@keyframes wb-draw {
+  from { stroke-dashoffset: var(--dash, 1200); opacity: 0; }
+  to { stroke-dashoffset: 0; opacity: 1; }
+}
+@keyframes wb-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes wb-spin-in {
+  from { opacity: 0; transform: rotate(-180deg) scale(0.4); }
+  to { opacity: 1; transform: rotate(0) scale(1); }
+}
+@keyframes wb-pulse-aurora {
+  0%   { box-shadow: 0 0 0 0 rgba(91, 233, 185, 0.65), 0 0 0 0 rgba(91, 233, 185, 0.0); }
+  60%  { box-shadow: 0 0 0 18px rgba(91, 233, 185, 0.0), 0 0 60px 8px rgba(91, 233, 185, 0.4); }
+  100% { box-shadow: 0 0 0 0 rgba(91, 233, 185, 0.0), 0 0 0 0 rgba(91, 233, 185, 0.0); }
+}
+@keyframes wb-needle-spin {
+  to { transform: rotate(360deg); }
+}
+
+[data-anim="fade-up"] {
+  animation: wb-fade-up 900ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+[data-anim="spin-in"] {
+  animation: wb-spin-in 1400ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  transform-origin: 50% 50%;
+}
+.contour path,
+.contour polyline {
+  stroke-dasharray: var(--dash, 1200);
+  animation: wb-draw 2200ms ease-out both;
+  animation-delay: var(--delay, 300ms);
+}
+
+/* Compass-needle spinner — replaces generic loaders. */
+.compass-spinner {
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  animation: wb-needle-spin 1.6s linear infinite;
+}
+
+/* Aurora-pulse — the one memorable moment. */
+.aurora-pulse {
+  display: inline-block;
+  animation: wb-pulse-aurora 1.8s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+  .contour path,
+  .contour polyline {
+    stroke-dashoffset: 0 !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ============================================================================
+ * Waitlist form
+ * ============================================================================ */
+.waitlist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.4rem 0.4rem 0.4rem 1.2rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  max-width: 520px;
+}
+.waitlist input[type="email"] {
+  flex: 1;
+  min-width: 200px;
+  background: transparent;
+  border: 0;
+  color: var(--fg);
+  font: inherit;
+  padding: 0.7rem 0.4rem;
+  outline: none;
+}
+.waitlist input[type="email"]::placeholder {
+  color: var(--fg-faint);
+}
+.waitlist:focus-within {
+  border-color: var(--color-aurora-green);
+  box-shadow: 0 0 0 4px rgba(91, 233, 185, 0.15);
+}
+
+/* ============================================================================
+ * Cartographic "feature card" — replaces generic glassmorphism
+ * One hairline border + small lat tag in the corner.
+ * ============================================================================ */
+.feature {
+  position: relative;
+  padding: 1.8rem 1.6rem 1.6rem;
+  border: 1px solid var(--rule);
+  background: linear-gradient(180deg, transparent 0%, rgba(91, 233, 185, 0.025) 100%);
+}
+.feature::before {
+  content: attr(data-tag);
+  position: absolute;
+  top: -0.6rem;
+  left: 1.4rem;
+  background: var(--bg);
+  padding: 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+}
+.feature h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 0 0 0.6rem;
+  letter-spacing: -0.01em;
+}
+.feature p {
+  color: var(--fg-soft);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+/* Halftone dot pattern utility for emphasis blocks. */
+.halftone {
+  background-image: radial-gradient(circle, var(--map-line) 0.6px, transparent 0.7px);
+  background-size: 8px 8px;
+}
+
+/* Skip-link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 8px;
+  background: var(--color-aurora-green);
+  color: var(--color-ink);
+  padding: 0.5rem 0.9rem;
+  border-radius: 4px;
+  text-decoration: none;
+  z-index: 100;
+}
+.skip-link:focus {
+  top: 8px;
+}
+
+/* Container helper */
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: clamp(1.2rem, 4vw, 3rem);
+  padding-right: clamp(1.2rem, 4vw, 3rem);
+}
+.wrap-narrow {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-left: clamp(1.2rem, 4vw, 3rem);
+  padding-right: clamp(1.2rem, 4vw, 3rem);
 }

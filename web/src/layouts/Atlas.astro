@@ -1,0 +1,164 @@
+---
+import "../styles/global.css";
+import NavAtlas from "../components/NavAtlas.astro";
+
+export interface Props {
+  title: string;
+  description?: string;
+  /** "ink" (dark — default) or "paper" (light). Per DECISIONS.md the launch
+   *  site defaults to dark to lean game-y. */
+  theme?: "ink" | "paper";
+  /** Show the four-corner coordinate readouts. Default true. */
+  coords?: boolean;
+}
+
+const {
+  title,
+  description = "Worldbuilders — your real hometown becomes a game. Built on OpenStreetMap, rendered in Roblox.",
+  theme = "ink",
+  coords = true,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<!doctype html>
+<html lang="en" data-theme={theme}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content={theme === "paper" ? "light" : "dark"} />
+    <meta name="theme-color" content={theme === "paper" ? "#F3EEE5" : "#0D0F14"} />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="canonical" href={canonical} />
+
+    {/* Preconnect to Google Fonts to keep FCP fast even with self-hosted @font-face */}
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body class="atlas-frame">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    {/* Cartographic page frame — tick marks on all four edges + coordinates */}
+    <span class="atlas-side-ticks left" aria-hidden="true"></span>
+    <span class="atlas-side-ticks right" aria-hidden="true"></span>
+    {coords && (
+      <>
+        <span class="atlas-coord tl" aria-hidden="true">N 62°28′ 22.6″</span>
+        <span class="atlas-coord tr" aria-hidden="true">E 6°09′ 28.5″</span>
+        <span class="atlas-coord bl" aria-hidden="true">tile 16 / 33887 / 18095</span>
+        <span class="atlas-coord br" aria-hidden="true">style v1 · {new Date().getUTCFullYear()}</span>
+      </>
+    )}
+
+    <NavAtlas />
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="atlas-footer">
+      <div class="wrap footer-grid">
+        <div class="footer-col">
+          <p class="eyebrow">Worldbuilders</p>
+          <p class="footer-blurb">
+            Your real hometown becomes a game. Open data in,
+            playable geography out.
+          </p>
+        </div>
+        <div class="footer-col">
+          <p class="eyebrow">Surfaces</p>
+          <ul>
+            <li><a href="/developers">Developers</a></li>
+            <li><a href="/blog">Devblog</a></li>
+            <li><a href="/press">Press kit</a></li>
+            <li><a href="/status">System status</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="eyebrow">Open data</p>
+          <p class="footer-blurb">
+            OpenStreetMap data © OpenStreetMap contributors, ODbL.
+            AWS Terrain Tiles. Public read-only API at launch.
+          </p>
+        </div>
+        <div class="footer-col footer-compass" aria-hidden="true">
+          <svg width="110" height="110" viewBox="0 0 110 110">
+            <circle cx="55" cy="55" r="48" fill="none" stroke="var(--map-line)" stroke-width="0.6" opacity="0.6" />
+            <circle cx="55" cy="55" r="38" fill="none" stroke="var(--map-line)" stroke-width="0.4" opacity="0.4" stroke-dasharray="2 4" />
+            <polygon points="55,12 51,55 55,98 59,55" fill="var(--color-aurora-green)" opacity="0.85" />
+            <polygon points="55,12 53,55 55,28 57,55" fill="var(--color-aurora-violet)" />
+            <circle cx="55" cy="55" r="2.5" fill="var(--color-aurora-green)" />
+          </svg>
+        </div>
+      </div>
+      <div class="wrap footer-foot">
+        <p class="mono">© {new Date().getFullYear()} Klokk Nettablering AS · Hetzner Nuremberg</p>
+        <p class="mono">62.4730 N · 6.1496 E · ALT 189 M</p>
+      </div>
+    </footer>
+
+    <style>
+      .atlas-footer {
+        margin-top: clamp(4rem, 10vw, 8rem);
+        padding: 3rem 0 1.5rem;
+        border-top: 1px solid var(--rule);
+        position: relative;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2rem;
+        align-items: start;
+      }
+      .footer-col ul {
+        list-style: none;
+        padding: 0;
+        margin: 0.8rem 0 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        font-family: var(--font-mono);
+        font-size: 0.82rem;
+      }
+      .footer-blurb {
+        margin-top: 0.8rem;
+        color: var(--fg-soft);
+        font-size: 0.92rem;
+        max-width: 32ch;
+      }
+      .footer-compass {
+        justify-self: end;
+        opacity: 0.85;
+      }
+      .footer-foot {
+        margin-top: 3rem;
+        padding-top: 1.4rem;
+        border-top: 1px solid var(--rule);
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.72rem;
+        color: var(--fg-faint);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+      @media (max-width: 880px) {
+        .footer-grid { grid-template-columns: 1fr 1fr; }
+        .footer-compass { grid-column: 1 / -1; justify-self: center; }
+      }
+      @media (max-width: 520px) {
+        .footer-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </body>
+</html>

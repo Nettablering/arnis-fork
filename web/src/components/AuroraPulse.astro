@@ -1,0 +1,41 @@
+---
+// AuroraPulse — the one memorable moment.
+// A circular aurora-green pulse framed by atlas tick marks, intended to wrap
+// either a small "live tile" SVG or a status indicator on pages with a CTA.
+export interface Props {
+  label?: string;
+  size?: number;
+}
+const { label = "live", size = 14 } = Astro.props;
+---
+
+<span class="aurora-pulse-wrap" aria-label={label} role="img">
+  <span class="aurora-pulse" style={`--d:${size}px;`}>
+    <span class="dot" style={`width:${size}px;height:${size}px;`}></span>
+  </span>
+  <span class="aurora-pulse-label">{label}</span>
+</span>
+
+<style>
+  .aurora-pulse-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--fg-soft);
+  }
+  .aurora-pulse {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .dot {
+    background: var(--color-aurora-green);
+    border-radius: 999px;
+    box-shadow: 0 0 12px 2px rgba(91, 233, 185, 0.6);
+  }
+</style>

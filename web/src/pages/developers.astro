@@ -1,24 +1,151 @@
 ---
-import Base from "../layouts/Base.astro";
+import Atlas from "../layouts/Atlas.astro";
 ---
 
-<Base title="Developers — Worldbuilders API">
-  <section class="max-w-3xl mx-auto px-4 py-16">
-    <h1 class="text-4xl font-bold">Build on Worldbuilders</h1>
-    <p class="mt-4 text-[var(--color-ink)]/85">
-      A read-only public API, an OSS Roblox emitter, and a tile-manifest
-      schema that&rsquo;s the single source of truth for both the in-game and
-      web renderers.
-    </p>
-    <h2 class="mt-10 text-xl font-semibold">Coming this round</h2>
-    <ul class="mt-4 space-y-2 list-disc list-inside text-[var(--color-ink)]/85">
-      <li><code>GET /v1/tile/&#123;z&#125;/&#123;x&#125;/&#123;y&#125;</code> — manifest</li>
-      <li><code>GET /v1/leaderboard</code> — top plots, 60s cache</li>
-      <li>OpenAPI 3.1 spec + Postman collection</li>
-      <li>OSS Roblox emitter (MIT)</li>
-    </ul>
-    <p class="mt-8 text-sm text-[var(--color-ink)]/60">
-      Full developer portal ships per Q327.
+<Atlas
+  title="Developers — Worldbuilders public API"
+  description="Public read-only tile manifest API, OSS Roblox emitter, and schema docs for Worldbuilders."
+>
+  <section class="wrap lat-band" data-lat="LAT BAND 62°N · developers">
+    <p class="eyebrow">For builders</p>
+    <h1>Build on <span class="text-aurora">Worldbuilders</span>.</h1>
+    <p class="lede">
+      A read-only public API, an OSS Roblox emitter (MIT), and a manifest
+      schema that&rsquo;s the single source of truth for both the in-game
+      and web renderers. The shape below is what HttpService receives —
+      identical to what the Astro renderer uses to draw mini-tiles.
     </p>
   </section>
-</Base>
+
+  <section class="wrap lat-band" data-lat="LAT BAND 62°N · tile manifest">
+    <p class="eyebrow">GET /v1/tile/&#123;z&#125;/&#123;x&#125;/&#123;y&#125;</p>
+    <h2>The tile manifest</h2>
+    <p>
+      Slippy-map XYZ coordinates in, JSON manifest out. Signed with HMAC,
+      cached at the edge for 60&nbsp;s. Studs are rebased to the tile&rsquo;s
+      local origin; coordinates round-trip via <code>center_wgs84</code>.
+    </p>
+    <pre class="code"><code>{`{
+  "manifest_version": "1.0",
+  "style_version": 1,
+  "tile":  { "z": 16, "x": 33887, "y": 18095 },
+  "stud_scale": 2.0,
+  "center_wgs84": [62.4730, 6.1496],
+  "region_key": "NO_rural_subarctic",
+  "buildings": [
+    {
+      "osm_id": "way/227908624",
+      "footprint_studs": [[483.98, -18.86], ...],
+      "height_studs": 14.5,
+      "kind": "restaurant"
+    }
+  ],
+  "roads":     [...],
+  "water":     [...],
+  "terrain":   { "grid_size": 64, "heights": [...] }
+}`}</code></pre>
+  </section>
+
+  <section class="wrap lat-band" data-lat="LAT BAND 62°N · endpoints">
+    <p class="eyebrow">Endpoints · public · read-only</p>
+    <table class="endpoints">
+      <thead>
+        <tr><th>Method</th><th>Path</th><th>Purpose</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mono">GET</td>
+          <td class="mono">/v1/tile/&#123;z&#125;/&#123;x&#125;/&#123;y&#125;</td>
+          <td>Baked tile manifest</td>
+          <td><span class="status status-live">live</span></td>
+        </tr>
+        <tr>
+          <td class="mono">GET</td>
+          <td class="mono">/v1/leaderboard</td>
+          <td>Top plots · 60&thinsp;s cache</td>
+          <td><span class="status status-soon">Q443</span></td>
+        </tr>
+        <tr>
+          <td class="mono">GET</td>
+          <td class="mono">/v1/openapi.json</td>
+          <td>OpenAPI 3.1 spec</td>
+          <td><span class="status status-soon">Q327</span></td>
+        </tr>
+        <tr>
+          <td class="mono">GET</td>
+          <td class="mono">/v1/region/&#123;key&#125;</td>
+          <td>Region metadata + tiling bbox</td>
+          <td><span class="status status-soon">Q443</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="wrap lat-band" data-lat="LAT BAND 62°N · OSS">
+    <p class="eyebrow">Open source</p>
+    <h2>The Roblox emitter, in the open.</h2>
+    <p>
+      The bake itself is a fork of <code>louis-e/arnis</code> with a new
+      <code>roblox_emitter</code> module. Source goes public the day the
+      Astro renderer hits perf budget. MIT-licensed; PRs welcome.
+    </p>
+    <p>
+      <a href="https://github.com/worldbuilders" class="btn-ghost">github.com/worldbuilders</a>
+    </p>
+  </section>
+</Atlas>
+
+<style>
+  .lede { color: var(--fg-soft); font-size: 1.04rem; max-width: 64ch; }
+  .code {
+    margin: 1.6rem 0 0;
+    padding: 1.4rem 1.6rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--rule);
+    border-left: 2px solid var(--color-aurora-green);
+    overflow-x: auto;
+    font-size: 0.86rem;
+    color: var(--fg);
+  }
+  .code code { font-family: var(--font-mono); color: var(--fg); }
+  .endpoints {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.6rem;
+    font-size: 0.92rem;
+  }
+  .endpoints th, .endpoints td {
+    text-align: left;
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .endpoints th {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fg-faint);
+    font-weight: 500;
+  }
+  .endpoints td.mono { font-size: 0.85rem; }
+  .status {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    border: 1px solid var(--rule);
+  }
+  .status-live {
+    color: var(--color-aurora-green);
+    border-color: var(--color-aurora-green);
+    box-shadow: 0 0 12px rgba(91, 233, 185, 0.25);
+  }
+  .status-soon {
+    color: var(--color-aurora-amber);
+    border-color: var(--color-aurora-amber);
+  }
+  .text-aurora { color: var(--color-aurora-green); }
+</style>
