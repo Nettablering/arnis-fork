@@ -129,3 +129,23 @@ the client must display it visibly in-game.
   the same `x-wb-ts` + `x-wb-sig` HMAC scheme as the public tile endpoint.
 - **`GET /v1/admin/cache/stats`** — Counters (hits per tier, evictions, TTL expirations) +
   the current list of pinned tile-ids.
+
+## Q086 — OSM to PostGIS pipeline (additions)
+
+- **osm2pgsql --flex** — Import pipeline producing the canonical
+  `osm.planet_osm_*` tables. Configured via `backend/osm-postgis-source/sql/wb-flex.lua`.
+  Tables are dropped and re-created on every `osm-import.sh` run; the Q085 GIST/GIN/BRIN
+  indexes are re-applied from `sql/reindex.sql`.
+- **Daily diff** — Incremental OSM update from Geofabrik's per-region updates stream
+  applied via `osm2pgsql-replication`. Driven by
+  `backend/scripts/osm-daily-update.sh`; the slim middle tables live in schema
+  `osm_slim` so they don't clutter the read-side `osm` schema.
+- **No-Overpass-on-hot-path rule** — Bake-service queries PostGIS only via the
+  `OsmSource` trait's `PostGisSource` impl (`backend/osm-postgis-source`). The
+  `OverpassSource` impl stays in the binary only for dev/debug and the quarterly
+  cross-check; never on the bake hot path.
+- **`OsmSource` trait** — Single-method async trait
+  (`fetch_bbox(bbox) -> Vec<OsmElement>`) with two impls (`OverpassSource`,
+  `PostGisSource`). Both feed the same `classify()` function so manifest output is
+  byte-identical regardless of backend (proved by
+  `backend/osm-postgis-source/tests/equivalence.rs`).
