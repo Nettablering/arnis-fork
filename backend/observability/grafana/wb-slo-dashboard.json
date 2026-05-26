@@ -1,0 +1,156 @@
+{
+  "uid": "wb-slo",
+  "title": "Worldbuilders SLOs (Q097)",
+  "tags": ["worldbuilders", "slo"],
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "30s",
+  "time": { "from": "now-6h", "to": "now" },
+  "timepicker": {},
+  "templating": {
+    "list": [
+      {
+        "name": "region",
+        "type": "query",
+        "datasource": { "type": "prometheus", "uid": "prometheus" },
+        "query": "label_values(wb_api_requests_total, region)",
+        "refresh": 2,
+        "includeAll": true,
+        "multi": true,
+        "current": { "selected": true, "text": "All", "value": "$__all" }
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "SLO-1: Tile fetch p95 by tier (target < 150 ms)",
+      "gridPos": { "h": 9, "w": 12, "x": 0, "y": 0 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 0.15 },
+              { "color": "red", "value": 0.5 }
+            ]
+          }
+        }
+      },
+      "options": {
+        "legend": { "displayMode": "table", "placement": "bottom", "showLegend": true }
+      },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum by (le, tier) (rate(wb_tile_fetch_duration_seconds_bucket{region=~\"$region\"}[5m])))",
+          "legendFormat": "p95 {{tier}}",
+          "refId": "A"
+        },
+        {
+          "expr": "vector(0.15)",
+          "legendFormat": "SLO target (150 ms)",
+          "refId": "B"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "SLO-2: Cold bake p95 (target < 8 s)",
+      "gridPos": { "h": 9, "w": 12, "x": 12, "y": 0 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 7 },
+              { "color": "red", "value": 8 }
+            ]
+          }
+        }
+      },
+      "targets": [
+        {
+          "expr": "wb:bake_p95_seconds:5m{region=~\"$region\"}",
+          "legendFormat": "p95",
+          "refId": "A"
+        },
+        {
+          "expr": "vector(8)",
+          "legendFormat": "SLO target (8 s)",
+          "refId": "B"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "SLO-4: Manifest p99 size (target < 2 MB, hard cap 2.5 MB)",
+      "gridPos": { "h": 9, "w": 12, "x": 0, "y": 9 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "orange", "value": 2097152 },
+              { "color": "red", "value": 2621440 }
+            ]
+          }
+        }
+      },
+      "targets": [
+        {
+          "expr": "wb:manifest_p99_bytes:5m{region=~\"$region\"}",
+          "legendFormat": "p99",
+          "refId": "A"
+        },
+        { "expr": "vector(2097152)", "legendFormat": "SLO target (2 MB)", "refId": "B" },
+        { "expr": "vector(2621440)", "legendFormat": "Hard cap (2.5 MB)", "refId": "C" }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "stat",
+      "title": "SLO-3: Error budget remaining (30 d)",
+      "gridPos": { "h": 9, "w": 12, "x": 12, "y": 9 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "min": -0.5,
+          "max": 1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "orange", "value": 0.25 },
+              { "color": "green", "value": 0.5 }
+            ]
+          }
+        }
+      },
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false }
+      },
+      "targets": [
+        {
+          "expr": "wb:error_budget_remaining:30d{region=~\"$region\"}",
+          "legendFormat": "{{region}}",
+          "refId": "A"
+        }
+      ]
+    }
+  ]
+}

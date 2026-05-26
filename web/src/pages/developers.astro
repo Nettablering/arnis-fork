@@ -1,0 +1,24 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Developers — Worldbuilders API">
+  <section class="max-w-3xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold">Build on Worldbuilders</h1>
+    <p class="mt-4 text-[var(--color-ink)]/85">
+      A read-only public API, an OSS Roblox emitter, and a tile-manifest
+      schema that&rsquo;s the single source of truth for both the in-game and
+      web renderers.
+    </p>
+    <h2 class="mt-10 text-xl font-semibold">Coming this round</h2>
+    <ul class="mt-4 space-y-2 list-disc list-inside text-[var(--color-ink)]/85">
+      <li><code>GET /v1/tile/&#123;z&#125;/&#123;x&#125;/&#123;y&#125;</code> — manifest</li>
+      <li><code>GET /v1/leaderboard</code> — top plots, 60s cache</li>
+      <li>OpenAPI 3.1 spec + Postman collection</li>
+      <li>OSS Roblox emitter (MIT)</li>
+    </ul>
+    <p class="mt-8 text-sm text-[var(--color-ink)]/60">
+      Full developer portal ships per Q327.
+    </p>
+  </section>
+</Base>

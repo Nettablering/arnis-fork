@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://worldbuilders.quicktoolry.com/sitemap-index.xml

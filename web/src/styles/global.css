@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/*
+ * Worldbuilders brand tokens (Q258 TBD — defaults locked here per Q325).
+ *   neon-green  #39FF8A  — primary CTA, accent (energy, OSM "alive")
+ *   deep-blue   #0B1530  — page background, depth
+ *   ink         #E6ECFF  — body text on deep-blue
+ *   slate       #1B2547  — surfaces / cards
+ *   amber       #FFC857  — secondary highlight
+ *
+ * Inter is the body type; system-ui fallback for FOUT.
+ */
+@theme {
+  --color-neon-green: #39ff8a;
+  --color-neon-green-600: #1de070;
+  --color-deep-blue: #0b1530;
+  --color-deep-blue-700: #060c1f;
+  --color-slate-surface: #1b2547;
+  --color-ink: #e6ecff;
+  --color-amber: #ffc857;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html,
+body {
+  background: var(--color-deep-blue);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Default to underlined links so inline anchors are distinguishable without
+ * relying on colour alone (WCAG 1.4.1). Nav/CTA links opt out via .no-underline. */
+a {
+  color: var(--color-neon-green);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+a.no-underline,
+nav a,
+header a {
+  text-decoration: none;
+}
+a:hover {
+  color: var(--color-neon-green-600);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-neon-green);
+  outline-offset: 2px;
+}

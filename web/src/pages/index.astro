@@ -1,0 +1,80 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Worldbuilders — Claim a real-world plot. Build your idle empire."
+>
+  <section class="max-w-6xl mx-auto px-4 pt-16 pb-12 sm:pt-24">
+    <p class="uppercase tracking-widest text-xs text-[var(--color-amber)] mb-4">
+      Coming soon · Built on OpenStreetMap
+    </p>
+    <h1 class="text-4xl sm:text-6xl font-bold leading-tight max-w-3xl">
+      Your street. Your city.
+      <span class="text-[var(--color-neon-green)]">Your empire.</span>
+    </h1>
+    <p class="mt-6 text-lg max-w-2xl text-[var(--color-ink)]/85">
+      Worldbuilders turns every real-world building into a claimable, upgradable
+      tile. Drop a pin anywhere on Earth — your hometown, your hostel in
+      Lisbon, your high-school — and build an idle empire on the actual map.
+    </p>
+
+    <form
+      id="waitlist"
+      action="/api/waitlist"
+      method="post"
+      class="mt-10 flex flex-col sm:flex-row gap-3 max-w-xl"
+      aria-label="Join the waitlist"
+    >
+      <label for="email" class="sr-only">Email address</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        required
+        autocomplete="email"
+        placeholder="you@somewhere.earth"
+        class="flex-1 px-4 py-3 rounded-lg bg-[var(--color-slate-surface)] text-[var(--color-ink)] placeholder-[var(--color-ink)]/50 border border-transparent focus:border-[var(--color-neon-green)] focus:outline-none"
+      />
+      <button
+        type="submit"
+        class="px-6 py-3 rounded-lg bg-[var(--color-neon-green)] text-[var(--color-deep-blue)] font-semibold hover:bg-[var(--color-neon-green-600)] transition no-underline"
+      >
+        Join the waitlist
+      </button>
+    </form>
+    <p class="mt-3 text-xs text-[var(--color-ink)]/60">
+      One email at launch. No spam, no resale. Unsubscribe in one click.
+    </p>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 py-12 grid gap-6 sm:grid-cols-3">
+    <article
+      class="p-6 rounded-xl bg-[var(--color-slate-surface)] border border-white/5"
+    >
+      <h2 class="font-semibold text-lg mb-2">Real-world tiles</h2>
+      <p class="text-sm text-[var(--color-ink)]/80">
+        Every plot is a real slippy-map tile. Buildings are OSM ways and
+        relations — not procedural noise.
+      </p>
+    </article>
+    <article
+      class="p-6 rounded-xl bg-[var(--color-slate-surface)] border border-white/5"
+    >
+      <h2 class="font-semibold text-lg mb-2">Idle, async, social</h2>
+      <p class="text-sm text-[var(--color-ink)]/80">
+        Claim, upgrade, collect — and raid your friend's hometown while
+        they're offline.
+      </p>
+    </article>
+    <article
+      class="p-6 rounded-xl bg-[var(--color-slate-surface)] border border-white/5"
+    >
+      <h2 class="font-semibold text-lg mb-2">Open by default</h2>
+      <p class="text-sm text-[var(--color-ink)]/80">
+        Public read-only API and an OSS Roblox emitter. Build on us.
+        <a href="/developers">See the docs &rarr;</a>
+      </p>
+    </article>
+  </section>
+</Base>
