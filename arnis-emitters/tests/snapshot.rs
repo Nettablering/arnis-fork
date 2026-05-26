@@ -124,6 +124,72 @@ fn snapshot_three_building_tile() {
     });
 }
 
+/// Q211 verification: a building tagged with a Wikidata QID + pageview
+/// rarity ends up with `rarity_score` + `rarity_tier` in the manifest;
+/// untagged buildings keep the old shape.
+#[test]
+fn snapshot_landmark_with_pageview_rarity() {
+    let mut t = fixture_empty_tile();
+    t.region_key = Some("NO_rural_subarctic".into());
+
+    // Eiffel-class landmark (high pageview rarity, tall) alongside an
+    // ordinary 4-storey block (no Wikipedia article).
+    t.buildings = vec![
+        IngestedBuilding {
+            osm_id: "way/9001".into(),
+            footprint: vec![
+                [59.9101, 10.7501],
+                [59.9101, 10.7503],
+                [59.9103, 10.7503],
+                [59.9103, 10.7501],
+            ],
+            height_m: Some(300.0),
+            building_kind: Some("tower".into()),
+            wikidata_qid: Some("Q243".into()), // Eiffel Tower
+            pageview_rarity: Some(0.90),
+            ..Default::default()
+        },
+        IngestedBuilding {
+            osm_id: "way/9002".into(),
+            footprint: vec![
+                [59.9105, 10.7505],
+                [59.9105, 10.7510],
+                [59.9110, 10.7510],
+                [59.9110, 10.7505],
+            ],
+            levels: Some(4),
+            building_kind: Some("apartments".into()),
+            ..Default::default()
+        },
+    ];
+
+    let e = RobloxEmitter::default();
+    let m = strip_terrain(e.build_manifest(&t));
+    insta::with_settings!({ sort_maps => true }, {
+        insta::assert_json_snapshot!(m);
+    });
+
+    // Validate the manifest still passes schema (rarity fields are
+    // optional + bounded).
+    use arnis_core::emitter::Emitter;
+    e.validate(&e.build_manifest(&t))
+        .expect("schema must accept rarity fields");
+
+    // Sanity: Eiffel building must carry rarity, plain block must not.
+    let eiffel = m.buildings.iter().find(|b| b.osm_id == "way/9001").unwrap();
+    assert!(eiffel.rarity_score.is_some());
+    // 0.40*0.90 + 0.15*height_rarity(300m) ≈ 0.36 + 0.13 ≈ 0.49 → Rare.
+    // Other Q211 factors (heritage, age, uniqueness, fictional) ship in
+    // later tickets; once they're wired this same Eiffel-class input
+    // will climb to Legendary/Mythic.
+    assert_eq!(eiffel.rarity_tier.as_deref(), Some("Rare"));
+    let plain = m.buildings.iter().find(|b| b.osm_id == "way/9002").unwrap();
+    assert!(
+        plain.rarity_score.is_none(),
+        "plain block should not carry rarity"
+    );
+}
+
 #[test]
 fn snapshot_is_byte_stable_across_runs() {
     // Property check: two independent builds of the same tile must produce

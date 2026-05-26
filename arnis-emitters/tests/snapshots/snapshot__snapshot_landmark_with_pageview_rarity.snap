@@ -1,0 +1,80 @@
+---
+source: arnis-emitters/tests/snapshot.rs
+expression: m
+---
+{
+  "manifest_version": "1.0",
+  "style_version": 1,
+  "tile": {
+    "z": 15,
+    "x": 17000,
+    "y": 9500
+  },
+  "stud_scale": 2.0,
+  "center_wgs84": [
+    59.9108985,
+    10.75179
+  ],
+  "region_key": "NO_rural_subarctic",
+  "buildings": [
+    {
+      "osm_id": "way/9001",
+      "footprint_studs": [
+        [
+          11.162222,
+          22.263899
+        ],
+        [
+          33.486668,
+          22.263899
+        ],
+        [
+          33.486668,
+          66.791695
+        ],
+        [
+          11.162222,
+          66.791695
+        ]
+      ],
+      "height_studs": 600.0,
+      "wall_colour_hex": "#3A2D1F",
+      "roof_colour_hex": "#3D2914",
+      "category": "explicit",
+      "claimable": false,
+      "rarity_score": 0.48806524,
+      "rarity_tier": "Rare"
+    },
+    {
+      "osm_id": "way/9002",
+      "footprint_studs": [
+        [
+          55.81111,
+          111.31949
+        ],
+        [
+          111.62222,
+          111.31949
+        ],
+        [
+          111.62222,
+          222.63898
+        ],
+        [
+          55.81111,
+          222.63898
+        ]
+      ],
+      "height_studs": 24.0,
+      "wall_colour_hex": "#F2EAD3",
+      "roof_colour_hex": "#5C3A21",
+      "category": "levels",
+      "claimable": false
+    }
+  ],
+  "roads": [],
+  "water": [],
+  "landmarks": [],
+  "assets": [],
+  "terrain": null
+}

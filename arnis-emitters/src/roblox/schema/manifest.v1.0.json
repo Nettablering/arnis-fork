@@ -90,7 +90,12 @@
         "wall_colour_hex": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
         "roof_colour_hex": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
         "category": { "type": "string" },
-        "claimable": { "type": "boolean" }
+        "claimable": { "type": "boolean" },
+        "rarity_score": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "rarity_tier": {
+          "type": "string",
+          "enum": ["Common", "Uncommon", "Rare", "Epic", "Legendary", "Mythic"]
+        }
       }
     },
     "Road": {
