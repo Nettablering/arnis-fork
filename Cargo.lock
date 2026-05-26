@@ -190,9 +190,11 @@ dependencies = [
 ]
 
 [[package]]
-name = "arnis"
+name = "arnis-cli"
 version = "2.8.0"
 dependencies = [
+ "arnis-core",
+ "arnis-emitters",
  "base64 0.22.1",
  "bedrockrs_level",
  "bedrockrs_shared",
@@ -238,6 +240,17 @@ dependencies = [
  "windows 0.62.2",
  "zip",
  "zstd",
+]
+
+[[package]]
+name = "arnis-core"
+version = "0.1.0"
+
+[[package]]
+name = "arnis-emitters"
+version = "0.1.0"
+dependencies = [
+ "arnis-core",
 ]
 
 [[package]]

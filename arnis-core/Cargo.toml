@@ -1,0 +1,14 @@
+[package]
+name = "arnis-core"
+version = "0.1.0"
+edition = "2021"
+description = "Arnis core: engine-agnostic geometry primitives, projection, and OSM/Overture ingestion (Nettablering fork)"
+license = "Apache-2.0"
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+# Intentionally empty placeholder. Modules will migrate here from
+# arnis-cli/src/ in Q464+ (coordinate_system, osm_parser, overture,
+# elevation, land_cover, etc.).

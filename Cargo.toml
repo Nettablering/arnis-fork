@@ -1,77 +1,31 @@
-[package]
-name = "arnis"
-version = "2.8.0"
-edition = "2021"
-description = "Arnis - Generate real life cities in Minecraft"
-homepage = "https://github.com/louis-e/arnis"
-repository = "https://github.com/louis-e/arnis"
-license = "Apache-2.0"
-readme = "README.md"
+[workspace]
+resolver = "2"
+members = [
+    "arnis-core",
+    "arnis-emitters",
+    "arnis-cli",
+]
 
 [profile.release]
 lto = "thin"
 overflow-checks = true
 
-[features]
-default = ["gui"]
-gui = ["tauri", "tauri-plugin-log", "tauri-plugin-shell", "tokio", "rfd", "tauri-build"]
-
-[build-dependencies]
-tauri-build = {version = "2", optional = true}
-
-[dependencies]
-base64 = "0.22.1"
-bytes = "1"
-byteorder = "1.5"
-clap = { version = "4.6.0", features = ["derive", "env"] }
-colored = "3.0.0"
-dda-voxelize = { git = "https://github.com/MIERUNE/dda-voxelize-rs", rev = "1e0844a873262f13b19a709e188a3df22a6fbf97" }
-dirs = "6.0.0"
-fastanvil = "0.32.0"
-fastnbt = "2.6.0"
-flate2 = "1.1"
-fnv = "1.0.7"
-fs2 = "0.4"
-geo = "0.33.1"
-gltf = { version = "1", default-features = false, features = ["import", "names", "utils", "KHR_materials_unlit"] }
-image = "0.25"
-indicatif = "0.18.4"
-itertools = "0.14.0"
-jsonwebtoken = "10.3.0"
-log = "0.4.27"
-once_cell = "1.21.3"
-rand = { version = "0.9.3", features = ["std", "std_rng"] }
-rand_chacha = "0.9"
-rayon = "1.10.0"
-reqwest = { version = "0.13.1", features = ["blocking", "json", "query"] }
-rfd = { version = "0.16.0", optional = true }
-semver = "1.0.27"
-parquet = { version = "58", default-features = false, features = ["snap", "zstd"] }
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
-tauri = { version = "2", optional = true }
-tauri-plugin-log = { version = "2.6.0", optional = true }
-tauri-plugin-shell = { version = "2", optional = true }
-tiff = "0.11"
-tokio = { version = "1.48.0", features = ["full"], optional = true }
-bedrockrs_level = { git = "https://github.com/bedrock-crustaceans/bedrock-rs", rev = "7ef268b", package = "bedrockrs_level" }
-bedrockrs_shared = { git = "https://github.com/bedrock-crustaceans/bedrock-rs", rev = "7ef268b", package = "bedrockrs_shared" }
-nbtx = { git = "https://github.com/bedrock-crustaceans/nbtx" }
-vek = "0.17"
-zip = { version = "0.6", default-features = false, features = ["deflate"] }
-rusty-leveldb = "3"
-rusqlite = { version = "0.33", features = ["bundled"] }
-zstd = "0.13"
-
-[target.'cfg(windows)'.dependencies]
-windows = { version = "0.62.0", features = ["Win32_System_Console"] }
-
-[dev-dependencies]
-tempfile = "3.26.0"
-
-[[example]]
-name = "refresh_wikidata_index"
-path = "assets/refresh_wikidata_index.rs"
+# NOTE (Nettablering fork, Q463):
+#
+# This workspace is the first step of the engine-agnostic split described in
+# DECISIONS.md / DEFINITION_OF_DONE.md. The upstream louis-e/arnis crate is
+# preserved verbatim inside `arnis-cli/` so `cargo build` stays green and we
+# can pull upstream changes with minimal merge friction.
+#
+# `arnis-core` (geometry primitives, projection, Overpass ingestion) and
+# `arnis-emitters` (emitter trait + Minecraft / Luanti / Roblox-stub) are
+# currently lightweight library crates with placeholder modules. Subsequent
+# tickets (Q464+) will move the corresponding modules out of `arnis-cli/src/`
+# and into these crates one subsystem at a time, with each move verified by
+# `cargo build --workspace --release --no-default-features` staying green.
+#
+# Doing the full extraction in one commit would touch every file in the tree
+# and make upstream rebases impossible — the staged approach is intentional.
 
 # Freeze nbtx at the last pre-`NbtError`-rename commit; the pinned
 # bedrockrs_proto_core leaves it unpinned so cargo update would break it.

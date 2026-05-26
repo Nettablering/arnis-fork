@@ -1,0 +1,12 @@
+[package]
+name = "arnis-emitters"
+version = "0.1.0"
+edition = "2021"
+description = "Arnis emitters: engine-specific writers (Minecraft, Luanti, Roblox stub) (Nettablering fork)"
+license = "Apache-2.0"
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+arnis-core = { path = "../arnis-core" }

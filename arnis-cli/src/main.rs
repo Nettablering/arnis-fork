@@ -1,5 +1,14 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+// Nettablering fork (Q463): pull the placeholder workspace crates into
+// the binary so they're linked even before any real symbol has migrated
+// over from this crate. Subsequent tickets will move modules into the
+// library crates one subsystem at a time.
+#[allow(unused_imports)]
+use arnis_core::NETTABLERING_FORK_LAYOUT_VERSION as _NETTABLERING_LAYOUT_V;
+#[allow(unused_imports)]
+use arnis_emitters::roblox::RobloxEmitter as _NettableringRobloxStub;
+
 mod args;
 mod bedrock_block_map;
 mod block_definitions;
